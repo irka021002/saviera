@@ -28,7 +28,7 @@ export default function Navbar(){
                 <div className={`col-span-4 flex justify-between ${changeColor ? "text-primary-2" : "text-secondary-2"} font-montserrat text-base`}>
                     <a href="/">VOL 01. ARCHETYPES</a>
                     <a href="/shop">SHOP</a>
-                    <a href="/aboutus">ABOUT US</a>
+                    <a href="/about-us">ABOUT US</a>
                 </div>
                 <div className="col-span-1"></div>
                 <div className="col-span-2">
