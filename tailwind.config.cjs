@@ -23,7 +23,8 @@ module.exports = {
       'aboreto': ['Aboreto', 'cursive'],
       'forum': ['Forum', 'cursive'],
       'montserrat': ['Montserrat', 'sans-serif'],
-      'unbounded': ['Unbounded', 'cursive']
+      'unbounded': ['Unbounded', 'cursive'],
+      'trap': ['Trap', 'sans-serif'],
     }
   },
   plugins: [

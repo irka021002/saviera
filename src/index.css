@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Trap";
+  src: url("./assets/font/Trap-Light.otf") format("opentype");
+  font-weight: 300;
+}
+@font-face {
+  font-family: "Trap";
+  src: url("./assets/font/Trap-Regular.otf") format("opentype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Trap";
+  src: url("./assets/font/Trap-Medium.otf") format("opentype");
+  font-weight: 500;
+}
+@font-face {
+  font-family: "Trap";
+  src: url("./assets/font/Trap-SemiBold.otf") format("opentype");
+  font-weight: 600;
+}
+@font-face {
+  font-family: "Trap";
+  src: url("./assets/font/Trap-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "Trap";
+  src: url("./assets/font/Trap-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+}
+@font-face {
+  font-family: "Trap";
+  src: url("./assets/font/Trap-Black.otf") format("opentype");
+  font-weight: 900;
+}
+
 :root {
   margin: 0;
   padding: 0;

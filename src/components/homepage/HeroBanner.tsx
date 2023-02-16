@@ -74,6 +74,6 @@ export default function HeroBanner(){
                 <span className="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
                 <span className="visually-hidden">Next</span>
             </button>
-            </div>
+        </div>
     )
 }
