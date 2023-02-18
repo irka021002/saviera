@@ -5,10 +5,8 @@ import HeroBanner from "../components/savtowear/HeroBanner"
 export default function SavToWear(){
     return(
         <>
-            <Navbar />
             <HeroBanner />
             <SavForm />
-            <Footer />
         </>
     )
 }

@@ -7,12 +7,10 @@ import OurSentiment from '../components/aboutus/OurSentiment';
 export default function AboutUs(){
     return(
         <>
-            <Navbar />
             <AboutBrand />
             <SavieraAbout />
             <StatusQuo />
             <OurSentiment />
-            <Footer />
         </>
     )
 }

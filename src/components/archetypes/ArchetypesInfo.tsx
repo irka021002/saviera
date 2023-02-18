@@ -6,7 +6,7 @@ export default function ArchetypesInfo(){
                     <h1 className="font-aboreto text-[52px]">
                         VOL 01. ARCHETYPES
                     </h1>
-                    <p className="mt-8 flex flex-col-reverse items-center py-10 font-trap text-2xl leading-[150%] after:h-[1px] after:w-4/6 after:absolute after:content-[''] after:border-b after:border-secondary-1">
+                    <p className="mt-8 flex flex-col-reverse items-center py-10 font-trap text-2xl leading-[150%] before:h-[1px] before:w-5/6 before:mt-10 before:content-[''] before:border-b before:border-secondary-1">
                         <span className="mt-7">Like an Opera with an Overture, Archetypes are the commencement of our <span className="font-bold">limited initial collection.</span></span>
                         ARCHETYPES inspired by and represent collective individuals that are: 
                         <br />

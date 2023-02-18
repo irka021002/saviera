@@ -10,9 +10,27 @@ import FacebookWhite from "../../assets/icon/navbar/facebookWhite.svg"
 import InstagramWhite from "../../assets/icon/navbar/instagramWhite.svg"
 import SearchWhite from "../../assets/icon/navbar/searchWhite.svg"
 import WhatsappWhite from "../../assets/icon/navbar/whatsappWhite.svg"
+import Menu from "../../assets/icon/navbar/menu.svg"
+import MenuWhite from "../../assets/icon/navbar/menuWhite.svg"
 import { useEffect, useState } from "react"
+
+function checkPath(path: string):Boolean{
+    return window.location.href.includes(path)
+}
 export default function Navbar(){
     const [changeColor, setChangeColor] = useState(true)
+    const handleMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const MOBILEMENU = document.getElementById("mobileMenu")
+        if(MOBILEMENU != null){
+            if(MOBILEMENU.style.height == "0px"){
+                MOBILEMENU.style.height = "100vh"
+                MOBILEMENU.style.paddingTop = "40px"
+             }else{
+                MOBILEMENU.style.height = "0"
+                MOBILEMENU.style.paddingTop = "0px"
+             }
+        }
+    };
     useEffect(() => {
         window.addEventListener("scroll", () => {
             if(window.scrollY >= 1){
@@ -23,25 +41,58 @@ export default function Navbar(){
         })
     }, [])
     return(
-        <nav className="z-[9999] sticky top-0">
-            <div className={`justify-center grid grid-cols-[repeat(4,minmax(0,78px))] md:grid-cols-[repeat(12,minmax(0,78px))] gap-[24px] items-center h-[100px] ${changeColor ? "bg-transparent" : "bg-primary-1"}`}>
-                <div className={`col-span-4 flex justify-between ${changeColor ? "text-primary-2" : "text-secondary-2"} font-montserrat text-base`}>
-                    <a href="/">VOL 01. ARCHETYPES</a>
+        <nav className="z-[9999] sticky top-0 max-w-[1440px] m-auto">
+            <div className={`justify-center grid grid-cols-6 gap-[16px] px-6 md:px-0 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] items-center h-[80px] md:h-[100px] ${changeColor && !checkPath("/archetypes") ? "bg-transparent" : "md:bg-primary-1 bg-[#c8c8c8]"}`}>
+                <div className={`col-span-4 hidden md:flex justify-between ${changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? "text-primary-2" : "text-secondary-2"} font-montserrat text-base`}>
+                    <a href="/archetypes">VOL 01. ARCHETYPES</a>
                     <a href="/shop">SHOP</a>
                     <a href="/about-us">ABOUT US</a>
                 </div>
-                <div className="col-span-1"></div>
-                <div className="col-span-2">
-                    <img src={changeColor ? SavieraWhite : Saviera} className="m-auto" alt="Store Logo" />
+                <div className="col-span-1 hidden md:block"></div>
+                <div className="col-span-1 md:col-span-2">
+                    <a href="/">
+                        <img src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? SavieraWhite : Saviera} className="m-auto" alt="Store Logo" />
+                    </a>
                 </div>
-                <div className="col-span-1"></div>
-                <div className="col-span-4 flex">
-                    <a href=""><img width={32} className="mr-8" src={changeColor ? WhatsappWhite : Whatsapp} alt="Whatsapp Logo" /></a>
-                    <a href=""><img width={32} className="mr-8" src={changeColor ? InstagramWhite : Instagram} alt="Instagram Logo" /></a>
-                    <a href=""><img width={32} className="mr-8" src={changeColor ? FacebookWhite : Facebook} alt="Facebook Logo" /></a>
-                    <a href=""><img width={32} className="mr-8" src={changeColor ? BrowserWhite : Browser} alt="Browser Logo" /></a>
-                    <span className={`h-[32px] border ${changeColor ? "border-primary-1" : "border-secondary-2"}`} />
-                    <a href=""><img width={32} className="ml-8" src={changeColor ? SearchWhite : Search} alt="Search Logo" /></a>
+                <div className="col-span-1 hidden md:block"></div>
+                <div className="col-span-4 hidden md:flex">
+                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? WhatsappWhite : Whatsapp} alt="Whatsapp Logo" /></a>
+                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? InstagramWhite : Instagram} alt="Instagram Logo" /></a>
+                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? FacebookWhite : Facebook} alt="Facebook Logo" /></a>
+                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? BrowserWhite : Browser} alt="Browser Logo" /></a>
+                    <span className={`h-[32px] border ${changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? "border-primary-1" : "border-secondary-2"}`} />
+                    <a href=""><img width={32} className="ml-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? SearchWhite : Search} alt="Search Logo" /></a>
+                </div>
+                <span className="col-span-4 md:hidden"></span>
+                <div className="col-span-1 md:hidden">
+                    <button onClick={handleMenu}>
+                        <img src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? MenuWhite : Menu} className="m-auto" alt="Menu Icon" />
+                    </button>
+                </div>
+            </div>
+            <div id="mobileMenu" className="absolute bg-primary-1 top-0 left-0 right-0 bottom-0 md:hidden px-6 transition-all duration-500 overflow-y-hidden mt" style={{height: 0}}>
+                <div className="p-[10px] flex justify-end">
+                    <button onClick={handleMenu}>
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.411743 0.411621L21.5882 21.5881" stroke="#800020" strokeWidth="0.661765"/>
+                            <path d="M21.5882 0.411621L0.411732 21.5881" stroke="#800020" strokeWidth="0.661765"/>
+                        </svg>
+                    </button>
+                </div>
+                <div className="text-center flex flex-col">
+                    <a href="/archetypes" className="text-secondary-2 font-montserrat">VOL 01. ARCHETYPES</a>
+                    <a href="/shop" className="text-secondary-2 font-montserrat mt-6">SHOP</a>
+                    <a href="/shop" className="text-secondary-2 font-montserrat mt-6">ABOUT US</a>
+                </div>
+                <div className="px-[60px] flex justify-between mt-[52px]">
+                    <img width={24} src={Whatsapp} alt="Whatsapp Icon" />
+                    <img width={24} src={Instagram} alt="Instagram Icon" />
+                    <img width={24} src={Facebook} alt="Facebook Icon" />
+                    <img width={24} src={Browser} alt="Browser Icon" />
+                </div>
+                <div className="mt-[52px] relative">
+                    <input className="bg-primary-1 border border-[rgba(58,58,58,0.3)] w-full p-4 font-montserrat font-medium rounded" type="text" placeholder="Search the item" />
+                    <img className="absolute right-7 top-1 translate-x-2/4 translate-y-2/4" width={24} src={Search} alt="Search Icon" />
                 </div>
             </div>
         </nav>

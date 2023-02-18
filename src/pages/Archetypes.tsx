@@ -5,9 +5,7 @@ import ArchetypesInfo from '../components/archetypes/ArchetypesInfo';
 export default function Archetypes(){
     return(
         <>
-            <Navbar />
             <ArchetypesInfo />
-            <Footer />
         </>
     )
 }

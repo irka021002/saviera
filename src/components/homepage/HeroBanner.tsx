@@ -1,7 +1,7 @@
 import Image1 from "../../../public/image/homepage/promocta.png"
 export default function HeroBanner(){
     return(
-        <div id="carouselHero" className="carousel slide relative mt-[-100px]" data-bs-ride="carousel">
+        <div id="carouselHero" className="carousel slide relative mt-[-80px] md:mt-[-100px] aspect-[36/41] md:aspect-auto" data-bs-ride="carousel">
             <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                 <button
                     type="button"
@@ -25,18 +25,18 @@ export default function HeroBanner(){
                 ></button>
             </div>
             <div className="carousel-inner relative w-full overflow-hidden">
-                <div className="carousel-item active relative float-left w-full">
+                <div className="carousel-item active relative float-left w-full ">
                     <div className="bg-black absolute w-full h-full opacity-30"></div>
                     <img
                         src="/image/homepage/promocta.png"
-                        className="block w-full"
+                        className="block w-full aspect-[36/41] md:aspect-auto"
                         alt="..."
                     />
                 </div>
                 <div className="carousel-item relative float-left w-full">
                     <img
                         src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
-                        className="block w-full"
+                        className="block w-full aspect-[36/41] md:aspect-auto"
                         alt="..."
                     />
                     <div className="carousel-caption hidden md:block absolute text-center">
@@ -47,7 +47,7 @@ export default function HeroBanner(){
                 <div className="carousel-item relative float-left w-full">
                     <img
                         src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                        className="block w-full"
+                        className="block w-full aspect-[36/41] md:aspect-auto"
                         alt="..."
                     />
                     <div className="carousel-caption hidden md:block absolute text-center">
