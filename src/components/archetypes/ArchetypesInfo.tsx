@@ -1,7 +1,7 @@
 export default function ArchetypesInfo(){
     return(
-        <div className="pt-20 bg-primary-2 justify-center grid grid-cols-[repeat(6,minmax(0,32px))] gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px]">
-            <div className="col-span-12">
+        <div className="pt-20 bg-primary-2 justify-center grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0">
+            <div className="col-span-6 md:col-span-12">
                 <div className="text-center text-secondary-2 ">
                     <h1 className="font-aboreto text-[52px]">
                         VOL 01. ARCHETYPES
@@ -15,14 +15,14 @@ export default function ArchetypesInfo(){
                 </div>
                 <div className="py-[80px]">
                     <div id="carouselHero" className="carousel slide relative" data-bs-ride="carousel">
-                        <div className="carousel-inner relative w-full overflow-hidden">
-                            <div className="carousel-item active relative float-left w-full">
+                        <div className="carousel-inner relative aspect-[104/59] w-full overflow-hidden">
+                            <div className="carousel-item active relative float-left w-full aspect-[104/59]">
                                 <div className="bg-[rgba(0,0,0,0.3)] absolute w-full h-full flex justify-center items-center">
-                                    <h2 className="text-center text-primary-2 font-montserrat text-[64px] font-normal">Minimalistic</h2>
+                                    <h2 className="text-center text-primary-2 font-montserrat text-[20px] md:text-[64px] font-normal">Minimalistic</h2>
                                 </div>
                                 <img
                                     src="/image/homepage/promocta.png"
-                                    className="block w-full"
+                                    className="block w-full aspect-[104/59]"
                                     alt="..."
                                 />
                             </div>
