@@ -38,6 +38,11 @@
   font-weight: 900;
 }
 
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
 :root {
   margin: 0;
   padding: 0;
@@ -59,4 +64,14 @@
 .carousel-indicators .active{
   width: 15px !important;
   height: 15px !important;
+}
+/* For Webkit-based browsers (Chrome, Safari and Opera) */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }

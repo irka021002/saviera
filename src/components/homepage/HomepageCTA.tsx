@@ -7,7 +7,7 @@ export default function HomepageCTA(){
                     <h2 className="font-aboreto text-4xl text-center">
                         OPTIMUM COMFORT MEETS VERSATILITY
                     </h2>
-                    <p className="text-justify max-w-[800px] mt-5 mb-8">
+                    <p className="text-justify max-w-[800px] mt-5 mb-8 font-trap">
                         SAVIERA is an eco-conscious fashion brand that provides size-inclusive, timeless and versatile fashion staples for anyone who cares about what they wear and how their clothes are made in an era of modern conscious consumption.
                     </p>
                     <a className="flex font-montserrat text-accent-1 font-medium mb-36" href="">MORE OF OUR STORY <img className="ml-2" src={ArrowRightRed} alt="Arrow Icon" /></a>

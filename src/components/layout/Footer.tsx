@@ -26,7 +26,7 @@ export default function Footer(){
                     <div className="w-full md:w-[30%] md:h-full">
                         <div className="font-aboreto text-secondary-2 text-3xl text-center w-full mb-3">HERE FOR YOU</div>
                         <p className="text-center mb-3">Order,<br/>Complaints,<br/>Inquiries, and<br/>Feedback:</p>
-                        <ContactButton src={Whatsapp} alt="Whatsapp Logo" text="Let us talk about it." href="" />
+                        <a className="w-full py-[13px] border mb-[35px] border-solid border-accent-2 rounded justify-center content-center text-accent-2 hidden md:flex" href=""><img height={20} className="mr-3" src={Whatsapp} alt="Whatsapp Logo" />Let us talk about it.</a>
                         <div className="w-full font-trap text-center text-base text-secondary-2 bg-cream-1 p-[10px]">
                             Our customer service is available <span className="font-bold">Monday</span> to <span className="font-bold">Friday</span> from <span className="font-bold">8 am</span> to <span className="font-bold">9 pm</span>. We do shipping on weekends.
                         </div>

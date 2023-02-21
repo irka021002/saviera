@@ -42,31 +42,31 @@ export default function Navbar(){
     }, [])
     return(
         <nav className="z-[9999] sticky top-0 max-w-[1440px] m-auto">
-            <div className={`justify-center grid grid-cols-6 gap-[16px] px-6 md:px-0 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] items-center h-[80px] md:h-[100px] ${changeColor && !checkPath("/archetypes") ? "bg-transparent" : "md:bg-primary-1 bg-[#c8c8c8]"}`}>
-                <div className={`col-span-4 hidden md:flex justify-between ${changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? "text-primary-2" : "text-secondary-2"} font-montserrat text-base`}>
+            <div className={`justify-center grid grid-cols-6 gap-[16px] px-6 md:px-0 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] items-center h-[80px] md:h-[100px] ${changeColor && !checkPath("/archetypes") && !checkPath("/product") ? "bg-transparent" : "md:bg-primary-1 bg-[#c8c8c8]"}`}>
+                <div className={`col-span-4 hidden md:flex justify-between ${changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") && !checkPath("/product") ? "text-primary-2" : "text-secondary-2"} font-montserrat text-base`}>
                     <a href="/archetypes">VOL 01. ARCHETYPES</a>
-                    <a href="/shop">SHOP</a>
+                    <a href="/#savieraProduct">SHOP</a>
                     <a href="/about-us">ABOUT US</a>
                 </div>
                 <div className="col-span-1 hidden md:block"></div>
                 <div className="col-span-1 md:col-span-2">
                     <a href="/">
-                        <img src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? SavieraWhite : Saviera} className="m-auto" alt="Store Logo" />
+                        <img src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") && !checkPath("/product") ? SavieraWhite : Saviera} className="m-auto" alt="Store Logo" />
                     </a>
                 </div>
                 <div className="col-span-1 hidden md:block"></div>
                 <div className="col-span-4 hidden md:flex">
-                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? WhatsappWhite : Whatsapp} alt="Whatsapp Logo" /></a>
-                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? InstagramWhite : Instagram} alt="Instagram Logo" /></a>
-                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? FacebookWhite : Facebook} alt="Facebook Logo" /></a>
-                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? BrowserWhite : Browser} alt="Browser Logo" /></a>
-                    <span className={`h-[32px] border ${changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? "border-primary-1" : "border-secondary-2"}`} />
-                    <a href=""><img width={32} className="ml-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? SearchWhite : Search} alt="Search Logo" /></a>
+                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") && !checkPath("/product") ? WhatsappWhite : Whatsapp} alt="Whatsapp Logo" /></a>
+                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") && !checkPath("/product") ? InstagramWhite : Instagram} alt="Instagram Logo" /></a>
+                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") && !checkPath("/product") ? FacebookWhite : Facebook} alt="Facebook Logo" /></a>
+                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") && !checkPath("/product") ? BrowserWhite : Browser} alt="Browser Logo" /></a>
+                    <span className={`h-[32px] border ${changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") && !checkPath("/product") ? "border-primary-1" : "border-secondary-2"}`} />
+                    <a href=""><img width={32} className="ml-8" src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") && !checkPath("/product") ? SearchWhite : Search} alt="Search Logo" /></a>
                 </div>
                 <span className="col-span-4 md:hidden"></span>
                 <div className="col-span-1 md:hidden">
                     <button onClick={handleMenu}>
-                        <img src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") ? MenuWhite : Menu} className="m-auto" alt="Menu Icon" />
+                        <img src={changeColor && !checkPath("/archetypes") && !checkPath("/savtowear") && !checkPath("/product") ? MenuWhite : Menu} className="m-auto" alt="Menu Icon" />
                     </button>
                 </div>
             </div>
