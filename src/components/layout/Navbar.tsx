@@ -82,7 +82,7 @@ export default function Navbar(){
                 <div className="text-center flex flex-col">
                     <a href="/archetypes" className="text-secondary-2 font-montserrat">VOL 01. ARCHETYPES</a>
                     <a href="/shop" className="text-secondary-2 font-montserrat mt-6">SHOP</a>
-                    <a href="/shop" className="text-secondary-2 font-montserrat mt-6">ABOUT US</a>
+                    <a href="/about-us" className="text-secondary-2 font-montserrat mt-6">ABOUT US</a>
                 </div>
                 <div className="px-[60px] flex justify-between mt-[52px]">
                     <img width={24} src={Whatsapp} alt="Whatsapp Icon" />
