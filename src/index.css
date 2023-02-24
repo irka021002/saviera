@@ -38,11 +38,6 @@
   font-weight: 900;
 }
 
-html{
-  scroll-behavior: smooth;
-  scroll-padding-top: 80px;
-}
-
 :root {
   margin: 0;
   padding: 0;

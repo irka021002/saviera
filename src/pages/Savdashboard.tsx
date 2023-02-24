@@ -1,25 +1,91 @@
-import { useState } from "react"
+import { useState, useEffect } from 'react';
 import axios from 'axios';
+import useCookies from "react-cookie/cjs/useCookies";
+interface CTA{
+    title: string;
+    description: string;
+}
 export default function Savdashboard(){
+    const [cookies, setCookie] = useCookies(['access-token','refresh-token'])
     const [heroPicFile, setHeroPicFile] = useState<File>(new File([""], "filename"))
     const [selectedHeroPic,setSelectedHeroPic] = useState("")
-    const [heroPic,setHeroPic] = useState([
-        "/image/homepage/promocta.png",
-        "/image/homepage/promocta.png",
-        "/image/homepage/promocta.png",
-    ]) // for database
-    const [cta, setCta] = useState({
-        title: "",
-        description: ""
-    }) // for database
+    const [heroPic,setHeroPic] = useState<Array<string>>([]) // for database
+    const [cta, setCta] = useState<CTA>({title: "",description: ""}) // for database
     const [instaPicFile, setInstaPicFile] = useState<File>(new File([""], "filename"))
     const [selectedInstaPic,setSelectedInstaPic] = useState("")
-    const [instaPic, setInstaPic] = useState([
-        "/image/homepage/promocta.png",
-        "/image/homepage/promocta.png",
-        "/image/homepage/promocta.png",
-    ]) // for database
+    const [instaPic, setInstaPic] = useState<Array<string>>([]) // for database
     const [isLoggedIn, setIsLoggedIn] = useState(false)
+    useEffect(() => {
+        if(cookies["access-token"]){
+            axios.post(
+                `${import.meta.env.VITE_MONGOPOINT}/action/find`,
+                {
+                    "dataSource": "Cluster0",
+                    "database": "saviera",
+                    "collection": "page",
+                    "sort": {
+                        "_id": -1
+                    },
+                    "limit": 1
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${cookies["access-token"]}`
+                    }
+                }
+            )
+                .then(v => {
+                    if(v.status = 201){
+                        setInstaPic(v.data.documents[0].homepage.instagram)
+                        setHeroPic(v.data.documents[0].homepage.hero)
+                        setCta(v.data.documents[0].homepage.cta)
+                    }
+                })
+            return;
+        }
+        if(cookies["refresh-token"] && !cookies["access-token"]){
+            axios.post(
+                "https://realm.mongodb.com/api/client/v2.0/auth/session",
+                {},
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${cookies["refresh-token"]}`
+                    }
+                }
+            )
+                .then(v => {
+                    setCookie("access-token", v.data.access_token, {maxAge: 25*60})
+                    axios.post(
+                        `${import.meta.env.VITE_MONGOPOINT}/action/find`,
+                        {
+                            "dataSource": "Cluster0",
+                            "database": "saviera",
+                            "collection": "page",
+                            "sort": {
+                                "_id": -1
+                            },
+                            "limit": 1
+                        },
+                        {
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Authorization": `Bearer ${cookies["access-token"]}`
+                            }
+                        }
+                    )
+                        .then(v => {
+                            if(v.status = 201){
+                                setInstaPic(v.data.documents[0].homepage.instagram)
+                                setHeroPic(v.data.documents[0].homepage.hero)
+                                setCta(v.data.documents[0].homepage.cta)
+                            }
+                        })
+                })
+
+        }
+    },[])
     const handleLogin = (e:React.SyntheticEvent<HTMLButtonElement>) => {
         const username = (document.getElementById("username") as HTMLInputElement)
         const password = (document.getElementById("password") as HTMLInputElement)
@@ -100,23 +166,77 @@ export default function Savdashboard(){
         setCta({...cta,description: e.currentTarget.value})
     }
     const handleSimpan = (e:React.SyntheticEvent<HTMLButtonElement>) => {
-        axios.post(
-            `${import.meta.env.VITE_MONGOPOINT}/action/insertOne`,
-            {
-                hero: heroPic,
-                cta: cta,
-                instagram: instaPic
-            },
-            {
-                headers: {
-                    "content-type": "application/json",
-                    "apiKey": import.meta.env.VITE_MONGOKEY
+        if(cookies["access-token"]){
+            axios.post(
+                `${import.meta.env.VITE_MONGOPOINT}/action/insertOne`,
+                {
+                    "dataSource": "Cluster0",
+                    "database": "saviera",
+                    "collection": "page",
+                    "document": {
+                        homepage: {
+                            hero: heroPic,
+                            cta: cta,
+                            instagram: instaPic
+                        }
+                    }
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${cookies["access-token"]}`
+                    }
                 }
-            }
-        )
-            .then(v => {
-                console.log(v)
-            })
+            )
+                .then(v => {
+                    if(v.status = 201){
+                        window.location.reload()
+                        return;
+                    }
+                    alert(v.statusText)
+                })
+        }
+        if(cookies["refresh-token"] && !cookies["access-token"]){
+            axios.post(
+                "https://realm.mongodb.com/api/client/v2.0/auth/session",
+                {},
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${cookies["refresh-token"]}`
+                    }
+                }
+            )
+                .then(v => {
+                    setCookie("access-token", v.data.access_token, {maxAge: 25*60})
+                    axios.post(
+                        `${import.meta.env.VITE_MONGOPOINT}/action/insertOne`,
+                        {
+                            "dataSource": "Cluster0",
+                            "database": "saviera",
+                            "collection": "page",
+                            "document": {
+                                hero: heroPic,
+                                cta: cta,
+                                instagram: instaPic
+                            }
+                        },
+                        {
+                            headers: {
+                                "Content-Type": "application/json",
+                                "Authorization": `Bearer ${cookies["access-token"]}`
+                            }
+                        }
+                    )
+                        .then(v => {
+                            if(v.status = 201){
+                                window.location.reload()
+                                return;
+                            }
+                            alert(v.statusText)
+                        })
+                })
+        }
     }
     return(
         <>
@@ -130,8 +250,8 @@ export default function Savdashboard(){
                                 <h3 className="text-2xl font-bold">Hero Banner</h3>
                                 {heroPic.map((v,i) => {
                                     return(
-                                        <div className="w-2/5 mt-1 flex aspect-video">
-                                            <img key={i} className="rounded" src={v} alt="" />
+                                        <div key={i} className="w-2/5 mt-1 flex aspect-video">
+                                            <img className="rounded" src={v} alt="" />
                                             <button data-id={i} onClick={handleRemovePic} className="text-4xl p-2 ml-3 text-rose-600 ">
                                                 x
                                             </button>
@@ -155,19 +275,19 @@ export default function Savdashboard(){
                                 <h3 className="text-2xl font-bold">CTA</h3>
                                 <div className="flex flex-col ml-2">
                                     <label htmlFor="ctaTitle">CTA Title</label>
-                                    <input onChange={handleCTATitle} className="p-2 rounded w-2/5 mt-1" type="text" id="ctaTitle" placeholder="CTA Title" />
+                                    <input onChange={handleCTATitle} className="p-2 rounded w-2/5 mt-1" type="text" id="ctaTitle" value={cta.title} placeholder="CTA Title" />
                                 </div>
                                 <div className="flex flex-col ml-2 mt-2">
                                     <label htmlFor="ctaDesc">CTA Description</label>
-                                    <textarea onChange={handleCTADesc} cols={2} className="p-2 rounded w-2/5 mt-1" id="ctaDesc" placeholder="CTA Title" />
+                                    <textarea onChange={handleCTADesc} cols={2} className="p-2 rounded w-2/5 mt-1" id="ctaDesc" value={cta.description} placeholder="CTA Title" />
                                 </div>
                             </div>
                             <div className="mt-2 ml-4">
                                 <h3 className="text-2xl font-bold">Instagram Picture</h3>
                                 {instaPic.map((v,i) => {
                                     return(
-                                        <div className="w-1/5 mt-1 flex">
-                                            <img key={i} className="rounded aspect-square" src={v} alt="" />
+                                        <div key={i} className="w-1/5 mt-1 flex">
+                                            <img className="rounded aspect-square" src={v} alt="" />
                                             <button data-id={i} onClick={handleRemoveInstaPic} className="text-4xl p-2 ml-3 text-rose-600 ">
                                                 x
                                             </button>
