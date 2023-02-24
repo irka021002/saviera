@@ -6,7 +6,7 @@ import SavToWear from "./pages/SavToWear";
 import Omnia from "./pages/product/Omnia";
 import Weiyi from "./pages/product/Weiyi";
 import Cyanne from "./pages/product/Cyanne";
-
+import Savdashboard from "./pages/Savdashboard";
 function App() {
   return (
     <BrowserRouter>
@@ -21,6 +21,7 @@ function App() {
             <Route path="/product/weiyi" element={<Weiyi />} />
             <Route path="/product/cyanne" element={<Cyanne />} />
           </Route>
+          <Route path="/savdashboard" element={<Savdashboard/>} />
         </Route>
       </Routes>
     </BrowserRouter>

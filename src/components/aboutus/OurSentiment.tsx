@@ -4,7 +4,7 @@ import Bag from "../../assets/icon/bag.svg"
 export default function OurSentiment(){
     return(
         <div>
-            <div className="mt-[320px] pt-20 bg-primary-2 justify-center grid grid-cols-6 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] md:gap-y-10 px-6 md:px-0">
+            <div className="pt-20 bg-primary-2 justify-center grid grid-cols-6 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] md:gap-y-10 px-6 md:px-0">
                 <div className="flex col-span-6 md:col-span-12 flex-col md:flex-row w-full">
                     <p className="py-4 px-[10px] bg-secondary-2 text-primary-2 font-aboreto text-[32px] md:text-4xl leading-[135%] text-center">
                         OUR<br />SENTIMENT

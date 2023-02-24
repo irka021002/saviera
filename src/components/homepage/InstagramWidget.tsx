@@ -1,4 +1,9 @@
+import { useEffect } from 'react'
+import axios from 'axios'
 export default function InstagramWidget(){
+    useEffect(() => {
+        
+    }, [])
     return(
         <div className="pt-20 pb-[160px] bg-primary-2">
             <div className="justify-center grid grid-cols-6 gap-[16px] px-6 md:px-0 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px]">

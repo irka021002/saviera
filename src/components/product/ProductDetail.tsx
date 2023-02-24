@@ -1,3 +1,4 @@
+import { useState } from 'react';
 interface ProductDetailProps{
     prodTitle: string;
     prodDesc: string;
@@ -5,6 +6,74 @@ interface ProductDetailProps{
 export default function ProductDetail({prodTitle,prodDesc}:ProductDetailProps){
     let prodRate = 4
     let prodDetails = []
+    let [sizeDetail, setSizeDetail] = useState(false)
+    let [details, setDetails] = useState(false)
+    let [instruction, setInstruction] = useState(false)
+    let [wmc, setWMC] = useState(false)
+    const handleSize = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+        const sd = document.getElementById("sizeDetail")
+        if(sd){
+            if(!sizeDetail){
+                sd.style.maxHeight = "500px"
+                sd.style.paddingTop = "12px"
+                sd.style.paddingBottom = "12px"
+                setSizeDetail(true)
+                return;
+            }
+            sd.style.maxHeight = "0px"
+            sd.style.paddingTop = "0px"
+            sd.style.paddingBottom = "0px"
+            setSizeDetail(false)
+        }
+    }
+    const handleDetails = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+        const sd = document.getElementById("details")
+        if(sd){
+            if(!details){
+                sd.style.maxHeight = "500px"
+                sd.style.paddingTop = "12px"
+                sd.style.paddingBottom = "12px"
+                setDetails(true)
+                return;
+            }
+            sd.style.maxHeight = "0px"
+            sd.style.paddingTop = "0px"
+            sd.style.paddingBottom = "0px"
+            setDetails(false)
+        }
+    }
+    const handleInstruction = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+        const sd = document.getElementById("instruction")
+        if(sd){
+            if(!instruction){
+                sd.style.maxHeight = "500px"
+                sd.style.paddingTop = "12px"
+                sd.style.paddingBottom = "12px"
+                setInstruction(true)
+                return;
+            }
+            sd.style.maxHeight = "0px"
+            sd.style.paddingTop = "0px"
+            sd.style.paddingBottom = "0px"
+            setInstruction(false)
+        }
+    }
+    const handleWMC = (e: React.SyntheticEvent<HTMLButtonElement>) => {
+        const sd = document.getElementById("wmc")
+        if(sd){
+            if(!wmc){
+                sd.style.maxHeight = "500px"
+                sd.style.paddingTop = "12px"
+                sd.style.paddingBottom = "12px"
+                setWMC(true)
+                return;
+            }
+            sd.style.maxHeight = "0px"
+            sd.style.paddingTop = "0px"
+            sd.style.paddingBottom = "0px"
+            setWMC(false)
+        }
+    }
     return(
         <div className="col-span-6 md:col-span-8 mb-[130px]">
             <div className="w-full p-8 border border-secondary-1">
@@ -35,13 +104,27 @@ export default function ProductDetail({prodTitle,prodDesc}:ProductDetailProps){
                         </svg>
                     </p>
                 </div>
-                <button className="mt-8 border border-accent-2 rounded w-full p-[10px] font-montserrat font-medium leading-[150%] text-accent-2">
+                <button className="hover:border-opacity-30 mt-8 border border-accent-2 rounded w-full p-[10px] font-montserrat font-medium leading-[150%] text-accent-2">
                     OWN THIS ITEM
                 </button>
             </div>
             <div className="w-full mt-[60px]">
-                <h2 className="p-3 font-montserrat text-secondary-2 font-bold text-xl md:text-3xl bg-cream-1">Size & fit</h2>
-                <div className="mt-3 p-3 font-trap text-xl bg-cream-1 text-secondary-2">
+                <h2 className="p-3 flex justify-between items-center font-montserrat text-secondary-2 font-bold text-xl md:text-3xl bg-cream-1">
+                    Size & fit
+                    <button onClick={handleSize}>
+                        { !sizeDetail ?
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8L16 24" stroke="#222222" stroke-width="0.64" stroke-linecap="square" stroke-linejoin="round"/>
+                                <path d="M24 16L8 16" stroke="#222222" stroke-width="0.64" stroke-linecap="square" stroke-linejoin="round"/>
+                            </svg>
+                            :
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 16L8 16" stroke="#222222" stroke-width="0.64" stroke-linecap="square" stroke-linejoin="round"/>
+                            </svg>
+                        }
+                    </button>
+                </h2>
+                <div id="sizeDetail" className="mt-3 font-trap text-xl bg-cream-1 text-secondary-2 overflow-hidden transition-[max-height,padding] ease-linear px-3 duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
                     <ul className="list-disc ml-[20px]">
                         <li>All size, bust up to 110cm (TBC) </li>
                         <li>Belt length is 80cm (on right and left side)</li>
@@ -54,23 +137,24 @@ export default function ProductDetail({prodTitle,prodDesc}:ProductDetailProps){
                     <br />
                     Model height xx cm, bust xx cm
                 </div>
-                <div className="mt-3 p-3 font-trap text-xl bg-cream-1 text-secondary-2">
-                    <ul className="list-disc list-inside">
-                        <li>All size, bust up to 110cm (TBC) </li>
-                        <li>Belt length is 80cm (on right and left side)</li>
-                        <li>Length: xxx cm</li>
-                        <ul className="list-disc list-outside ml-[45px]">
-                            <li>Length may differ depending on your shape and height as this item is bias cut</li>
-                            <li>Runs true to size</li>
-                        </ul>
-                    </ul>
-                    <br />
-                    Model height xx cm, bust xx cm
-                </div>
             </div>
             <div className="w-full mt-10">
-                <h2 className="p-3 font-montserrat text-secondary-2 font-bold text-xl md:text-3xl bg-cream-1">Details</h2>
-                <div className="mt-3 p-3 font-trap text-xl bg-cream-1 text-secondary-2">
+                <h2 className="p-3 flex justify-between items-center font-montserrat text-secondary-2 font-bold text-xl md:text-3xl bg-cream-1">
+                    Details
+                    <button onClick={handleDetails}>
+                        { !details ?
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8L16 24" stroke="#222222" stroke-width="0.64" stroke-linecap="square" stroke-linejoin="round"/>
+                                <path d="M24 16L8 16" stroke="#222222" stroke-width="0.64" stroke-linecap="square" stroke-linejoin="round"/>
+                            </svg>
+                            :
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 16L8 16" stroke="#222222" stroke-width="0.64" stroke-linecap="square" stroke-linejoin="round"/>
+                            </svg>
+                        }
+                    </button>
+                </h2>
+                <div id='details' className="mt-3 px-3 font-trap text-xl bg-cream-1 text-secondary-2 overflow-hidden transition-[max-height,padding] ease-linear duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
                     <ul className="list-disc list-inside">
                         <li>Textured (subtle checkered pattern)</li>
                         <li>No zip</li>
@@ -80,8 +164,22 @@ export default function ProductDetail({prodTitle,prodDesc}:ProductDetailProps){
                 </div>
             </div>
             <div className="w-full mt-10">
-                <h2 className="p-3 font-montserrat text-secondary-2 font-bold text-xl md:text-3xl bg-cream-1">Care Instruction</h2>
-                <div className="mt-3 p-3 font-trap text-xl bg-cream-1 text-secondary-2">
+                <h2 className="p-3 font-montserrat flex justify-between items-center text-secondary-2 font-bold text-xl md:text-3xl bg-cream-1">
+                    Care Instruction
+                    <button onClick={handleInstruction}>
+                        { !instruction ?
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8L16 24" stroke="#222222" stroke-width="0.64" stroke-linecap="square" stroke-linejoin="round"/>
+                                <path d="M24 16L8 16" stroke="#222222" stroke-width="0.64" stroke-linecap="square" stroke-linejoin="round"/>
+                            </svg>
+                            :
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 16L8 16" stroke="#222222" stroke-width="0.64" stroke-linecap="square" stroke-linejoin="round"/>
+                            </svg>
+                        }
+                    </button>
+                </h2>
+                <div id='instruction' className="mt-3 px-3 font-trap text-xl bg-cream-1 text-secondary-2 overflow-hidden transition-[max-height,padding] ease-linear duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
                     <ul className="list-disc ml-[20px]">
                         <li>Cold Hand Wash</li>
                         <li>Do not bleach, do not soak, do not use rinse agent, do not tumble dry, and do not dry clean</li>
@@ -95,8 +193,22 @@ export default function ProductDetail({prodTitle,prodDesc}:ProductDetailProps){
                 </div>
             </div>
             <div className="w-full mt-10">
-                <h2 className="p-3 font-montserrat text-secondary-2 font-bold text-xl md:text-3xl bg-cream-1">Who made my clothes?</h2>
-                <div className="mt-3 p-3 font-trap text-xl bg-cream-1 text-secondary-2 flex flex-col md:flex-row">
+                <h2 className="p-3 font-montserrat flex justify-between items-center text-secondary-2 font-bold text-xl md:text-3xl bg-cream-1">
+                    Who made my clothes?
+                    <button onClick={handleWMC}>
+                        { !wmc ?
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8L16 24" stroke="#222222" stroke-width="0.64" stroke-linecap="square" stroke-linejoin="round"/>
+                                <path d="M24 16L8 16" stroke="#222222" stroke-width="0.64" stroke-linecap="square" stroke-linejoin="round"/>
+                            </svg>
+                            :
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M24 16L8 16" stroke="#222222" stroke-width="0.64" stroke-linecap="square" stroke-linejoin="round"/>
+                            </svg>
+                        }
+                    </button>
+                </h2>
+                <div id='wmc' className="mt-3 px-3 font-trap text-xl bg-cream-1 text-secondary-2 flex flex-col md:flex-row overflow-hidden transition-[max-height,padding] ease-linear duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
                     <div className="w-full md:w-1/2 aspect-[192/119] bg-[#BABABA]"></div>
                     <div className="w-full md:w-1/2 py-[27px] px-[34px]">
                         <p className="font-trap text-2xl text-secondary-2 leading-[150%] ">Meet x, the person behind this piece!</p>
@@ -119,7 +231,7 @@ export default function ProductDetail({prodTitle,prodDesc}:ProductDetailProps){
             </div>
             <div className="relative mt-10">
                 <h2 className="font-montserrat font-bold text-xl md:text-3xl text-secondary-2 leading-[135%]">What They Talked About</h2>
-                <div className="w-full mt-3 overflow-x-auto scrollbar-hide">
+                <div className="w-full mt-3 overflow-x-auto scrollbar-hide md:hidden">
                     <div className="w-fit flex">
                         <div className="px-5 py-[17px] border border-secondary-2 w-[200px] mr-6">
                             <p className="font-montserrat leading-[135%]">Name</p>
