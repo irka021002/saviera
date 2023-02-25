@@ -131,7 +131,7 @@ export default function ArchetypesInfo(){
                     <div className="w-4/5 border border-primary-2 h-[1px] my-20"></div>
                     <div className="w-full">
                         <p className="font-montserrat text-[30px] text-primary-1 text-center mb-10">Playlist to accompany your day</p>
-                        <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1EVKuMoAJjoTIw?utm_source=generator" width="100%" height="352" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+                        <iframe src="https://open.spotify.com/embed/playlist/0q4jLDoBlFmj9ry2gyRFMo?utm_source=generator" width="100%" height="352" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>

@@ -60,11 +60,14 @@
   width: 15px !important;
   height: 15px !important;
 }
+.radio-container input:checked ~ span{
+  background-color: rgba(58, 58, 58, 1);
+  border-color: white;
+}
 /* For Webkit-based browsers (Chrome, Safari and Opera) */
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
-
 /* For IE, Edge and Firefox */
 .scrollbar-hide {
   -ms-overflow-style: none;  /* IE and Edge */
