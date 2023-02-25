@@ -27,27 +27,35 @@ export default function ArchetypesInfo(){
                                         alt="..."
                                     />
                                 </div>
-                                <div className="carousel-item relative float-left w-full">
+                                <div className="carousel-item relative float-left w-full aspect-[104/59]">
+                                    <div className="bg-[rgba(0,0,0,0.3)] absolute w-full h-full flex justify-center items-center">
+                                        <h2 className="text-center text-primary-2 font-montserrat text-[20px] md:text-[64px] font-normal">Earth tone colors</h2>
+                                    </div>
                                     <img
-                                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
-                                        className="block w-full"
+                                        src="/image/homepage/promocta.png"
+                                        className="block w-full aspect-[104/59]"
                                         alt="..."
                                     />
-                                    <div className="carousel-caption hidden md:block absolute text-center">
-                                        <h5 className="text-xl">Second slide label</h5>
-                                        <p>Some representative placeholder content for the second slide.</p>
-                                    </div>
                                 </div>
-                                <div className="carousel-item relative float-left w-full">
+                                <div className="carousel-item relative float-left w-full aspect-[104/59]">
+                                    <div className="bg-[rgba(0,0,0,0.3)] absolute w-full h-full flex justify-center items-center">
+                                        <h2 className="text-center text-primary-2 font-montserrat text-[20px] md:text-[64px] font-normal">Free sizes</h2>
+                                    </div>
                                     <img
-                                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                                        className="block w-full"
+                                        src="/image/homepage/promocta.png"
+                                        className="block w-full aspect-[104/59]"
                                         alt="..."
                                     />
-                                    <div className="carousel-caption hidden md:block absolute text-center">
-                                        <h5 className="text-xl">Third slide label</h5>
-                                        <p>Some representative placeholder content for the third slide.</p>
+                                </div>
+                                <div className="carousel-item relative float-left w-full aspect-[104/59]">
+                                    <div className="bg-[rgba(0,0,0,0.3)] absolute w-full h-full flex justify-center items-center">
+                                        <h2 className="text-center text-primary-2 font-montserrat text-[20px] md:text-[64px] font-normal">Breathable and<br/>efforlessly chic</h2>
                                     </div>
+                                    <img
+                                        src="/image/homepage/promocta.png"
+                                        className="block w-full aspect-[104/59]"
+                                        alt="..."
+                                    />
                                 </div>
                             </div>
                             <button
