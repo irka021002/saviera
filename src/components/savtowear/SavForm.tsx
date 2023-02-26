@@ -5,12 +5,21 @@ export default function SavForm(){
     const [weiyiModal, setWeiyiModal] = useState(false)
     const [cyanneModal, setCyanneModal] = useState(false)
     const [formModal, setFormModal] = useState(false)
-    const [omniaReview, setOmniaReview] = useState(0)
-    const [weiyiReview, setWeiyiReview] = useState(0)
-    const [cyanneReview, setCyanneReview] = useState(0)
     const [omniaReviewState, setOmniaReviewState] = useState(false)
     const [weiyiReviewState, setWeiyiReviewState] = useState(false)
     const [cyanneReviewState, setCyanneReviewState] = useState(false)
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [firstPurchase, setFirstPurchase] = useState(false)
+    const [hearUs, setHearUs] = useState("")
+    const [dislike, setDislike] = useState("")
+    const [love, setLove] = useState("")
+    const [fabric, setFabric] = useState("")
+    const [anonymous, setAnonymous] = useState(false)
+    const [request, setRequest] = useState("")
+    const [omniaReview, setOmniaReview] = useState(0)
+    const [weiyiReview, setWeiyiReview] = useState(0)
+    const [cyanneReview, setCyanneReview] = useState(0)
     const handleOmnia = (e: SyntheticEvent<HTMLButtonElement>) => {
         setOmniaModal(!omniaModal)
         if(!omniaModal) document.body.style.overflow = "hidden"
@@ -317,12 +326,12 @@ export default function SavForm(){
                             <div className="mt-8">
                                 <p className="font-trap text-[14px] md:text-2xl text-secondary-2">Name (will appear in review section)*</p>
                                 <p className="font-trap text-[12px] md:text-[20px] text-[rgba(130,130,130,1)]">Nama (akan muncul di bagian ulasan produk)*</p>
-                                <input required className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" name="name" placeholder="Type your name here..." type="text" />
+                                <input onChange={(e: SyntheticEvent<HTMLInputElement>) => setName(e.currentTarget.value)} required className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" name="name" placeholder="Type your name here..." type="text" />
                             </div>
                             <div className="mt-8">
                                 <p className="font-trap text-[14px] md:text-2xl text-secondary-2">Email*</p>
                                 <p className="font-trap text-[12px] md:text-[20px] text-[rgba(130,130,130,1)]">Email*</p>
-                                <input required className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" name="email" placeholder="Type your email here..." type="text" />
+                                <input onChange={(e: SyntheticEvent<HTMLInputElement>) => setEmail(e.currentTarget.value)} required className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" name="email" placeholder="Type your email here..." type="email" />
                             </div>
                             <div className="mt-8">
                                 <p className="font-trap text-[14px] md:text-2xl text-secondary-2">Is this your first purchase?*</p>
@@ -330,14 +339,14 @@ export default function SavForm(){
                                 <div className="flex">
                                     <div className="font-trap text-[14px] text-secondary-2 md:text-2xl flex items-center">
                                         <label className="radio-container cursor-pointer">
-                                            <input className="hidden" type="radio" name="purchase" id="purchaseYes" />
+                                            <input required onChange={(e: SyntheticEvent<HTMLInputElement>) => setFirstPurchase(e.currentTarget.checked)} className="hidden" type="radio" name="purchase" id="purchaseYes" />
                                             <span className="block w-5 md:w-6 h-5 md:h-6 border border-[rgba(58,58,58,0.3)] "></span>
                                         </label>
                                         <label className="ml-2 cursor-pointer" htmlFor="purchaseYes">Yes <span className="text-[rgba(130,130,130,1)]">(Ya)</span></label>
                                     </div>
                                     <div className="font-trap ml-8 text-[14px] text-secondary-2 md:text-2xl flex items-center">
                                         <label className="radio-container cursor-pointer">
-                                            <input className="hidden" type="radio" name="purchase" id="purchaseNo" />
+                                            <input required onChange={(e: SyntheticEvent<HTMLInputElement>) => setFirstPurchase(e.currentTarget.checked)} className="hidden" type="radio" name="purchase" id="purchaseNo" />
                                             <span className="block w-5 md:w-6 h-5 md:h-6 border border-[rgba(58,58,58,0.3)] "></span>
                                         </label>
                                         <label className="ml-2 cursor-pointer" htmlFor="purchaseNo">No <span className="text-[rgba(130,130,130,1)]">(Tidak)</span></label>
@@ -347,7 +356,7 @@ export default function SavForm(){
                             <div className="mt-8">
                                 <p className="font-trap text-[14px] md:text-2xl text-secondary-2">How do you hear and find out about us? *</p>
                                 <p className="font-trap text-[12px] md:text-[20px] text-[rgba(130,130,130,1)]">Bagaimana kamu mendengar dan mengetahui tentang kami?*</p>
-                                <select name="origin" required className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded">
+                                <select onChange={(e: SyntheticEvent<HTMLSelectElement>) => setHearUs(e.currentTarget.value)} name="origin" required className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded">
                                     <option value="" defaultChecked>Select your answer</option>
                                     <option value="">testing</option>
                                 </select>
@@ -355,17 +364,17 @@ export default function SavForm(){
                             <div className="mt-8">
                                 <p className="font-trap text-[14px] md:text-2xl text-secondary-2">Things you dislike from the item(s) you purchased from us *</p>
                                 <p className="font-trap text-[12px] md:text-[20px] text-[rgba(130,130,130,1)]">Apa hal yang kamu tidak suka dari baju yang kamu beli?*</p>
-                                <input name="dislike" required className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" placeholder="Type your answer" type="text" />
+                                <input onChange={(e: SyntheticEvent<HTMLInputElement>) => setDislike(e.currentTarget.value)} name="dislike" required className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" placeholder="Type your answer" type="text" />
                             </div>
                             <div className="mt-8">
                                 <p className="font-trap text-[14px] md:text-2xl text-secondary-2">Things you love from the item(s) you purchased from us*</p>
                                 <p className="font-trap text-[12px] md:text-[20px] text-[rgba(130,130,130,1)]">Apa hal yang kamu suka dari baju yang kamu beli?*</p>
-                                <input name="love" required className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" placeholder="Type your answer" type="text" />
+                                <input onChange={(e: SyntheticEvent<HTMLInputElement>) => setLove(e.currentTarget.value)} name="love" required className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" placeholder="Type your answer" type="text" />
                             </div>
                             <div className="mt-8">
                                 <p className="font-trap text-[14px] md:text-2xl text-secondary-2">How does the fabric feel? How’s the fit? How does the item(s) make you feel? Tell us about it*</p>
                                 <p className="font-trap text-[12px] md:text-[20px] text-[rgba(130,130,130,1)]">Bagaimana kainnya terasa dan terlihat? Apakah yang kamu rasakan ketika menggunakan baju itu? Ceritakan kepada kami*</p>
-                                <input name="fabric" required className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" placeholder="Type your answer" type="text" />
+                                <input onChange={(e: SyntheticEvent<HTMLInputElement>) => setFabric(e.currentTarget.value)} name="fabric" required className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" placeholder="Type your answer" type="text" />
                             </div>
                             <div className="mt-8">
                                 <p className="font-trap text-[14px] md:text-2xl text-secondary-2">Which products that you own?*</p>
@@ -385,7 +394,7 @@ export default function SavForm(){
                                     </div>
                                 </div>
                             </div>
-                            <div className="mt-8">
+                            {(omniaReviewState || cyanneReviewState || weiyiReviewState) && <div className="mt-8">
                                 <p className="font-trap text-[14px] md:text-2xl text-secondary-2">Rate the item(s)*</p>
                                 <p className="font-trap text-[12px] md:text-[20px] text-[rgba(130,130,130,1)]">Beri penilaian</p>
                                 <div className="flex mt-2 flex-col md:flex-row">
@@ -444,21 +453,21 @@ export default function SavForm(){
                                         <p className="md:text-[20px] text-[rgba(130,130,130,1)] ml-1">(Cyanne)</p>
                                     </div>}
                                 </div>
-                            </div>
+                            </div>}
                             <div className="mt-8">
                                 <p className="font-trap text-[14px] md:text-2xl text-secondary-2">Post this review anonymously *</p>
                                 <p className="font-trap text-[12px] md:text-[20px] text-[rgba(130,130,130,1)]">Posting ulasan ini secara anonimus*</p>
                                 <div className="flex">
                                     <div className="font-trap text-[14px] text-secondary-2 md:text-2xl flex items-center">
                                         <label className="radio-container cursor-pointer">
-                                            <input required className="hidden" type="radio" name="anonymous" id="anonymousYes" />
+                                            <input onChange={(e: SyntheticEvent<HTMLInputElement>) => setAnonymous(e.currentTarget.checked)} required className="hidden" type="radio" name="anonymous" id="anonymousYes" />
                                             <span className="block w-5 md:w-6 h-5 md:h-6 border border-[rgba(58,58,58,0.3)] "></span>
                                         </label>
                                         <label className="ml-2 cursor-pointer" htmlFor="anonymousYes">Yes <span className="text-[rgba(130,130,130,1)]">(Ya)</span></label>
                                     </div>
                                     <div className="font-trap ml-8 text-[14px] text-secondary-2 md:text-2xl flex items-center">
                                         <label className="radio-container cursor-pointer">
-                                            <input required className="hidden" type="radio" name="anonymous" id="anonymousNo" />
+                                            <input onChange={(e: SyntheticEvent<HTMLInputElement>) => setAnonymous(e.currentTarget.checked)} required className="hidden" type="radio" name="anonymous" id="anonymousNo" />
                                             <span className="block w-5 md:w-6 h-5 md:h-6 border border-[rgba(58,58,58,0.3)] "></span>
                                         </label>
                                         <label className="ml-2 cursor-pointer" htmlFor="anonymousNo">No <span className="text-[rgba(130,130,130,1)]">(Tidak)</span></label>
@@ -468,7 +477,7 @@ export default function SavForm(){
                             <div className="mt-8">
                                 <p className="font-trap text-[14px] md:text-2xl text-secondary-2">Any requests or general comments for us?</p>
                                 <p className="font-trap text-[12px] md:text-[20px] text-[rgba(130,130,130,1)]">Ada permintaan atau komentar umum lainnya untuk kami?*</p>
-                                <input name="request" className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" placeholder="Type your answer" type="text" />
+                                <input onChange={(e: SyntheticEvent<HTMLInputElement>) => setRequest(e.currentTarget.value)} name="request" className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" placeholder="Type your answer" type="text" />
                             </div>
                             <button type="submit" className="p-[10px] text-center w-full mt-[37px] text-[14px] md:text-2xl text-accent-2 border border-accent-2 rounded hover:border-opacity-30">
                                 Share My Review
