@@ -34,7 +34,7 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/archetypes" element={<Archetypes />} />
-          <Route path="/savtowear" element={<SavToWear />} />
+          <Route path="/sav-to-wear-01" element={<SavToWear />} />
           <Route path="/product">
             <Route path="/product/omnia" element={<Omnia />} />
             <Route path="/product/weiyi" element={<Weiyi />} />
