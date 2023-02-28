@@ -86,7 +86,7 @@ export default function Homepage(){
                 })
 
         }
-    },[])
+    },[cookies["access-token"],cookies["refresh-token"]])
     return(
         <>
             <HeroBanner heroPic={heroPic} />

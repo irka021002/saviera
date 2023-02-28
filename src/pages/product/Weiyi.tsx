@@ -1,6 +1,10 @@
 import ProductGallery from "../../components/product/ProductGallery"
 import ProductDetail from "../../components/product/ProductDetail"
+import { useEffect } from "react"
 export default function Weiyi(){
+    useEffect(() => {
+        document.title = "Wei Yi | Vol 1. Archetypes - Saviera.co"
+    },[])
     let picData = [
         "/product/weiyi.png",
         "/product/weiyi.png",

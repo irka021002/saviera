@@ -7,14 +7,14 @@ import Omnia from "./pages/product/Omnia";
 import Weiyi from "./pages/product/Weiyi";
 import Cyanne from "./pages/product/Cyanne";
 import Savdashboard from "./pages/Savdashboard";
-import { useEffect } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useCookies } from "react-cookie";
 import axios from "axios";
 function App() {
   const [cookies, setCookie] = useCookies(['access-token','refresh-token'])
-  const dummy = "hai"
+  const [isAuth, setIsAuth] = useState(cookies['access-token'] || cookies['refresh-token'])
   useEffect(() => {
-    if(!cookies['access-token'] && !cookies['refresh-token']){
+    if(!isAuth){
       axios.post(
         import.meta.env.VITE_MONGOTOKEN,
         {
@@ -24,22 +24,21 @@ function App() {
         .then(v => {
           setCookie("access-token", v.data.access_token, {maxAge: 25*60})
           setCookie("refresh-token", v.data.refresh_token, {maxAge: 23*60*60})
+          window.location.reload()
         })
     }
-  }, [dummy])
+  }, [])
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/">
           <Route index element={<Homepage />} />
           <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/archetypes" element={<Archetypes />} />
+          <Route path="/01-archetypes" element={<Archetypes />} />
           <Route path="/sav-to-wear-01" element={<SavToWear />} />
-          <Route path="/product">
-            <Route path="/product/omnia" element={<Omnia />} />
-            <Route path="/product/weiyi" element={<Weiyi />} />
-            <Route path="/product/cyanne" element={<Cyanne />} />
-          </Route>
+          <Route path="/01-omnia" element={<Omnia />} />
+          <Route path="/01-wei-yi" element={<Weiyi />} />
+          <Route path="/01-cyanne" element={<Cyanne />} />
           <Route path="/savdashboard" element={<Savdashboard/>} />
         </Route>
       </Routes>

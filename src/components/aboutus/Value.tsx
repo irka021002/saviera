@@ -1,11 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 export default function Value(){
     const [index, setIndex] = useState(0)
     const handleNext = (e: React.SyntheticEvent<HTMLButtonElement>) => {
         setIndex(index == 6 ? 0 : index + 1)
     }
+    const [animate, setAnimate] = useState("max-h-0 py-0")
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {if(entry.isIntersecting) setAnimate("max-h-[2000px] py-10 md:py-20")}));
+    useEffect(() => {
+        const wrapper = document.getElementById("valueWrapper")
+        if(wrapper) observer.observe(wrapper)
+        return () => {
+            if(wrapper) observer.unobserve(wrapper)
+        }
+    },[])
     return(
-        <div className="py-10 md:py-20 justify-center grid grid-cols-6 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] md:gap-y-10 px-6 md:px-0" style={{background: "linear-gradient(92.86deg, rgba(0, 0, 0, 0.2) -43.29%, rgba(0, 0, 0, 0) 36.98%), linear-gradient(271.38deg, rgba(232, 216, 201, 0.21) -19.42%, rgba(232, 216, 201, 0) 114.09%), #800020"}}>
+        <div id='valueWrapper' className={`${animate} transition-all ease-in-out duration-1000 justify-center grid grid-cols-6 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] md:gap-y-10 px-6 md:px-0`} style={{background: "linear-gradient(92.86deg, rgba(0, 0, 0, 0.2) -43.29%, rgba(0, 0, 0, 0) 36.98%), linear-gradient(271.38deg, rgba(232, 216, 201, 0.21) -19.42%, rgba(232, 216, 201, 0) 114.09%), #800020"}}>
             <div className="col-span-12">
                 <div className={`w-full overflow-hidden`}>
                     <div className="flex flex-col justify-center items-center md:flex-row">

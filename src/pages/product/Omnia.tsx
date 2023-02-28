@@ -1,6 +1,10 @@
 import ProductGallery from "../../components/product/ProductGallery"
 import ProductDetail from "../../components/product/ProductDetail"
+import { useEffect } from 'react';
 export default function Omnia(){
+    useEffect(() => {
+        document.title = "Omnia | Vol 1. Archetypes - Saviera.co"
+    },[])
     let picData = [
         "/product/omnia.png",
         "/product/omnia.png",

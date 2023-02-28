@@ -6,6 +6,9 @@ interface CTA{
     description: string;
 }
 export default function Savdashboard(){
+    useEffect(() => {
+        document.title = "Saviera Dashboard"
+    },[])
     const [cookies, setCookie] = useCookies(['access-token','refresh-token'])
     const [heroPicFile, setHeroPicFile] = useState<File>(new File([""], "filename"))
     const [selectedHeroPic,setSelectedHeroPic] = useState("")

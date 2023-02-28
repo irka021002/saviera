@@ -1,11 +1,29 @@
+import { useState, useEffect } from 'react';
 export default function StatusQuo(){
+    const [animate, setAnimate] = useState("translate-x-full opacity-0")
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            const element = entry.target.querySelector('.animate')
+            if(entry.isIntersecting){
+                setAnimate("translate-x-0 opacity-100")
+                return;
+            }
+        })
+    })
+    useEffect(() => {
+        const element = document.querySelector(".element-wrapper")
+        if(element) observer.observe(element)
+        return () => {
+            if(element) observer.unobserve(element)
+        }
+    },[])
     return(
-        <div className="relative w-full h-fit bg-primary-2">
+        <div className="element-wrapper relative w-full h-fit bg-primary-2">
             <div className="relative w-full h-fit flex">
                 <div className="w-full md:w-1/2 bg-[url('/image/homepage/promocta.png')] aspect-[10/11] md:aspect-[8/7] bg-no-repeat">
                     <div className="bg-black w-full h-full opacity-60"></div>
                 </div>
-                <div className="absolute right-0 h-full left-0 md:content-center justify-center grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0 pt-10 md:pt-0">
+                <div className={`${animate} transition-all duration-700 ease-in-out animate absolute right-0 h-full left-0 md:content-center justify-center grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0 pt-10 md:pt-0`}>
                     <div className="p-10 col-span-6 md:col-span-8 md:col-start-5 bg-white text-secondary-2">
                         <h2 className="font-aboreto text-center md:text-left text-[32px] md:text-[40px] ">CHANGING THE STATUS QUO</h2>
                         <p className="mt-[52px] leading-[150%]">

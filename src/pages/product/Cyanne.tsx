@@ -1,6 +1,10 @@
 import ProductGallery from "../../components/product/ProductGallery"
 import ProductDetail from "../../components/product/ProductDetail"
+import { useEffect } from "react"
 export default function Cyanne(){
+    useEffect(() => {
+        document.title = "Cyanne | Vol 1. Archetypes - Saviera.co"
+    },[])
     let picData = [
         "/product/cyanne.png",
         "/product/cyanne.png",
