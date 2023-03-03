@@ -133,7 +133,7 @@ export default function SavForm(){
             )
                 .then(res => {
                     if(res.status == 200){
-                        if(isFormLoading) alert("Membuat review berhasil")
+                        if(isFormLoading) alert("Thank you for your response! (Terima kasih atas responnya)")
                         setFormModal(false)
                         reset()
                         setCyanneReviewState(false)
@@ -199,7 +199,7 @@ export default function SavForm(){
                         {
                             headers: {
                                 "Content-Type": "application/json",
-                                "Authorization": `Bearer ${cookies["access-token"]}`
+                                "Authorization": `Bearer ${v.data.access_token}`
                             }
                         }
                     )

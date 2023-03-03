@@ -20,7 +20,7 @@ function App() {
       axios.post(
         import.meta.env.VITE_MONGOTOKEN,
         {
-          "key": "EmLtTIlSn9BSN9GXLXJleutnGnwraLVHzJO1O1T59QkZuzybSLWiU0hOYpvsPqjE"
+          "key": "kq9Bf5AXlgROUky2AuFiePFr6RLtvCu2NzQyiIxKg01yKljcFo6ozNc1UUMGp35l"
         }
       )
         .then(v => {
