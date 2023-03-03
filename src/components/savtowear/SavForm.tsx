@@ -6,6 +6,7 @@ import axios from "axios";
 export default function SavForm(){
     const [cookies, setCookie] = useCookies(['access-token','refresh-token'])
     const [isFormLoading, setIsFormLoading] = useState(false)
+    const [isAlertFired, setIsAlertFired] = useState(false)
     const [omniaModal, setOmniaModal] = useState(false)
     const [weiyiModal, setWeiyiModal] = useState(false)
     const [cyanneModal, setCyanneModal] = useState(false)
@@ -133,8 +134,9 @@ export default function SavForm(){
             )
                 .then(res => {
                     if(res.status == 200){
-                        if(isFormLoading) alert("Thank you for your response! (Terima kasih atas responnya)")
                         setFormModal(false)
+                        if(!isAlertFired) alert("Thank you for your response! (Terima kasih atas responnya)"); setIsAlertFired(true)
+                        document.body.style.overflow = "auto"
                         reset()
                         setCyanneReviewState(false)
                         setOmniaReviewState(false)

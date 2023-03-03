@@ -74,7 +74,7 @@ export default function Value(){
                             </div>
                             <button onClick={handleNext} className="cursor-pointer ml-[16px] md:ml-8">
                                 <svg width="28" height="60" viewBox="0 0 28 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M14 1.80005L14 58.2M14 58.2L26 46.2M14 58.2L2 46.2" stroke="#BF9553" stroke-width="2.42553" stroke-linecap="round" stroke-linejoin="round"/>
+                                    <path d="M14 1.80005L14 58.2M14 58.2L26 46.2M14 58.2L2 46.2" stroke="#BF9553" strokeWidth="2.42553" strokeLinecap="round" strokeLinejoin="round"/>
                                 </svg>
                             </button>
                         </div>

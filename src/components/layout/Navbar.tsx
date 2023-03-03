@@ -13,6 +13,7 @@ import WhatsappWhite from "../../assets/icon/navbar/whatsappWhite.svg"
 import Menu from "../../assets/icon/navbar/menu.svg"
 import MenuWhite from "../../assets/icon/navbar/menuWhite.svg"
 import { useEffect, useState } from "react"
+import { redirect } from "react-router-dom";
 
 function checkPath(path: string):Boolean{
     return window.location.href.includes(path)
@@ -27,6 +28,10 @@ export default function Navbar(){
             }
         })
         setAnimateMenu("translate-y-0 opacity-100")
+        const element = document.getElementById(window.location.href.split("#")[1])
+        if(element){
+            element.scrollIntoView({behavior: "smooth"})
+        }
     }, [])
     const [changeColor, setChangeColor] = useState(true)
     const [animateMenu, setAnimateMenu] = useState("-translate-y-20 opacity-0")
