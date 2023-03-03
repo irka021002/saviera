@@ -1,9 +1,41 @@
+import { useState, useEffect } from 'react';
 export default function ArchetypesInfo(){
+    const [animateHeader, setAnimateHeader] = useState("translate-y-full opacity-0")
+    const [animateCarousel, setAnimateCarousel] = useState("-translate-x-full opacity-0")
+    const [animateTableText, setAnimateTableText] = useState("-translate-y-full opacity-0")
+    const [animateTable, setAnimateTable] = useState("translate-x-full opacity-0")
+    const [animatePlayListImage, setAnimatePlayListImage] = useState("translate-y-full opacity-0")
+    const [animatePlayList, setAnimatePlayList] = useState("max-h-0 py-0")
+
+    const observerHeader = new IntersectionObserver(entries => entries.forEach(entry => {if(entry.isIntersecting) setAnimateHeader("translate-y-0 opacity-100")}))
+    const observerCarousel = new IntersectionObserver(entries => entries.forEach(entry => {if(entry.isIntersecting) setAnimateCarousel("translate-x-0 opacity-100")}))
+    const observerTable = new IntersectionObserver(entries => entries.forEach(entry => {if(entry.isIntersecting) {setAnimateTableText("translate-y-0 opacity-100");setAnimateTable("translate-x-0 opacity-100")}}))
+    const observerPlayList = new IntersectionObserver(entries => entries.forEach(entry => {if(entry.isIntersecting) {setAnimatePlayListImage("translate-y-0 opacity-100");setAnimatePlayList("max-h-[2000px] py-[135px]")}}))
+
+    useEffect(() => {
+        const elementHeader = document.getElementById("headerWrapper")
+        const elmentCarousel = document.getElementById("carouselWrapper")
+        const elementTable = document.getElementById("tableWrapper")
+        const elementPlayList = document.getElementById("playListWrapper")
+
+        if(elementHeader) observerHeader.observe(elementHeader)
+        if(elmentCarousel) observerCarousel.observe(elmentCarousel)
+        if(elementTable) observerTable.observe(elementTable)
+        if(elementPlayList) observerPlayList.observe(elementPlayList)
+
+        return () => {
+            if(elementHeader) observerHeader.unobserve(elementHeader)
+            if(elmentCarousel) observerCarousel.unobserve(elmentCarousel)
+            if(elementTable) observerTable.unobserve(elementTable)
+            if(elementPlayList) observerPlayList.unobserve(elementPlayList)
+        }
+    },[])
+
     return(
         <>
             <div className="pt-20 md:pb-[472px] bg-primary-2 justify-center grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0">
-                <div className="col-span-6 md:col-span-12">
-                    <div className="text-center text-secondary-2 ">
+                <div id="headerWrapper" className={`col-span-6 md:col-span-12`}>
+                    <div className={`text-center text-secondary-2 ${animateHeader} transition-all duration-700 ease-in-out`}>
                         <h1 className="font-aboreto text-[52px]">
                             VOL 01. ARCHETYPES
                         </h1>
@@ -14,8 +46,8 @@ export default function ArchetypesInfo(){
                             Original, Confident, and Self-compassionate.
                         </p>
                     </div>
-                    <div className="py-[80px]">
-                        <div id="carouselHero" className="carousel slide relative" data-bs-ride="carousel">
+                    <div id='carouselWrapper' className="py-[80px]">
+                        <div id="carouselHero" className={`${animateCarousel} transition-all duration-700 ease-in-out trancarousel slide relative`} data-bs-ride="carousel">
                             <div className="carousel-inner relative aspect-[104/59] w-full overflow-hidden">
                                 <div className="carousel-item active relative float-left w-full aspect-[104/59]">
                                     <div className="bg-[rgba(0,0,0,0.3)] absolute w-full h-full flex justify-center items-center">
@@ -78,15 +110,15 @@ export default function ArchetypesInfo(){
                             </button>
                         </div>
                     </div>
-                    <div>
-                        <p className="text-secondary-2 font-trap text-xl leading-[150%] text-center">
+                    <div id='tableWrapper'>
+                        <p className={`${animateTableText} transition-all duration-700 ease-in-out text-secondary-2 font-trap text-xl leading-[150%] text-center`}>
                             The collection provides essential staples that are versatile and purposeful. 
                             <br/>
                             Wear it for business meetings, for a casual office look, or on the weekends. 
                             <br/><br/>
                             Below is information of materials, trims, and packaging used in our collection:
                         </p>
-                        <table className="w-10/12 m-auto text-secondary-2 mt-8">
+                        <table className={`${animateTable} transition-all duration-700 ease-in-out w-10/12 m-auto text-secondary-2 mt-8`}>
                             <thead className="bg-cream-2 font-trap leading-[150%] text-xl">
                                 <th className="p-5 w-1/2">
                                     Materials, Trims and Packaging
@@ -133,9 +165,9 @@ export default function ArchetypesInfo(){
                     </div>
                 </div>
             </div>
-            <div className="w-full hidden justify-center md:grid py-[135px] grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0 aspect-[1443/1006] bg-secondary-2">
+            <div id='playListWrapper' className={`${animatePlayList} transition-all duration-700 ease-in-out w-full hidden justify-center md:grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0 aspect-[1443/1006] bg-secondary-2`}>
                 <div className="col-span-12 flex flex-col items-center justify-center">
-                    <img className="w-full aspect-video mt-[-470px]" src="/image/homepage/promocta.png" alt="" />
+                    <img className={`${animatePlayListImage} transition-all duration-700 ease-in-out w-full aspect-video mt-[-470px]`} src="/image/homepage/promocta.png" alt="" />
                     <div className="w-4/5 border border-primary-2 h-[1px] my-20"></div>
                     <div className="w-full">
                         <p className="font-montserrat text-[30px] text-primary-1 text-center mb-10">Playlist to accompany your day</p>

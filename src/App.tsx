@@ -6,6 +6,8 @@ import SavToWear from "./pages/SavToWear";
 import Omnia from "./pages/product/Omnia";
 import Weiyi from "./pages/product/Weiyi";
 import Cyanne from "./pages/product/Cyanne";
+import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
 import Savdashboard from "./pages/Savdashboard";
 import { useEffect, useState, useCallback } from 'react';
 import { useCookies } from "react-cookie";
@@ -29,20 +31,26 @@ function App() {
     }
   }, [])
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/">
-          <Route index element={<Homepage />} />
-          <Route path="/about-us" element={<AboutUs />} />
-          <Route path="/01-archetypes" element={<Archetypes />} />
-          <Route path="/sav-to-wear-01" element={<SavToWear />} />
-          <Route path="/01-omnia" element={<Omnia />} />
-          <Route path="/01-wei-yi" element={<Weiyi />} />
-          <Route path="/01-cyanne" element={<Cyanne />} />
-          <Route path="/savdashboard" element={<Savdashboard/>} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <Navbar />
+      <main className='max-w-[1440px] m-auto snap-y'>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/">
+              <Route index element={<Homepage />} />
+              <Route path="/about-us" element={<AboutUs />} />
+              <Route path="/01-archetypes" element={<Archetypes />} />
+              <Route path="/sav-to-wear-01" element={<SavToWear />} />
+              <Route path="/01-omnia" element={<Omnia />} />
+              <Route path="/01-wei-yi" element={<Weiyi />} />
+              <Route path="/01-cyanne" element={<Cyanne />} />
+              <Route path="/savdashboard" element={<Savdashboard/>} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </main>
+      <Footer />
+    </>
   )
 }
 

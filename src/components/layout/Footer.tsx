@@ -8,17 +8,27 @@ import UnderlineButton from "../button/UnderlineButton"
 import Copyright from "./Copyright"
 import ContactButton from "../button/ContactButton"
 import WhatsappCircle from "../../assets/icon/footer/whatsappCircle.svg"
-export default function Footer(){   
+import { useState,useEffect } from "react"
+export default function Footer(){
+    const [animate, setAnimate] = useState("translate-y-full")
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {if(entry.isIntersecting) setAnimate("translate-y-0")}));
+    useEffect(() => {
+        const wrapper = document.getElementById("footer")
+        if(wrapper) observer.observe(wrapper)
+        return () => {
+            if(wrapper) observer.unobserve(wrapper)
+        }
+    },[])
     return(
         <footer>
-            <div className="w-full m-auto justify-center grid grid-cols-6 px-6 md:px-0 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] py-[80px] max-w-[1440px] bg-primary-2">
-                <div className="col-span-6 md:col-span-12 flex flex-col items-center md:justify-between md:items-center md:flex-row">
+            <div id="footer" className="w-full m-auto justify-center grid grid-cols-6 px-6 md:px-0 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] py-[80px] max-w-[1440px] bg-primary-2">
+                <div className={`${animate} transition-all duration-1000 ease-in-out col-span-6 md:col-span-12 flex flex-col items-center md:justify-between md:items-center md:flex-row`}>
                     <div className="w-full md:w-[30%] md:h-full">
                         <div className="font-aboreto text-secondary-2 text-3xl text-center w-full mb-3">SAVIERA</div>
                         <p className="text-center font-trap">is an eco-conscious fashion brand that intentionally aims for a timeless, versatile, and original fashion staple.</p>
                         <p className="text-center mt-3 font-trap">Small batches.<br/>Limited Drops.<br/>Sourced and made locally</p>
                         <div className="mt-[21px] text-left flex flex-col items-center md:items-start">
-                            <UnderlineButton text="Vol 01. Archetypes" src={ArrowRight} />
+                            <UnderlineButton href="/01-archetypes" text="Vol 01. Archetypes" src={ArrowRight} />
                             <UnderlineButton text="Feedback & Reviews" src={ArrowRight} />
                             <UnderlineButton text="FAQ" src={ArrowRight} />
                         </div>
