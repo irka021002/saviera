@@ -29,7 +29,7 @@ export default function Benefit(){
                     <div className="carousel-item float-left w-full  text-center px-6 py-8 bg-white rounded">
                         <img className="m-auto" src={DNA} alt="DNA Icon" />
                         <h2 className="text-2xl font-montserrat mb-3 mt-6">Co-create is in Our DNA</h2>
-                        <p className="break-words">Got any ideas for collaboration or inventions?<br />Email at <span className="underline">fairy@saviera.co</span><br/> withthe subject “Hot Stuff”</p>
+                        <p className="break-words">Got any ideas for collaboration or inventions?<br />Email at <span className="underline">fairy@saviera.co</span><br/> with the subject “Hot Stuff”</p>
                     </div>
                 </div>
                 <div className="carousel-indicators flex justify-center p-0 mb-4 black-indicators">
@@ -69,7 +69,7 @@ export default function Benefit(){
                 <div className="col-span-6 md:col-span-4 text-center px-6 py-8 bg-white rounded">
                     <img className="m-auto" src={DNA} alt="DNA Icon" />
                     <h2 className="text-2xl font-montserrat mb-3 mt-6">Co-create is in Our DNA</h2>
-                    <p>Got any ideas for collaboration or inventions?<br />Email at <span className="underline">fairy@saviera.co</span> withthe subject “Hot Stuff”</p>
+                    <p>Got any ideas for collaboration or inventions?<br />Email at <span className="underline">fairy@saviera.co</span> with the subject “Hot Stuff”</p>
                 </div>
             </div>
         </div>

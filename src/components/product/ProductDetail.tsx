@@ -11,14 +11,21 @@ interface ProductDetailProps{
     prodDesc: string;
     reviews: Array<Review> | undefined;
     product: string;
+    prodInstruction: Array<string>;
+    prodDetails: Array<string>;
+    behindPiece: string;
+    sizeFit: Array<string>;
+    sizeNotes: string;
+    madeClothesDesc: string;
+    madeClothesImg: string;
 }
-export default function ProductDetail({prodTitle,prodDesc,reviews,product}:ProductDetailProps){
+export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodInstruction,prodDetails,behindPiece,sizeFit,sizeNotes,madeClothesDesc,madeClothesImg}:ProductDetailProps){
     let [sizeDetail, setSizeDetail] = useState(false)
     let [details, setDetails] = useState(false)
     let [instruction, setInstruction] = useState(false)
     let [wmc, setWMC] = useState(false)
     let [animate, setAnimate] = useState("translate-x-full opacity-0")
-    let productRate = reviews != undefined && reviews.length > 0 ? reviews.reduce((prev, val) => { return prev + val.rates[product] },0)/reviews.length : 0
+    let productRate = reviews != undefined && reviews.length > 0 ? Math.ceil(reviews.reduce((prev, val) => { return prev + val.rates[product] },0)/reviews.length) : 0
     const handleSize = (e: React.SyntheticEvent<HTMLButtonElement>) => {
         const sd = document.getElementById("sizeDetail")
         if(sd){
@@ -71,7 +78,7 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product}:Produ
         const sd = document.getElementById("wmc")
         if(sd){
             if(!wmc){
-                sd.style.maxHeight = "500px"
+                sd.style.maxHeight = "2000px"
                 sd.style.paddingTop = "12px"
                 sd.style.paddingBottom = "12px"
                 setWMC(true)
@@ -94,7 +101,7 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product}:Produ
                 <div className="mt-5 flex flex-col md:flex-row items-center md:items-start">
                     { (reviews && reviews.length > 0) &&
                         <div className="flex mr-5">
-                            {
+                            { 
                                 [...Array(productRate)].map((v,i) => {
                                     return(
                                         <svg key={"reviewStarFill" + i} className={i != 4 ? "mr-1" : ""} width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -103,7 +110,7 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product}:Produ
                                     )
                                 })
                             }
-                            {
+                            { 
                                 [...Array(5-productRate)].map((v,i) => {
                                     return(
                                         <svg key={"reviewStarUnfill" + i} className={i != 4 ? "mr-1" : ""} width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -147,16 +154,10 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product}:Produ
                 </h2>
                 <div id="sizeDetail" className="mt-3 font-trap text-xl bg-cream-1 text-secondary-2 overflow-hidden transition-[max-height,padding] ease-linear px-3 duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
                     <ul className="list-disc ml-[20px]">
-                        <li>All size, bust up to 110cm (TBC) </li>
-                        <li>Belt length is 80cm (on right and left side)</li>
-                        <li>Length: xxx cm</li>
-                        <ul className="list-disc list-outside ml-[25px]">
-                            <li>Length may differ depending on your shape and height as this item is bias cut</li>
-                            <li>Runs true to size</li>
-                        </ul>
+                        {sizeFit.map(v => <li>{v}</li>)}
                     </ul>
                     <br />
-                    Model height xx cm, bust xx cm
+                    <span className='font-bold'>{sizeNotes}</span>
                 </div>
             </div>
             <div className="w-full mt-10">
@@ -177,10 +178,11 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product}:Produ
                 </h2>
                 <div id='details' className="mt-3 px-3 font-trap text-xl bg-cream-1 text-secondary-2 overflow-hidden transition-[max-height,padding] ease-linear duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
                     <ul className="list-disc list-inside">
-                        <li>Textured (subtle checkered pattern)</li>
-                        <li>No zip</li>
-                        <li>Midi length</li>
-                        <li>100% pure cotton (repurposed from deadstock fabrics)</li>
+                        {
+                            prodDetails && prodDetails.map((v) => {
+                                return(<li>{v}</li>)
+                            })
+                        }
                     </ul>
                 </div>
             </div>
@@ -202,14 +204,11 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product}:Produ
                 </h2>
                 <div id='instruction' className="mt-3 px-3 font-trap text-xl bg-cream-1 text-secondary-2 overflow-hidden transition-[max-height,padding] ease-linear duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
                     <ul className="list-disc ml-[20px]">
-                        <li>Cold Hand Wash</li>
-                        <li>Do not bleach, do not soak, do not use rinse agent, do not tumble dry, and do not dry clean</li>
-                        <li>Use mild detergent</li>
-                        <li>Separate from other colors</li>
-                        <li>Turn the clothing inside out during washing</li>
-                        <li>Air dry, lay flat on a drying rack</li>
-                        <li>Turn the garment inside out before ironing with a press cloth between the iron and fabric to prevent direct heat, use a medium-hot iron</li>
-                        <li>Store: Fold in cool, dry, and dark spaces</li>
+                        {
+                            prodInstruction && prodInstruction.map((v) => {
+                                return(<li>{v}</li>)
+                            })
+                        }
                     </ul>
                 </div>
             </div>
@@ -230,25 +229,15 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product}:Produ
                     </button>
                 </h2>
                 <div id='wmc' className="mt-3 px-3 font-trap text-xl bg-cream-1 text-secondary-2 flex flex-col md:flex-row overflow-hidden transition-[max-height,padding] ease-linear duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
-                    <div className="w-full md:w-1/2 aspect-[192/119] bg-[#BABABA]"></div>
+                    <div className="w-full md:w-1/2 aspect-[192/119]" style={{backgroundImage: `url(${madeClothesImg})`}}></div>
                     <div className="w-full md:w-1/2 py-[27px] px-[34px]">
-                        <p className="font-trap text-2xl text-secondary-2 leading-[150%] ">Meet x, the person behind this piece!</p>
+                        <p className="font-trap text-2xl text-secondary-2 leading-[150%]" dangerouslySetInnerHTML={{__html: madeClothesDesc}}></p>
                     </div>
                 </div>
             </div>
             <div className="w-full mt-10">
                 <h2 className="font-montserrat font-bold text-xl md:text-3xl text-secondary-2 leading-[135%]">Behind this piece</h2>
-                <p className="mt-3 font-trap leading-[150%]">
-                    In life, we take pleasure and appear serious. Some say, <span className="font-bold">the two must have it balanced.</span> Some dare to see it as integration.
-                    <br/><br/>
-                    <span className="font-bold">Omnia,</span> which translates to <span className="font-bold">"all"</span> or <span className="font-bold">"everything"</span> in Italian is a fitting name. When we design, formulate and produce this piece, we think of a dynamic, jack-of-all-trades figure.
-                    <br/><br/>
-                    Society and culture formed an archetype that is simply outdated - that certain occupations, raising children, or doing chores is a gender role.
-                    <br/><br/>
-                    This piece stands between significant importance: <span className="font-bold">to feel comfortable.</span> Be it when you want to appear serious in social settings or cozy loungewear. Only available in white. A simple yet adaptable color.  
-                    <br/><br/>
-                    We found a beautiful deadstock fabric that is too shameful to waste. We acknowledge that it is hard to trace where or how the raw materials are produced. However, as one of our ways to exercise our sentiments (the People, Planet, and Fashion Industry), we are using deadstock fabric to reduce textile waste, which is one of the options for our eco-conscious effort.
-                </p>
+                <p className="mt-3 font-trap leading-[150%]" dangerouslySetInnerHTML={{__html: behindPiece}} />
             </div>
             {   reviews != undefined && reviews.length > 0 ?
                 <div id='review' className="relative mt-10">

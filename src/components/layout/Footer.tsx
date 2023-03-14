@@ -70,16 +70,16 @@ export default function Footer(){
                                 </svg>
                             </a>
                         </div>
-                        <ContactButton src={Facebook} alt="Facebook Logo" text="Facebook" href="" />
+                        <ContactButton src={Facebook} alt="Facebook Logo" text="Facebook" href="https://www.facebook.com/saviera.co" />
                         <ContactButton src={Pinterest} alt="Pinterest Logo" text="Pinterest" href="" />
-                        <ContactButton src={Instagram} alt="Instagram Logo" text="Instagram" href="" />
-                        <ContactButton src={Email} alt="Email Logo" text="Email" href="" />
+                        <ContactButton src={Instagram} alt="Instagram Logo" text="Instagram" href="https://www.instagram.com/saviera.co/" />
+                        <ContactButton src={Email} alt="Email Logo" text="Email" href="mailto:fairy@saviera.co" />
                     </div>
                 </div>
             </div>
             <Copyright />
             <div className="fixed right-6 bottom-6 md:right-10 md:bottom-5">
-                <a href="">
+                <a href="https://wa.me/628175199968">
                     <img className="w-[44px] h-[44px] md:w-[80px] md:h-[80px]" src={WhatsappCircle} alt="Whatsapp Redirect" />
                 </a>
             </div>

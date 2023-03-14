@@ -1,6 +1,10 @@
 import { useState,useEffect } from "react";
+interface InstagramWidget{
+    image: string;
+    url: string;
+}
 interface InstagramWidgetProps{
-    instaPic: Array<string>;
+    instaPic: Array<InstagramWidget>;
 }
 export default function InstagramWidget({instaPic}: InstagramWidgetProps){
     const [animate, setAnimate] = useState("opacity-0")
@@ -19,7 +23,7 @@ export default function InstagramWidget({instaPic}: InstagramWidgetProps){
                     {
                         instaPic.length > 0 && instaPic.slice(0,8).map((v,i) => {
                             return(
-                                <div key={i} className="aspect-square" style={{backgroundImage: `url(${v})`}}></div>
+                                <a key={i} href={v.url}><div className="aspect-square" style={{backgroundImage: `url(${v.image})`}}></div></a>
                             )   
                         })
                     }
@@ -28,7 +32,7 @@ export default function InstagramWidget({instaPic}: InstagramWidgetProps){
                     {
                         instaPic.length > 0 && instaPic.slice(0,6).map((v,i) => {
                             return(
-                                <div key={i} className="aspect-square" style={{backgroundImage: `url(${v})`}}></div>
+                                <a key={i} href={v.url}><div className="aspect-square" style={{backgroundImage: `url(${v.image})`}}></div></a>
                             )   
                         })
                     }

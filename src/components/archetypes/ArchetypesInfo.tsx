@@ -1,5 +1,13 @@
 import { useState, useEffect } from 'react';
-export default function ArchetypesInfo(){
+interface ArchetypesCarousel{
+    image: string;
+    text: string;
+}
+interface ArchetypesInfoProps{
+    carousel: Array<ArchetypesCarousel>;
+    afterTable: string;
+}
+export default function ArchetypesInfo({carousel,afterTable}:ArchetypesInfoProps){
     const [animateHeader, setAnimateHeader] = useState("translate-y-full opacity-0")
     const [animateCarousel, setAnimateCarousel] = useState("-translate-x-full opacity-0")
     const [animateTableText, setAnimateTableText] = useState("-translate-y-full opacity-0")
@@ -14,7 +22,7 @@ export default function ArchetypesInfo(){
 
     useEffect(() => {
         const elementHeader = document.getElementById("headerWrapper")
-        const elmentCarousel = document.getElementById("carouselWrapper")
+        const elmentCarousel = document.getElementById("carouselArch")
         const elementTable = document.getElementById("tableWrapper")
         const elementPlayList = document.getElementById("playListWrapper")
 
@@ -46,71 +54,45 @@ export default function ArchetypesInfo(){
                             Original, Confident, and Self-compassionate.
                         </p>
                     </div>
-                    <div id='carouselWrapper' className="py-[80px]">
-                        <div id="carouselHero" className={`${animateCarousel} transition-all duration-700 ease-in-out trancarousel slide relative`} data-bs-ride="carousel">
-                            <div className="carousel-inner relative aspect-[104/59] w-full overflow-hidden">
-                                <div className="carousel-item active relative float-left w-full aspect-[104/59]">
-                                    <div className="bg-[rgba(0,0,0,0.3)] absolute w-full h-full flex justify-center items-center">
-                                        <h2 className="text-center text-primary-2 font-montserrat text-[20px] md:text-[64px] font-normal">Minimalistic</h2>
-                                    </div>
-                                    <img
-                                        src="/image/homepage/promocta.png"
-                                        className="block w-full aspect-[104/59]"
-                                        alt="..."
-                                    />
-                                </div>
-                                <div className="carousel-item relative float-left w-full aspect-[104/59]">
-                                    <div className="bg-[rgba(0,0,0,0.3)] absolute w-full h-full flex justify-center items-center">
-                                        <h2 className="text-center text-primary-2 font-montserrat text-[20px] md:text-[64px] font-normal">Earth tone colors</h2>
-                                    </div>
-                                    <img
-                                        src="/image/homepage/promocta.png"
-                                        className="block w-full aspect-[104/59]"
-                                        alt="..."
-                                    />
-                                </div>
-                                <div className="carousel-item relative float-left w-full aspect-[104/59]">
-                                    <div className="bg-[rgba(0,0,0,0.3)] absolute w-full h-full flex justify-center items-center">
-                                        <h2 className="text-center text-primary-2 font-montserrat text-[20px] md:text-[64px] font-normal">Free sizes</h2>
-                                    </div>
-                                    <img
-                                        src="/image/homepage/promocta.png"
-                                        className="block w-full aspect-[104/59]"
-                                        alt="..."
-                                    />
-                                </div>
-                                <div className="carousel-item relative float-left w-full aspect-[104/59]">
-                                    <div className="bg-[rgba(0,0,0,0.3)] absolute w-full h-full flex justify-center items-center">
-                                        <h2 className="text-center text-primary-2 font-montserrat text-[20px] md:text-[64px] font-normal">Breathable and<br/>efforlessly chic</h2>
-                                    </div>
-                                    <img
-                                        src="/image/homepage/promocta.png"
-                                        className="block w-full aspect-[104/59]"
-                                        alt="..."
-                                    />
-                                </div>
-                            </div>
-                            <button
-                                className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
-                                type="button"
-                                data-bs-target="#carouselHero"
-                                data-bs-slide="prev"
-                            >
-                                <span className="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-                                <span className="visually-hidden">Previous</span>
-                            </button>
-                            <button
-                                className="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
-                                type="button"
-                                data-bs-target="#carouselHero"
-                                data-bs-slide="next"
-                            >
-                                <span className="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
-                                <span className="visually-hidden">Next</span>
-                            </button>
+                    <div id="carouselArch" className={`${animateCarousel} transition-all duration-700 ease-in-out carousel slide relative`} data-bs-ride="carousel">
+                        <div className="carousel-inner relative aspect-[104/59] w-full overflow-hidden">
+                            {  carousel &&
+                                carousel.map((v,i) => {
+                                    return(
+                                        <div key={"archetypesCarousel"+i} className={i == 0 ? "carousel-item active relative float-left w-full aspect-[104/59]" : "carousel-item relative float-left w-full aspect-[104/59]"}>
+                                            <div className="bg-[rgba(0,0,0,0.3)] absolute w-full h-full flex justify-center items-center">
+                                                <h2 className="text-center text-primary-2 font-montserrat text-[20px] md:text-[64px] font-normal">{v.text}</h2>
+                                            </div>
+                                            <img
+                                                src={v.image}
+                                                className="block w-full aspect-[104/59]"
+                                                alt="..."
+                                            />
+                                        </div>
+                                    )
+                                })
+                            }
                         </div>
+                        <button
+                            className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"
+                            type="button"
+                            data-bs-target="#carouselArch"
+                            data-bs-slide="prev"
+                        >
+                            <span className="carousel-control-prev-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+                            <span className="visually-hidden">Previous</span>
+                        </button>
+                        <button
+                            className="carousel-control-next absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline right-0"
+                            type="button"
+                            data-bs-target="#carouselArch"
+                            data-bs-slide="next"
+                        >
+                            <span className="carousel-control-next-icon inline-block bg-no-repeat" aria-hidden="true"></span>
+                            <span className="visually-hidden">Next</span>
+                        </button>
                     </div>
-                    <div id='tableWrapper'>
+                    <div id='tableWrapper' className='mt-20'>
                         <p className={`${animateTableText} transition-all duration-700 ease-in-out text-secondary-2 font-trap text-xl leading-[150%] text-center`}>
                             The collection provides essential staples that are versatile and purposeful. 
                             <br/>
@@ -167,7 +149,7 @@ export default function ArchetypesInfo(){
             </div>
             <div id='playListWrapper' className={`${animatePlayList} transition-all duration-700 ease-in-out w-full hidden justify-center md:grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0 aspect-[1443/1006] bg-secondary-2`}>
                 <div className="col-span-12 flex flex-col items-center justify-center">
-                    <img className={`${animatePlayListImage} transition-all duration-700 ease-in-out w-full aspect-video mt-[-470px]`} src="/image/homepage/promocta.png" alt="" />
+                    <img className={`${animatePlayListImage} transition-all duration-700 ease-in-out w-full aspect-video mt-[-470px]`} src={afterTable} alt="" />
                     <div className="w-4/5 border border-primary-2 h-[1px] my-20"></div>
                     <div className="w-full">
                         <p className="font-montserrat text-[30px] text-primary-1 text-center mb-10">Playlist to accompany your day</p>

@@ -6,7 +6,6 @@ import axios from "axios";
 export default function SavForm(){
     const [cookies, setCookie] = useCookies(['access-token','refresh-token'])
     const [isFormLoading, setIsFormLoading] = useState(false)
-    const [isAlertFired, setIsAlertFired] = useState(false)
     const [omniaModal, setOmniaModal] = useState(false)
     const [weiyiModal, setWeiyiModal] = useState(false)
     const [cyanneModal, setCyanneModal] = useState(false)
@@ -135,7 +134,6 @@ export default function SavForm(){
                 .then(res => {
                     if(res.status == 200){
                         setFormModal(false)
-                        if(!isAlertFired) alert("Thank you for your response! (Terima kasih atas responnya)"); setIsAlertFired(true)
                         document.body.style.overflow = "auto"
                         reset()
                         setCyanneReviewState(false)
@@ -207,6 +205,7 @@ export default function SavForm(){
                     )
                 })
         }
+        alert("Thank you for your response! (Terima kasih atas responnya)");
     }
     return(
         <>
@@ -244,11 +243,11 @@ export default function SavForm(){
                                 Omnia
                             </button>
                             <span className="md:w-[1px] md:h-[38px] h-[1px] my-3 w-[38px] border border-secondary-1"></span>
-                            <button onClick={handleCyanne} className="text-accent-2 hover:border-opacity-30 rounded border border-secondary-2 py-[10px] w-full md:w-fit md:px-[125px]">
+                            <button onClick={handleCyanne} className="text-accent-1 hover:border-opacity-30 rounded border border-secondary-2 py-[10px] w-full md:w-fit md:px-[125px]">
                                 Cyanne
                             </button>
                             <span className="md:w-[1px] md:h-[38px] h-[1px] my-3 w-[38px] border border-secondary-1"></span>
-                            <button onClick={handleWeiyi} className="text-accent-3 hover:border-opacity-30 rounded border border-secondary-2 py-[10px] w-full md:w-fit md:px-[125px]">
+                            <button onClick={handleWeiyi} className="text-accent-1 hover:border-opacity-30 rounded border border-secondary-2 py-[10px] w-full md:w-fit md:px-[125px]">
                                 Wei Yi
                             </button>
                         </div>
@@ -644,7 +643,7 @@ export default function SavForm(){
                                 <p className="font-trap text-[12px] md:text-[20px] text-[rgba(130,130,130,1)]">Ada permintaan atau komentar umum lainnya untuk kami?*</p>
                                 <input {...register("request")} className="w-full text-[14px] md:text-base mt-2 py-3 px-2 md:p-5 font-montserrat focus:border-accent-2 hover:border-accent-2 focus:outline-none text-[rgba(130,130,130,1)] font-medium border border-[rgba(58,58,58,0.3)] rounded" placeholder="Type your answer" type="text" />
                             </div>
-                            <button type="submit" disabled={isFormLoading} className="p-[10px] text-center w-full mt-[37px] text-[14px] md:text-2xl text-accent-2 border border-accent-2 rounded hover:border-opacity-30">
+                            <button type="submit" disabled={isFormLoading} className="p-[10px] font-trap text-center w-full mt-[37px] text-[14px] md:text-2xl text-accent-2 border border-accent-2 rounded hover:border-opacity-30">
                                 Share My Review
                             </button>
                             </form>

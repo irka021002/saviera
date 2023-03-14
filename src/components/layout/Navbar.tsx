@@ -91,7 +91,7 @@ export default function Navbar(){
                 <div className={`col-span-4 hidden md:flex transition-all duration-500 ease-in-out ${animateMenu}`}>
                     <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? WhatsappWhite : Whatsapp} alt="Whatsapp Logo" /></a>
                     <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? InstagramWhite : Instagram} alt="Instagram Logo" /></a>
-                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? FacebookWhite : Facebook} alt="Facebook Logo" /></a>
+                    <a href="https://www.facebook.com/saviera.co"><img width={32} className="mr-8" src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? FacebookWhite : Facebook} alt="Facebook Logo" /></a>
                     <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? BrowserWhite : Browser} alt="Browser Logo" /></a>
                     <span className={`h-[32px] border ${changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? "border-primary-1" : "border-secondary-2"}`} />
                     <a role="button" onClick={handleSearch}><img width={32} className="ml-8" src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? SearchWhite : Search} alt="Search Logo" /></a>
@@ -114,13 +114,13 @@ export default function Navbar(){
                 </div>
                 <div className="text-center flex flex-col">
                     <a href="/01-archetypes" className="text-secondary-2 font-montserrat">VOL 01. ARCHETYPES</a>
-                    <a href="/shop" className="text-secondary-2 font-montserrat mt-6">SHOP</a>
+                    <a href="/#savieraProduct" className="text-secondary-2 font-montserrat mt-6">SHOP</a>
                     <a href="/about-us" className="text-secondary-2 font-montserrat mt-6">ABOUT US</a>
                 </div>
                 <div className="px-[60px] flex justify-between mt-[52px]">
                     <img width={24} src={Whatsapp} alt="Whatsapp Icon" />
                     <img width={24} src={Instagram} alt="Instagram Icon" />
-                    <img width={24} src={Facebook} alt="Facebook Icon" />
+                    <a href="https://www.facebook.com/saviera.co"><img width={24} src={Facebook} alt="Facebook Icon" /></a>
                     <img width={24} src={Browser} alt="Browser Icon" />
                 </div>
                 <div className="mt-[52px] relative">

@@ -10,12 +10,17 @@ import useCookies from "react-cookie/cjs/useCookies";
 interface CTA{
     title: string;
     description: string;
+    background: string;
+}
+interface InstagramWidget{
+    image: string;
+    url: string;
 }
 export default function Homepage(){
     const [cookies, setCookie] = useCookies(['access-token','refresh-token'])
     const [heroPic,setHeroPic] = useState<Array<string>>([])
-    const [cta, setCta] = useState<CTA>({title: "",description: ""})
-    const [instaPic, setInstaPic] = useState<Array<string>>([])
+    const [cta, setCta] = useState<CTA>({title: "",description: "", background: ""})
+    const [instaPic, setInstaPic] = useState<Array<InstagramWidget>>([])
     useEffect(() => {
         if(cookies["access-token"]){
             axios.post(
