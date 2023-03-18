@@ -1,4 +1,7 @@
-import Saviera from "../../assets/image/savieraco.png"
+import Saviera from "../../assets/image/sav-package.gif"
+import Polymailer from "../../assets/image/polymailer.gif"
+import Tissue from "../../assets/image/tissue.gif"
+import ThankYou from "../../assets/image/thankyou.png"
 import { SyntheticEvent, useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import useCookies from "react-cookie/cjs/useCookies";
@@ -221,8 +224,7 @@ export default function SavForm(){
                     </div>
                     <div id="useSavWrapper" className="mt-20">
                         <p className={`${animateUseSav} transition-all duration-700 ease-in-out font-trap text-[14px] md:text-2xl text-center leading-[150%] px-6 bg-accent-1 text-primary-2`}>
-                            Use <span className="font-bold">#SAVTOWEAR #SAVVYSISSY</span> on social media and <span className="font-bold">tag us.</span>
-                            <br/>Get a special <span className="font-bold">20k IDR cashback</span> (we will contact you!)
+                            Tag us on social media using <b> #SAVTOWEAR</b>. We will be in touch to give you a token of gratitude.
                         </p>
                         <p className={`${animateUseScroll} transition-all duration-700 ease-in-out my-20 font-trap text-[14px] md:text-2xl text-center leading-[150%] text-secondary-2`}>
                             Scroll to understand the item(s) you just owned. 
@@ -290,7 +292,7 @@ export default function SavForm(){
                         </div>
                         <div className="carousel-inner relative w-full overflow-hidden px-5">
                             <div className="carousel-item active relative float-left w-full bg-primary-2">
-                                <div className="bg-[#d9d9d9] aspect-square w-full"></div>
+                                <img className="bg-[#d9d9d9] aspect-square w-full" src={Polymailer} alt="..." />
                                 <div className="flex-grow flex justify-center items-center w-full mt-[50px]">
                                     <p className="font-trap md:text-2xl leading-[150%] ">
                                         Your <span className="font-bold">poly mailer bag</span> is <span className="font-bold">oxo-biodegradable.</span> Which means, in two years, it will break off. In the meantime, you can reuse it as a desk-trash bin until it reaches its life cycle.
@@ -298,7 +300,7 @@ export default function SavForm(){
                                 </div>
                             </div>
                             <div className="carousel-item relative float-left w-full bg-primary-2">
-                                <div className="bg-[#d9d9d9] aspect-square w-full"></div>
+                                <img className="bg-[#d9d9d9] aspect-square w-full" src={Tissue} alt="..." />
                                 <div className="flex-grow flex flex-col justify-center items-center w-full mt-[50px] font-trap md:text-2xl leading-[150%]">
                                     <p>
                                         <span className="font-bold">Tissue paper</span> wrap is <span className="font-bold">compostable.</span> If you don’t compost, bring it to a composting facility, or reuse it as:
@@ -311,19 +313,19 @@ export default function SavForm(){
                                     </ol>
                                     <p>
                                         <br/>
-                                        <span className="font-bold">Hang Tag</span> made of recycled paper. <span className="font-bold">Repurpose</span> as a bookmark.
+                                        <b> Hangtag </b> is made of recycled paper. <b> Repurpose </b> as a bookmark.
                                         <br/><br/>
                                         <span className="font-bold">Reuse</span> the <span className="font-bold">ramie rope</span> and <span className="font-bold">pin</span> attached to the hangtag.
                                     </p>
                                 </div>
                             </div>
                             <div className="carousel-item relative float-left w-full bg-primary-2">
-                                <div className="bg-[#d9d9d9] aspect-square w-full"></div>
+                                <img className="bg-[#d9d9d9] aspect-square w-full" src={ThankYou} alt="..." />
                                 <div className="flex-grow flex justify-center items-center w-full mt-[50px]">
                                     <p className="font-trap md:text-2xl leading-[150%] ">
                                         <span className="font-bold">Thank You Card</span> is a <span className="font-bold">repurposed</span> sketch paper hand-painted by our fairy. 
                                         <br/>
-                                        <span className="font-bold">Reuse</span> it as a decorative desk or information piece of your clothing item!
+                                        <b>Reuse</b>it as a decorative desk, bookmark, or keep as a source of information for your clothing item!
                                     </p>
                                 </div>
                             </div>
@@ -331,7 +333,7 @@ export default function SavForm(){
                     </div>
                     <div className="px-5 mt-[72px] hidden md:block">
                         <div id="benefit1" className={`${obj1Anim} transition-all duration-700 ease-in-out flex`}>
-                            <div className="bg-[#d9d9d9] aspect-square w-2/5"></div>
+                            <img className="bg-[#d9d9d9] aspect-square w-2/5" src={Polymailer} alt="..." />
                             <div className="flex-grow ml-5 flex justify-center items-center w-3/5">
                                 <p className="font-trap text-2xl leading-[150%] ">
                                     Your <span className="font-bold">poly mailer bag</span> is <span className="font-bold">oxo-biodegradable.</span> Which means, in two years, it will break off. In the meantime, you can reuse it as a desk-trash bin until it reaches its life cycle.
@@ -351,20 +353,20 @@ export default function SavForm(){
                                 </ol>
                                 <p>
                                     <br/>
-                                    <span className="font-bold">Hang Tag</span> made of recycled paper. <span className="font-bold">Repurpose</span> as a bookmark.
+                                    <b> Hangtag </b> is made of recycled paper. <b> Repurpose </b> as a bookmark.
                                     <br/><br/>
                                     <span className="font-bold">Reuse</span> the <span className="font-bold">ramie rope</span> and <span className="font-bold">pin</span> attached to the hangtag.
                                 </p>
                             </div>
-                            <div className="bg-[#d9d9d9] aspect-square w-2/5"></div>
+                            <img className="bg-[#d9d9d9] aspect-square w-2/5" src={Tissue} alt="..." />
                         </div>
                         <div id="benefit3" className={`${obj3Anim} transition-all duration-700 ease-in-out flex mt-8`}>
-                            <div className="bg-[#d9d9d9] aspect-square w-2/5"></div>
+                        <img className="bg-[#d9d9d9] aspect-square w-2/5" src={ThankYou} alt="..." />
                             <div className="flex-grow ml-5 flex justify-center items-center w-3/5">
                                 <p className="font-trap text-2xl leading-[150%] ">
                                     <span className="font-bold">Thank You Card</span> is a <span className="font-bold">repurposed</span> sketch paper hand-painted by our fairy. 
                                     <br/>
-                                    <span className="font-bold">Reuse</span> it as a decorative desk or information piece of your clothing item!
+                                    <b>Reuse</b>it as a decorative desk, bookmark, or keep as a source of information for your clothing item!
                                 </p>
                             </div>
                         </div>
@@ -439,14 +441,13 @@ export default function SavForm(){
                         <p className="font-montserrat text-[14px] md:text-[30px] text-center">Care Instruction for</p>
                         <p className="font-aboreto text-[30px] md:text-[64px] text-center mt-3">CYANNE</p>
                         <ul className="list-disc font-trap ml-6 text-[14px] md:text-2xl leading-[150%] mt-[37px]">
-                            <li>Cold Hand Wash</li>
-                            <li>Do not bleach, do not soak, do not use rinse agent, do not tumble dry, and do not dry clean</li>
-                            <li>Use mild detergent</li>
-                            <li>Separate from other colors</li>
-                            <li>Turn the clothing inside out during washing</li>
-                            <li>Air dry, lay flat on a drying rack</li>
-                            <li>Turn the garment inside out before ironing with a press cloth between the iron and fabric to prevent direct heat, use a medium-hot iron</li>
-                            <li>Store: Fold in cool, dry, and dark spaces</li>
+                            <li>Cold hand wash</li>
+                            <li>Do not bleach, do not soak, do not rinse agent, do not tumble dry, and do not dry clean</li>
+                            <li>Use mild-normal detergent</li>
+                            <li>Wash inside out and with similar colors</li>
+                            <li>Cool air dry on a flat drying rack</li>
+                            <li>Turn the garment inside out before ironing with a press cloth between the iron and fabric to prevent direct heat, damp a bit before ironing at medium temperature</li>
+                            <li>Store: Fold it in dry spaces</li>
                         </ul>
                     </div>
                 </div>}

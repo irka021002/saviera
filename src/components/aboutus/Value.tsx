@@ -28,44 +28,44 @@ export default function Value(){
                         </div>
                         <span className="border my-6 md:my-0 md:mx-[52px] border-white border-opacity-40 w-[125px] md:w-0 md:h-[125px]"></span>
                         <div className="md:w-9/12 flex">
-                            <div className="w-full text-primary-2 scrollbar-hide max-h-[300px] md:max-h-[200px] overflow-hidden">
-                                <div className={`flex flex-col justify-center md:w-full h-[300px] md:h-[200px] transition-[margin-top] duration-500 ${index > 0 ? "md:mt-[-200px] mt-[-300px]" : "mt-0 md:mt-0"}`}>
+                            <div className="w-full text-primary-2 scrollbar-hide max-h-[375px] md:max-h-[200px] overflow-hidden">
+                                <div className={`flex flex-col justify-center md:w-full h-[375px] md:h-[200px] transition-[margin-top] duration-500 ${index > 0 ? "md:mt-[-200px] mt-[-375px]" : "mt-0 md:mt-0"}`}>
                                     <h2 className="font-montserrat text-[36px] md:text-5xl"><span className="font-bold">S</span> incere</h2>
                                     <p className="font-trap text-2xl leading-[150%] font-normal mt-3">
                                         I believe that kindness is never wrong. I could be sincere and radiate gentleness to others if I wanted to.
                                     </p>
                                 </div>
-                                <div className={`flex flex-col justify-center md:w-full h-[300px] md:h-[200px] transition-[margin-top] duration-500 ${index > 1 ? "md:mt-[-200px] mt-[-300px]" : "mt-0 md:mt-0"}`}>
+                                <div className={`flex flex-col justify-center md:w-full h-[375px] md:h-[200px] transition-[margin-top] duration-500 ${index > 1 ? "md:mt-[-200px] mt-[-375px]" : "mt-0 md:mt-0"}`}>
                                     <h2 className="font-montserrat text-[36px] md:text-5xl">imp <span className="font-bold">A</span> ctful</h2>
                                     <p className="font-trap text-2xl leading-[150%] font-normal mt-3">
                                         I am confident that I could make a change. I am holding myself accountable for the choices I made, notions I wrote, things I said, manifestations I claimed.
                                     </p>
                                 </div>
-                                <div className={`flex flex-col justify-center md:w-full h-[300px] md:h-[200px] transition-[margin-top] duration-500 ${index > 2 ? "md:mt-[-200px] mt-[-300px]" : "mt-0 md:mt-0"}`}>
+                                <div className={`flex flex-col justify-center md:w-full h-[375px] md:h-[200px] transition-[margin-top] duration-500 ${index > 2 ? "md:mt-[-200px] mt-[-375px]" : "mt-0 md:mt-0"}`}>
                                     <h2 className="font-montserrat text-[36px] md:text-5xl"><span className="font-bold">V</span> ersatile</h2>
                                     <p className="font-trap text-2xl leading-[150%] font-normal mt-3">
                                         I am resourceful and flexible. Everything I need, I already have. So I can make creative things out of anything!
                                     </p>
                                 </div>
-                                <div className={`flex flex-col justify-center md:w-full h-[300px] md:h-[200px] transition-[margin-top] duration-500 ${index > 3 ? "md:mt-[-200px] mt-[-300px]" : "mt-0 md:mt-0"}`}>
+                                <div className={`flex flex-col justify-center md:w-full h-[375px] md:h-[200px] transition-[margin-top] duration-500 ${index > 3 ? "md:mt-[-200px] mt-[-375px]" : "mt-0 md:mt-0"}`}>
                                     <h2 className="font-montserrat text-[36px] md:text-5xl"><span className="font-bold">I</span> ntentional</h2>
                                     <p className="font-trap text-2xl leading-[150%] font-normal mt-3">
                                         I am purpose-driven. I know my values. I know what I want. I am aware of the responsibilities coming out of it. I respect my agendas and others’.
                                     </p>
                                 </div>
-                                <div className={`flex flex-col justify-center md:w-full h-[300px] md:h-[200px] transition-[margin-top] duration-500 ${index > 4 ? "md:mt-[-200px] mt-[-300px]" : "mt-0 md:mt-0"}`}>
+                                <div className={`flex flex-col justify-center md:w-full h-[375px] md:h-[200px] transition-[margin-top] duration-500 ${index > 4 ? "md:mt-[-200px] mt-[-375px]" : "mt-0 md:mt-0"}`}>
                                     <h2 className="font-montserrat text-[36px] md:text-5xl"><span className="font-bold">E</span> mpowering</h2>
                                     <p className="font-trap text-2xl leading-[150%] font-normal mt-3">
                                         Changes require effort. The effort reflects interest. My medium is honest storytelling. I co-create and actively generate productive discussions and innovations.
                                     </p>
                                 </div>
-                                <div className={`flex flex-col justify-center md:w-full h-[300px] md:h-[200px] transition-[margin-top] duration-500 ${index > 5 ? "md:mt-[-200px] mt-[-300px]" : "mt-0 md:mt-0"}`}>
+                                <div className={`flex flex-col justify-center md:w-full h-[375px] md:h-[200px] transition-[margin-top] duration-500 ${index > 5 ? "md:mt-[-200px] mt-[-375px]" : "mt-0 md:mt-0"}`}>
                                     <h2 className="font-montserrat text-[36px] md:text-5xl">Figu <span className="font-bold">R</span> eoutable</h2>
                                     <p className="font-trap text-2xl leading-[150%] font-normal mt-3">
                                         I challenge myself to be solution-oriented when faced with adversities. I believe there is always a way.
                                     </p>
                                 </div>
-                                <div className={`flex flex-col justify-center md:w-full h-[300px] md:h-[200px] transition-[margin-top] duration-500 ${index > 6 ? "md:mt-[-200px] mt-[-300px]" : "mt-0 md:mt-0"}`}>
+                                <div className={`flex flex-col justify-center md:w-full h-[375px] md:h-[200px] transition-[margin-top] duration-500 ${index > 6 ? "md:mt-[-200px] mt-[-375px]" : "mt-0 md:mt-0"}`}>
                                     <h2 className="font-montserrat text-[36px] md:text-5xl">iter <span className="font-bold">A</span> te</h2>
                                     <p className="font-trap text-2xl leading-[150%] font-normal mt-3">
                                         I am willing to learn, grow, and explore. I support my growth. I show support to others, and I believe in collaboration for betterment.

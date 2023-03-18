@@ -78,16 +78,6 @@ export default function Omnia(){
                 })
         }
     },[])
-    let picData = [
-        "/product/omnia.png",
-        "/product/omnia.png",
-        "/product/omnia.png",
-        "/product/omnia.png",
-        "/product/omnia.png",
-        "/product/omnia.png",
-        "/product/omnia.png",
-        "/product/omnia.png",
-    ]
     let prodInstruction = [
         "Cold Hand Wash",
         "Do not bleach, do not soak, do not use rinse agent, do not tumble dry, and do not dry clean",
@@ -115,16 +105,45 @@ export default function Omnia(){
         "Sleeve length 33 cm",
         "Sleeve width up to 60 cm (asymmetrical cut that allows breathable and flexible movement+size)",
     ]
-    let madeClothesDesc = '<span class="font-bold">Meet Pak Taswan!</span><br/>Almost seven years. Producing numerous designs and contributing to hundreds of fashion brands, Pak Taswan craftsmanship is no doubt delicate and sincere. <br/><br/>"The fabric was easy to work with when I made the clothes. I was focused we\'re given the sampling model. I matched the cutting, the sample, and made it happen." Pak Taswan explained.<br/><br/>Pak Taswan also stated that he imagined the person wearing this piece as <span class="font-bold">"A calm but also a bold person"</span> given the sheer fabric. At last, he shared that he\'s happy when someone owns the piece that he produced. He is proud when people like it and wear it often.'
+    let madeClothesDesc = '<span class="font-bold">Meet Pak Taswan!</span><br/>With almost seven years of completing garment production demands, Pak Taswan\'s craftsmanship is consistently delicate and sincere. <br/><br/>"The fabric was easy to work with when I made this [Omnia]. I was focused we\'re given the sampling model. I matched the cutting, the sample, and made it happen." Pak Taswan explained.<br/><br/>Pak Taswan also stated that he imagined the person wearing this piece as <span class="font-bold">"A calm but also a bold person"</span> given the sheer fabric. At last, he shared that he\'s happy when someone owns the piece that he produced. He is proud when people like it and wear it often.'
     let sizeNotes = "Length may differs depending on your body shape and height as this item is bias cut. Color may differ due to different screens and lightning"
     let prodTitle = "OMNIA"
     let prodDesc= "A loungewear, casual outer, or a sexy summer dress with plunge deep V-neck with above-the-waist concealed elastic to give shape."
     let behindPiece = "In life, we take pleasure and appear serious. Some say the two must have it balanced. Some dare to see it as integration. <br/><br/>Omnia, which translates to \"all\" or \"everything\" in Italian is a fitting name. When we design, formulate and produce this piece, we think of a dynamic, jack-of-all-trades figure. <br/><br/>Society and culture formed an archetype that is simply outdated - that certain occupations, raising children, or doing chores is a gender role. <br/><br/>This piece stands between significant importance: to feel comfortable.<br/><br/>Be it when you want to appear serious in social settings or cozy loungewear. <br/>Only available in white. A simple yet adaptable color. <br/><br/>We found a beautiful deadstock fabric that is too shameful to waste. We acknowledge that it is hard to trace where or how the raw materials are produced. However, as one of our ways to exercise our sentiments (the People, Planet, and Fashion Industry), we are using deadstock fabric to reduce textile waste, which is one of the options for our eco-conscious effort. "
+    const [productImage, setProductImage] = useState([
+        "/product/omnia/1.png",
+        "/product/omnia/2.png",
+        "/product/omnia/3.png",
+        "/product/omnia/4.png",
+        "/product/omnia/5.png",
+        "/product/omnia/6.png",
+        "/product/omnia/7.png",
+        "/product/omnia/8.png",
+        "/product/omnia/9.png",
+        "/product/omnia/10.png",
+    ])
+    const prodColors = {
+        "Off-white": [
+            "#fbfcfd",
+            [
+                "/product/omnia/1.png",
+                "/product/omnia/2.png",
+                "/product/omnia/3.png",
+                "/product/omnia/4.png",
+                "/product/omnia/5.png",
+                "/product/omnia/6.png",
+                "/product/omnia/7.png",
+                "/product/omnia/8.png",
+                "/product/omnia/9.png",
+                "/product/omnia/10.png",
+            ]
+        ]
+    }
     return(
         <>
             <div className="justify-center grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0 mt-10">
-                <ProductGallery pic={picData} />
-                <ProductDetail madeClothesImg="" madeClothesDesc={madeClothesDesc} sizeFit={sizeFit} sizeNotes={sizeNotes} product="Omnia" reviews={reviews} behindPiece={behindPiece} prodDetails={prodDetails} prodInstruction={prodInstruction} prodTitle={prodTitle} prodDesc={prodDesc} />
+                <ProductGallery pic={productImage} />
+                <ProductDetail setProductImage={setProductImage}  prodColors={prodColors} madeClothesImg="/product/omnia/who.png" madeClothesDesc={madeClothesDesc} sizeFit={sizeFit} sizeNotes={sizeNotes} product="Omnia" reviews={reviews} behindPiece={behindPiece} prodDetails={prodDetails} prodInstruction={prodInstruction} prodTitle={prodTitle} prodDesc={prodDesc} />
             </div>
         </>
     )

@@ -76,24 +76,19 @@ export default function Navbar(){
     return(
         <nav className="z-[9999] sticky top-0 max-w-[1440px] m-auto">
             <div className={`justify-center grid grid-cols-6 gap-[16px] px-6 md:px-0 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] items-center h-[80px] md:h-[100px] ${changeColor && !checkPath("/01-archetypes") && !checkPath("/01-") && !checkPath("/savdashboard") ? "bg-transparent" : "md:bg-primary-1 bg-[#c8c8c8]"}`}>
-                <div className={`col-span-4 hidden md:flex justify-between transition-all duration-500 ease-in-out ${animateMenu} ${changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? "text-primary-2" : "text-secondary-2"} font-montserrat text-base`}>
+                <div className={`${(checkPath("/01-archetypes") || checkPath("/sav-to-wear-01") || checkPath("/01-") || checkPath("/savdashboard") || checkPath("/about-us")) ? "col-span-5" : "col-span-4"} hidden md:flex justify-between items-center transition-all duration-500 ease-in-out ${animateMenu} ${changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? "text-primary-2" : "text-secondary-2"} font-montserrat text-base`}>
+                    {   (checkPath("/01-archetypes") || checkPath("/sav-to-wear-01") || checkPath("/01-") || checkPath("/savdashboard") || checkPath("/about-us")) &&
+                        <a href="/">
+                            <img src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? SavieraWhite : Saviera} className="m-auto" alt="Store Logo" />
+                        </a>
+                    }
                     <a href="/01-archetypes">VOL 01. ARCHETYPES</a>
                     <a href="/#savieraProduct">SHOP</a>
                     <a href="/about-us">ABOUT US</a>
                 </div>
+                <div className={`col-span-1 md:col-span-2 transition-all duration-500 ease-in-out ${animateMenu}`}></div>
                 <div className="col-span-1 hidden md:block"></div>
-                <div className={`col-span-1 md:col-span-2 transition-all duration-500 ease-in-out ${animateMenu}`}>
-                    <a href="/">
-                        <img src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? SavieraWhite : Saviera} className="m-auto" alt="Store Logo" />
-                    </a>
-                </div>
-                <div className="col-span-1 hidden md:block"></div>
-                <div className={`col-span-4 hidden md:flex transition-all duration-500 ease-in-out ${animateMenu}`}>
-                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? WhatsappWhite : Whatsapp} alt="Whatsapp Logo" /></a>
-                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? InstagramWhite : Instagram} alt="Instagram Logo" /></a>
-                    <a href="https://www.facebook.com/saviera.co"><img width={32} className="mr-8" src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? FacebookWhite : Facebook} alt="Facebook Logo" /></a>
-                    <a href=""><img width={32} className="mr-8" src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? BrowserWhite : Browser} alt="Browser Logo" /></a>
-                    <span className={`h-[32px] border ${changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? "border-primary-1" : "border-secondary-2"}`} />
+                <div className={`${(checkPath("/01-archetypes") || checkPath("/sav-to-wear-01") || checkPath("/01-") || checkPath("/savdashboard") || checkPath("/about-us")) ? "col-span-4" : "col-span-5"} hidden md:flex transition-all duration-500 ease-in-out justify-end ${animateMenu}`}>
                     <a role="button" onClick={handleSearch}><img width={32} className="ml-8" src={changeColor && !checkPath("/01-archetypes") && !checkPath("/sav-to-wear-01") && !checkPath("/01-") && !checkPath("/savdashboard") ? SearchWhite : Search} alt="Search Logo" /></a>
                 </div>
                 <span className="col-span-4 md:hidden"></span>
@@ -118,8 +113,8 @@ export default function Navbar(){
                     <a href="/about-us" className="text-secondary-2 font-montserrat mt-6">ABOUT US</a>
                 </div>
                 <div className="px-[60px] flex justify-between mt-[52px]">
-                    <img width={24} src={Whatsapp} alt="Whatsapp Icon" />
-                    <img width={24} src={Instagram} alt="Instagram Icon" />
+                    <a href="https://wa.me/628175199968"><img width={24} src={Whatsapp} alt="Whatsapp Icon" /></a>
+                    <a href="https://www.instagram.com/saviera.co/"><img width={24} src={Instagram} alt="Instagram Icon" /></a>
                     <a href="https://www.facebook.com/saviera.co"><img width={24} src={Facebook} alt="Facebook Icon" /></a>
                     <img width={24} src={Browser} alt="Browser Icon" />
                 </div>

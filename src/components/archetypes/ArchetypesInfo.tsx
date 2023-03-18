@@ -65,7 +65,7 @@ export default function ArchetypesInfo({carousel,afterTable}:ArchetypesInfoProps
                                             </div>
                                             <img
                                                 src={v.image}
-                                                className="block w-full aspect-[104/59]"
+                                                className="block w-full aspect-[104/59] object-cover"
                                                 alt="..."
                                             />
                                         </div>
@@ -149,7 +149,7 @@ export default function ArchetypesInfo({carousel,afterTable}:ArchetypesInfoProps
             </div>
             <div id='playListWrapper' className={`${animatePlayList} transition-all duration-700 ease-in-out w-full hidden justify-center md:grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0 aspect-[1443/1006] bg-secondary-2`}>
                 <div className="col-span-12 flex flex-col items-center justify-center">
-                    <img className={`${animatePlayListImage} transition-all duration-700 ease-in-out w-full aspect-video mt-[-470px]`} src={afterTable} alt="" />
+                    <img className={`${animatePlayListImage} transition-all duration-700 ease-in-out w-full object-contain aspect-video mt-[-470px]`} src={afterTable} alt="" />
                     <div className="w-4/5 border border-primary-2 h-[1px] my-20"></div>
                     <div className="w-full">
                         <p className="font-montserrat text-[30px] text-primary-1 text-center mb-10">Playlist to accompany your day</p>

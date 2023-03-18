@@ -21,6 +21,9 @@ export default function Homepage(){
     const [heroPic,setHeroPic] = useState<Array<string>>([])
     const [cta, setCta] = useState<CTA>({title: "",description: "", background: ""})
     const [instaPic, setInstaPic] = useState<Array<InstagramWidget>>([])
+    const [omniaPic, setOmniaPic] = useState("")
+    const [weiyiPic, setWeiyiPic] = useState("")
+    const [cyannePic, setCyannePic] = useState("")
     useEffect(() => {
         if(cookies["access-token"]){
             axios.post(
@@ -46,6 +49,9 @@ export default function Homepage(){
                         setInstaPic(v.data.documents[0].homepage.instagram)
                         setHeroPic(v.data.documents[0].homepage.hero)
                         setCta(v.data.documents[0].homepage.cta)
+                        setOmniaPic(v.data.documents[0].homepage.omniaImage)
+                        setWeiyiPic(v.data.documents[0].homepage.weiyiImage)
+                        setCyannePic(v.data.documents[0].homepage.cyanneImage)
                     }
                 })
             return;
@@ -86,6 +92,9 @@ export default function Homepage(){
                                 setInstaPic(v.data.documents[0].homepage.instagram)
                                 setHeroPic(v.data.documents[0].homepage.hero)
                                 setCta(v.data.documents[0].homepage.cta)
+                                setOmniaPic(v.data.documents[0].homepage.omniaImage)
+                                setWeiyiPic(v.data.documents[0].homepage.weiyiImage)
+                                setCyannePic(v.data.documents[0].homepage.cyanneImage)
                             }
                         })
                 })
@@ -97,7 +106,7 @@ export default function Homepage(){
             <HeroBanner heroPic={heroPic} />
             <HomepageCTA />
             <PromoCTA cta={cta} />
-            <ProductGallery />
+            <ProductGallery omniaPic={omniaPic} cyannePic={cyannePic} weiyiPic={weiyiPic} />
             <Benefit />
             <InstagramWidget instaPic={instaPic} />
         </>

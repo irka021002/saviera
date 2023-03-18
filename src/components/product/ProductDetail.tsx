@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 interface Review{
     anonymous: Boolean;
     name: string;
@@ -18,14 +18,16 @@ interface ProductDetailProps{
     sizeNotes: string;
     madeClothesDesc: string;
     madeClothesImg: string;
+    prodColors: { [key: string]: any; };
+    setProductImage: React.Dispatch<React.SetStateAction<Array<string>>>;
 }
-export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodInstruction,prodDetails,behindPiece,sizeFit,sizeNotes,madeClothesDesc,madeClothesImg}:ProductDetailProps){
-    let [sizeDetail, setSizeDetail] = useState(false)
-    let [details, setDetails] = useState(false)
-    let [instruction, setInstruction] = useState(false)
-    let [wmc, setWMC] = useState(false)
-    let [animate, setAnimate] = useState("translate-x-full opacity-0")
-    let productRate = reviews != undefined && reviews.length > 0 ? Math.ceil(reviews.reduce((prev, val) => { return prev + val.rates[product] },0)/reviews.length) : 0
+export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodInstruction,prodDetails,behindPiece,sizeFit,sizeNotes,madeClothesDesc,madeClothesImg,prodColors,setProductImage}:ProductDetailProps){
+    const [sizeDetail, setSizeDetail] = useState(false)
+    const [details, setDetails] = useState(false)
+    const [instruction, setInstruction] = useState(false)
+    const [wmc, setWMC] = useState(false)
+    const [animate, setAnimate] = useState("translate-x-full opacity-0")
+    const productRate = reviews != undefined && reviews.length > 0 ? Math.ceil(reviews.reduce((prev, val) => { return prev + val.rates[product] },0)/reviews.length) : 0
     const handleSize = (e: React.SyntheticEvent<HTMLButtonElement>) => {
         const sd = document.getElementById("sizeDetail")
         if(sd){
@@ -98,6 +100,25 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodIn
             <div className="w-full p-8 border border-secondary-1">
                 <h1 className="font-aboreto text-[52px] text-center leading-[135%]">{prodTitle}</h1>
                 <p className="font-trap leading-[150%] mt-5" dangerouslySetInnerHTML={{__html: prodDesc}}></p>
+                {   Object.keys(prodColors).length !== 0  &&
+                    <div className='mt-5'>
+                        <p className='font-trap text-base'>Available colors:</p>
+                        <div className='flex mt-3 gap-6'>
+                            {  
+                                Object.keys(prodColors).map(key => {
+                                    return(
+                                        <button key={key} onClick={(e: React.SyntheticEvent<HTMLButtonElement>) => setProductImage(prodColors[key][1])}>
+                                            <div className='flex flex-col justify-center items-center'>
+                                                <span className='w-[40px] h-[40px] rounded-full' style={{backgroundColor: prodColors[key][0], border: prodColors[key][0] == "#FFFFFF" ||  prodColors[key][0] == "#fbfcfd" ? "1px solid rgba(0, 0, 0, 0.28)" : ""}} />
+                                                <p className='font-trap text-sm mt-1'>{key}</p>
+                                            </div>
+                                        </button>
+                                    )
+                                })
+                            }
+                        </div>
+                    </div>
+                }
                 <div className="mt-5 flex flex-col md:flex-row items-center md:items-start">
                     { (reviews && reviews.length > 0) &&
                         <div className="flex mr-5">
@@ -152,9 +173,9 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodIn
                         }
                     </button>
                 </h2>
-                <div id="sizeDetail" className="mt-3 font-trap text-xl bg-cream-1 text-secondary-2 overflow-hidden transition-[max-height,padding] ease-linear px-3 duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
+                <div id="sizeDetail" className="mt-3 font-trap text-base bg-cream-1 text-secondary-2 overflow-hidden transition-[max-height,padding] ease-linear px-3 duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
                     <ul className="list-disc ml-[20px]">
-                        {sizeFit.map(v => <li>{v}</li>)}
+                        {sizeFit.map((v,i) => <li key={"sizeDetialList"+i}>{v}</li>)}
                     </ul>
                     <br />
                     <span className='font-bold'>{sizeNotes}</span>
@@ -177,10 +198,10 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodIn
                     </button>
                 </h2>
                 <div id='details' className="mt-3 px-3 font-trap text-xl bg-cream-1 text-secondary-2 overflow-hidden transition-[max-height,padding] ease-linear duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
-                    <ul className="list-disc list-inside">
+                    <ul className="list-disc list-inside text-base">
                         {
-                            prodDetails && prodDetails.map((v) => {
-                                return(<li>{v}</li>)
+                            prodDetails && prodDetails.map((v,i) => {
+                                return(<li key={"detials"+i}>{v}</li>)
                             })
                         }
                     </ul>
@@ -203,10 +224,10 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodIn
                     </button>
                 </h2>
                 <div id='instruction' className="mt-3 px-3 font-trap text-xl bg-cream-1 text-secondary-2 overflow-hidden transition-[max-height,padding] ease-linear duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
-                    <ul className="list-disc ml-[20px]">
+                    <ul className="list-disc ml-[20px] text-base">
                         {
-                            prodInstruction && prodInstruction.map((v) => {
-                                return(<li>{v}</li>)
+                            prodInstruction && prodInstruction.map((v,i) => {
+                                return(<li key={"intruction"+i}>{v}</li>)
                             })
                         }
                     </ul>
@@ -229,9 +250,9 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodIn
                     </button>
                 </h2>
                 <div id='wmc' className="mt-3 px-3 font-trap text-xl bg-cream-1 text-secondary-2 flex flex-col md:flex-row overflow-hidden transition-[max-height,padding] ease-linear duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
-                    <div className="w-full md:w-1/2 aspect-[192/119]" style={{backgroundImage: `url(${madeClothesImg})`}}></div>
+                    <div className="w-full md:w-1/2 aspect-[192/119] bg-contain bg-no-repeat" style={{backgroundImage: `url(${madeClothesImg})`}}></div>
                     <div className="w-full md:w-1/2 py-[27px] px-[34px]">
-                        <p className="font-trap text-2xl text-secondary-2 leading-[150%]" dangerouslySetInnerHTML={{__html: madeClothesDesc}}></p>
+                        <p className="font-trap text-base text-secondary-2 leading-[150%]" dangerouslySetInnerHTML={{__html: madeClothesDesc}}></p>
                     </div>
                 </div>
             </div>

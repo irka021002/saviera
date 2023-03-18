@@ -28,7 +28,7 @@ export default function StatusQuo({statusQuo}:StatusQuoProps){
     return(
         <div className="element-wrapper relative w-full h-fit bg-primary-2">
             <div className="relative w-full h-fit flex">
-                <div className="w-full md:w-1/2 aspect-[10/11] md:aspect-[8/7] bg-no-repeat" style={{backgroundImage: `url(${statusQuo.background})`}}>
+                <div className="w-full md:w-1/2 aspect-[10/11] md:aspect-[8/7] bg-no-repeat bg-cover" style={{backgroundImage: `url(${statusQuo.background})`}}>
                     <div className="bg-black w-full h-full opacity-60"></div>
                 </div>
                 <div className={`${animate} transition-all duration-700 ease-in-out animate absolute right-0 h-full left-0 md:content-center justify-center grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0 pt-10 md:pt-0`}>

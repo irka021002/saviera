@@ -73,21 +73,28 @@ export default function OurSentiment({ourSentiment,sentimentParagraph}:OurSentim
                         }
                     </div>
                     <div className={`transition-all ease-in-out duration-1000 carousel-inner relative w-full overflow-hidden`}>
-                        <div className="carousel-item active relative float-left w-full ">
-                            <div className="bg-[url('/image/homepage/promocta.png')] w-full aspect-[485/332]">
-                                <div className="bg-[rgba(0,0,0,0.3)] w-full h-full flex flex-col justify-center items-center">
-                                    <img width={60} height={60} src={People} alt="People Icon" />
-                                    <p className="text-center text-primary-2 text-[32px] font-montserrat leading-[135%]">THE PEOPLE</p>
-                                </div>
-                            </div>
-                            <div className="bg-white h-full p-3 grow w-full flex items-center justify-center flex-col">
-                                <ol className="list-decimal list-inside text-secondary-2 leading-[150%]">
-                                    <li>Vital to support the local economy by sourcing locally and manufacturing our products in Indonesia.</li>
-                                    <li>We collaborate with our entrusted Cut, Make, and Trim partner, Arunika. They accept low manufacturing order quantity, ensuring efficient ways of cutting to minimize fabric waste and treat their employees fairly.</li>
-                                    <li>We committed to being involved in local discussions and communities that serve the same value as us: closing the sustainability gap, supporting slow fashion, responsible consumption, and eco-conscious efforts.</li>
-                                </ol>
-                            </div>
-                        </div>
+                        {
+                            ourSentiment &&
+                            ourSentiment.map((v,i) => {
+                                return(
+                                    <div key={"sentimentSlide"+i} className={i == 0 ? "carousel-item active relative float-left w-full" : "carousel-item relative float-left w-full"}>
+                                        <div className="w-full aspect-[485/332]" style={{backgroundImage: `url(${v.thumbnail})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+                                            <div className="bg-[rgba(0,0,0,0.3)] w-full h-full flex flex-col justify-center items-center">
+                                                <img width={60} height={60} src={v.icon} alt="." />
+                                                <p className="text-center text-primary-2 text-[32px] font-montserrat leading-[135%]">{v.sentiment}</p>
+                                            </div>
+                                        </div>
+                                        <div className="bg-white h-full p-3 grow w-full flex items-center justify-center flex-col">
+                                            <ol className="list-decimal list-inside text-secondary-2 leading-[150%]">
+                                                {
+                                                    v.sentimentPoint.map((v,i) => <li key={"sentimentPointSlider"+i}>{v}</li>)
+                                                }
+                                            </ol>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        }
                         <div className="carousel-item relative float-left w-full">
                             <div className="bg-[url('/image/homepage/promocta.png')] w-full aspect-[485/332]">
                                 <div className="bg-[rgba(0,0,0,0.3)] w-full h-full flex flex-col justify-center items-center">
@@ -155,7 +162,9 @@ export default function OurSentiment({ourSentiment,sentimentParagraph}:OurSentim
                     })
                 }
             </div>
-            <div id="textSentiment" className={`${textAnim} transition-all font-trap duration-700 ease-in-out text-center px-6 md:px-0 py-20 text-2xl leading-[150%] bg-primary-2`} dangerouslySetInnerHTML={{__html: sentimentParagraph}}></div>
+            <div id="textSentiment" className={`${textAnim} transition-all justify-center font-trap duration-700 ease-in-out grid grid-cols-6 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] md:gap-y-10 text-center px-6 md:px-0 py-20 text-2xl leading-[150%] bg-primary-2`}>
+                <p className="col-span-12" dangerouslySetInnerHTML={{__html: sentimentParagraph}}></p>
+            </div>
         </div>
     )
 }
