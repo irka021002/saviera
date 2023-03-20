@@ -1,60 +1,50 @@
-import Image1 from "../../../public/image/homepage/promocta.png"
-export default function HeroBanner(){
+interface HeroBannerProps{
+    heroPic: Array<string>;
+}
+export default function Props({heroPic}:HeroBannerProps){
     return(
         <div id="carouselHero" className="carousel slide relative mt-[-80px] md:mt-[-100px] aspect-[36/41] md:aspect-auto" data-bs-ride="carousel">
             <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
-                <button
-                    type="button"
-                    data-bs-target="#carouselHero"
-                    data-bs-slide-to="0"
-                    className="active"
-                    aria-current="true"
-                    aria-label="Slide 1"
-                ></button>
-                <button
-                    type="button"
-                    data-bs-target="#carouselHero"
-                    data-bs-slide-to="1"
-                    aria-label="Slide 2"
-                ></button>
-                <button
-                    type="button"
-                    data-bs-target="#carouselHero"
-                    data-bs-slide-to="2"
-                    aria-label="Slide 3"
-                ></button>
+                {
+                    heroPic.map((v,i) => {
+                        return(
+                            <button
+                                data-bs-target="#carouselHero"
+                                data-bs-slide-to={i}
+                                className={`${i == 0 ? "active" : ""}`}
+                                aria-current={`${i == 0 ? "true" : "false"}`}
+                                aria-label={`${"Slide " + (i+1)}`}
+                                key={i}
+                            ></button> 
+                        )
+                    })
+                }
             </div>
             <div className="carousel-inner relative w-full overflow-hidden">
-                <div className="carousel-item active relative float-left w-full ">
-                    <div className="bg-black absolute w-full h-full opacity-30"></div>
-                    <img
-                        src="/image/homepage/promocta.png"
-                        className="block w-full aspect-[36/41] md:aspect-auto"
-                        alt="..."
-                    />
-                </div>
-                <div className="carousel-item relative float-left w-full">
-                    <img
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
-                        className="block w-full aspect-[36/41] md:aspect-auto"
-                        alt="..."
-                    />
-                    <div className="carousel-caption hidden md:block absolute text-center">
-                        <h5 className="text-xl">Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
+                {
+                    heroPic.length == 0 ?
+                    <div className={`carousel-item active relative float-left w-full`}>
+                        <div className="bg-black absolute w-full h-full opacity-30"></div>
+                        <img
+                            src="/image/homepage/grayBg.png"
+                            className="block w-full aspect-[36/41] md:aspect-auto"
+                            alt="..."
+                        />
                     </div>
-                </div>
-                <div className="carousel-item relative float-left w-full">
-                    <img
-                        src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
-                        className="block w-full aspect-[36/41] md:aspect-auto"
-                        alt="..."
-                    />
-                    <div className="carousel-caption hidden md:block absolute text-center">
-                        <h5 className="text-xl">Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
-                </div>
+                    :
+                    heroPic.map((v,i) => {
+                        return(
+                            <div key={i} className={`carousel-item ${i == 0 ? "active" : ""} relative float-left w-full`}>
+                                <div className="bg-black absolute w-full h-full opacity-30"></div>
+                                <img
+                                    src={v}
+                                    className="block w-full aspect-[36/41] md:aspect-auto"
+                                    alt="..."
+                                />
+                            </div>
+                        )
+                    })
+                }
             </div>
             <button
                 className="carousel-control-prev absolute top-0 bottom-0 flex items-center justify-center p-0 text-center border-0 hover:outline-none hover:no-underline focus:outline-none focus:no-underline left-0"

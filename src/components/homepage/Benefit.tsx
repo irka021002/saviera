@@ -1,9 +1,19 @@
 import Money from "../../assets/icon/money.svg"
 import Leaf from "../../assets/icon/leaf.svg"
 import DNA from "../../assets/icon/dna.svg"
+import { useState,useEffect } from "react"
 export default function Benefit(){
+    const [animate, setAnimate] = useState("max-h-0 py-0")
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {if(entry.isIntersecting) setAnimate("max-h-[2000px] py-[40px] md:py-[120px]")}));
+    useEffect(() => {
+        const wrapper = document.getElementById("benefitWrapper")
+        if(wrapper) observer.observe(wrapper)
+        return () => {
+            if(wrapper) observer.unobserve(wrapper)
+        }
+    },[])
     return(
-        <div className="py-[40px] md:py-[120px] bg-[url('/image/savtowear/hero.png')]">
+        <div id="benefitWrapper" className={`${animate} transition-all duration-1000 ease-in-out overflow-hidden bg-[url('/image/savtowear/hero.png')]`}>
             <div id="benefitCarousel" className="carousel px-6 slide block md:hidden" data-bs-ride="carousel">
                 <div className="carousel-inner relative overflow-hidden">
                     <div className="carousel-item active float-left w-full text-center px-6 py-14 bg-white rounded">
@@ -19,7 +29,7 @@ export default function Benefit(){
                     <div className="carousel-item float-left w-full  text-center px-6 py-8 bg-white rounded">
                         <img className="m-auto" src={DNA} alt="DNA Icon" />
                         <h2 className="text-2xl font-montserrat mb-3 mt-6">Co-create is in Our DNA</h2>
-                        <p className="break-words">Got any ideas for collaboration or inventions?<br />Email at <span className="underline">fairy@saviera.co</span> withthe subject “Hot Stuff”</p>
+                        <p className="break-words">Got any ideas for collaboration or inventions?<br />Email at <span className="underline">fairy@saviera.co</span><br/> with the subject “Hot Stuff”</p>
                     </div>
                 </div>
                 <div className="carousel-indicators flex justify-center p-0 mb-4 black-indicators">
@@ -59,7 +69,7 @@ export default function Benefit(){
                 <div className="col-span-6 md:col-span-4 text-center px-6 py-8 bg-white rounded">
                     <img className="m-auto" src={DNA} alt="DNA Icon" />
                     <h2 className="text-2xl font-montserrat mb-3 mt-6">Co-create is in Our DNA</h2>
-                    <p>Got any ideas for collaboration or inventions?<br />Email at <span className="underline">fairy@saviera.co</span> withthe subject “Hot Stuff”</p>
+                    <p>Got any ideas for collaboration or inventions?<br />Email at <span className="underline">fairy@saviera.co</span> with the subject “Hot Stuff”</p>
                 </div>
             </div>
         </div>
