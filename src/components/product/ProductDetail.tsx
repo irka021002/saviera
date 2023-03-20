@@ -18,8 +18,9 @@ interface ProductDetailProps{
     sizeNotes: string;
     madeClothesDesc: string;
     madeClothesImg: string;
+    redirectURL: string;
 }
-export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodInstruction,prodDetails,behindPiece,sizeFit,sizeNotes,madeClothesDesc,madeClothesImg}:ProductDetailProps){
+export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodInstruction,prodDetails,behindPiece,sizeFit,sizeNotes,madeClothesDesc,madeClothesImg, redirectURL}:ProductDetailProps){
     let [sizeDetail, setSizeDetail] = useState(false)
     let [details, setDetails] = useState(false)
     let [instruction, setInstruction] = useState(false)
@@ -132,9 +133,12 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodIn
                         <span></span>
                     }
                 </div>
+                <a href={redirectURL} target="_blank">
                 <button className="hover:border-opacity-30 mt-8 border border-accent-2 rounded w-full p-[10px] fant-montserrat font-medium leading-[150%] text-accent-2">
                     OWN THIS ITEM
                 </button>
+
+                </a>
             </div>
             <div className="w-full mt-[60px]">
                 <h2 className="p-3 flex justify-between items-center font-montserrat text-secondary-2 font-bold text-xl md:text-3xl bg-cream-1">

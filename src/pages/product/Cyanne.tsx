@@ -129,7 +129,7 @@ export default function Cyanne(){
         <>
             <div className="justify-center grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0 mt-10">
                 <ProductGallery pic={picData} />
-                <ProductDetail sizeFit={sizeFit} sizeNotes={sizeNotes} madeClothesDesc={madeClotheDesc} madeClothesImg="" product="Cyanne" reviews={reviews} behindPiece={behindPiece} prodDetails={prodDetails} prodInstruction={prodInstruction} prodTitle={prodTitle} prodDesc={prodDesc} />
+                <ProductDetail sizeFit={sizeFit} sizeNotes={sizeNotes} madeClothesDesc={madeClotheDesc} madeClothesImg="" product="Cyanne" reviews={reviews} behindPiece={behindPiece} prodDetails={prodDetails} prodInstruction={prodInstruction} prodTitle={prodTitle} prodDesc={prodDesc} redirectURL="https://wa.me/628175199968?text=Hi%20Saviera.co%20I%20would%20like%20to%20place%20an%20order%20for%20Cyanne.%0ACan%20you%20assist%20me%3F" />
             </div>
         </>
     )
