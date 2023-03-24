@@ -115,44 +115,54 @@ export default function Cyanne(){
     let prodDesc= "Wrap top that lasts beyond the season. Belt included (sewed in the back). Tailored by artisans to achieve impeccable woven details. A top-notch statement piece to wear as an outer and elevated chic top."
     let behindPiece = "Between calmness and passion, chaos and order, the yin to the yang. She placed herself in a juxtaposition. <br/><br/>An outsider looking inside.<br/>An insider looking outside. <br/><br/>Not to pursue a focal point but to adapt and harness a purpose. So it fuels passion. <br/>Cyanne embodies a modern gentlewoman inspired by a luxurious trench coat and the assimilation of kimono easiness. <br/><br/>Suits for the chic and significant go-getters, busy bees, and hustlers that crave an effortlessly posh yet classic look. Fabric is 100% organic cotton that is chemical-free, ethically produced, and significantly uses a lower energy consumption. Moreover, it is breathable, hypoallergenic, and easy to maintain. The fabric is the latest innovation to create a crinkle, slub, and crepe texture. Making it look expensive."
     const [productImage, setProductImage] = useState([
-        "/product/cyanne/1.png",
-        "/product/cyanne/2.png",
-        "/product/cyanne/3.png",
-        "/product/cyanne/4.png",
-        "/product/cyanne/5.png",
-        "/product/cyanne/6.png",
-        "/product/cyanne/7.png",
-        "/product/cyanne/8.png",
-        "/product/cyanne/9.png",
-        "/product/cyanne/10.png",
+        "/product/cyanne/Charcoal/sm/1.png",
+        "/product/cyanne/Charcoal/sm/2.png",
+        "/product/cyanne/Charcoal/sm/3.png",
+        "/product/cyanne/Charcoal/sm/4.png",
+        "/product/cyanne/Charcoal/sm/5.png",
+        "/product/cyanne/Charcoal/sm/6.png",
+        "/product/cyanne/Charcoal/sm/7.png",
+        "/product/cyanne/Charcoal/sm/8.png",
+        "/product/cyanne/Charcoal/sm/9.png",
+        "/product/cyanne/Porcelain/sm/1.png",
+        "/product/cyanne/Porcelain/sm/2.png",
+        "/product/cyanne/Porcelain/sm/3.png",
+        "/product/cyanne/Porcelain/sm/4.png",
+        "/product/cyanne/Porcelain/sm/5.png",
+        "/product/cyanne/Porcelain/sm/6.png",
+        "/product/cyanne/Porcelain/sm/7.png",
+        "/product/cyanne/Porcelain/sm/8.png",
+        "/product/cyanne/Porcelain/sm/9.png",
+        "/product/cyanne/Porcelain/sm/10.png",
     ])
     let prodColors = {
         "Charcoal": [
             "#1E1A24",
             [
-                "/product/cyanne/Charcoal/1.png",
-                "/product/cyanne/Charcoal/2.png",
-                "/product/cyanne/Charcoal/3.png",
-                "/product/cyanne/Charcoal/4.png",
-                "/product/cyanne/Charcoal/5.png",
-                "/product/cyanne/Charcoal/6.png",
-                "/product/cyanne/Charcoal/7.png",
-                "/product/cyanne/Charcoal/8.png",
-                "/product/cyanne/Charcoal/9.png",
+                "/product/cyanne/Charcoal/sm/1.png",
+                "/product/cyanne/Charcoal/sm/2.png",
+                "/product/cyanne/Charcoal/sm/3.png",
+                "/product/cyanne/Charcoal/sm/4.png",
+                "/product/cyanne/Charcoal/sm/5.png",
+                "/product/cyanne/Charcoal/sm/6.png",
+                "/product/cyanne/Charcoal/sm/7.png",
+                "/product/cyanne/Charcoal/sm/8.png",
+                "/product/cyanne/Charcoal/sm/9.png",
             ]
         ],
         "Porcelain": [
             "#FFFFFF",
             [
-                "/product/cyanne/Porcelain/1.png",
-                "/product/cyanne/Porcelain/2.png",
-                "/product/cyanne/Porcelain/3.png",
-                "/product/cyanne/Porcelain/4.png",
-                "/product/cyanne/Porcelain/5.png",
-                "/product/cyanne/Porcelain/6.png",
-                "/product/cyanne/Porcelain/7.png",
-                "/product/cyanne/Porcelain/8.png",
-                "/product/cyanne/Porcelain/9.png",
+                "/product/cyanne/Porcelain/sm/1.png",
+                "/product/cyanne/Porcelain/sm/2.png",
+                "/product/cyanne/Porcelain/sm/3.png",
+                "/product/cyanne/Porcelain/sm/4.png",
+                "/product/cyanne/Porcelain/sm/5.png",
+                "/product/cyanne/Porcelain/sm/6.png",
+                "/product/cyanne/Porcelain/sm/7.png",
+                "/product/cyanne/Porcelain/sm/8.png",
+                "/product/cyanne/Porcelain/sm/9.png",
+                "/product/cyanne/Porcelain/sm/10.png",
             ]
         ]
     }
@@ -160,7 +170,7 @@ export default function Cyanne(){
         <>
             <div className="justify-center grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0 mt-10">
                 <ProductGallery pic={productImage} />
-                <ProductDetail setProductImage={(setProductImage)} prodColors={prodColors} sizeFit={sizeFit} sizeNotes={sizeNotes} madeClothesDesc={madeClotheDesc} madeClothesImg="/product/cyanne/who.png" product="Cyanne" reviews={reviews} behindPiece={behindPiece} prodDetails={prodDetails} prodInstruction={prodInstruction} prodTitle={prodTitle} prodDesc={prodDesc} />
+                <ProductDetail productPrice={450000} productLink="https://wa.me/628175199968?text=Hi%20Saviera.co%20I%20would%20like%20to%20place%20an%20order%20for%20Cyanne.%0ACan%20you%20assist%20me%3F" setProductImage={(setProductImage)} prodColors={prodColors} sizeFit={sizeFit} sizeNotes={sizeNotes} madeClothesDesc={madeClotheDesc} madeClothesImg="/product/cyanne/who.png" product="Cyanne" reviews={reviews} behindPiece={behindPiece} prodDetails={prodDetails} prodInstruction={prodInstruction} prodTitle={prodTitle} prodDesc={prodDesc} />
             </div>
         </>
     )

@@ -106,50 +106,59 @@ export default function Weiyi(){
     let prodDesc= "A relaxed, elegant, and fitting double-breasted blazer in asymmetrical cutting. Buttons inside, aiming for a sculptural look.    <br/><br/>This piece comes in three color selections: Ecru, Fawn, and Taupe."
     let behindPiece = "From the silent dawn to the black nights, society has taught us to seek completion and accomplishments. Life is fulfilling by crossing out duties. To be wise, one must understand what one wants. Be it the energy poured, intention sets, and activities that get done.<br/><br/>Wei Yi, which translates to ‘the only one’ in Chinese, pointed to the 1% of those who needed a statement piece with a safe twist. Achieve a formal, modern look that is effortlessly professional. <br/><br/>Inspired by the achiever, intentional individuals who work the very best, day and night, for a better tomorrow. The one who always stands out because wherever she goes, she blooms.<br/><br/>Three warm color tones to choose from, making it an easy add-on to anyone’s wardrobe and style. We use locally made and sourced linen from Jakarta (with the trade name: Greece linen). Linen is one of the most well-known sustainable fibers. It gives a classy, elegant, and gorgeous look. The more it ages, the better the fabric becomes!"
     const [productImage, setProductImage] = useState([
-        "/product/wei-yi/1.png",
-        "/product/wei-yi/2.png",
-        "/product/wei-yi/3.png",
-        "/product/wei-yi/4.png",
-        "/product/wei-yi/5.png",
-        "/product/wei-yi/6.png",
-        "/product/wei-yi/7.png",
-        "/product/wei-yi/8.png",
-        "/product/wei-yi/9.png",
-        "/product/wei-yi/10.png",
+        "/product/wei-yi/Brown/sm/1.png",
+        "/product/wei-yi/Brown/sm/2.png",
+        "/product/wei-yi/Brown/sm/3.png",
+        "/product/wei-yi/Brown/sm/4.png",
+        "/product/wei-yi/Brown/sm/5.png",
+        "/product/wei-yi/Brown/sm/6.png",
+        "/product/wei-yi/Brown/sm/7.png",
+        "/product/wei-yi/Mauve/sm/1.png",
+        "/product/wei-yi/Mauve/sm/2.png",
+        "/product/wei-yi/Mauve/sm/3.png",
+        "/product/wei-yi/Mauve/sm/4.png",
+        "/product/wei-yi/Mauve/sm/5.png",
+        "/product/wei-yi/Taupe/sm/1.png",
+        "/product/wei-yi/Taupe/sm/2.png",
+        "/product/wei-yi/Taupe/sm/3.png",
+        "/product/wei-yi/Taupe/sm/4.png",
+        "/product/wei-yi/Taupe/sm/5.png",
+        "/product/wei-yi/Taupe/sm/6.png",
+        "/product/wei-yi/Taupe/sm/7.png",
     ])
     let prodColors = {
         "Brown": [
             "#7D5038",
             [
-                "/product/wei-yi/Brown/1.png",
-                "/product/wei-yi/Brown/2.png",
-                "/product/wei-yi/Brown/3.png",
-                "/product/wei-yi/Brown/4.png",
-                "/product/wei-yi/Brown/5.png",
-                "/product/wei-yi/Brown/6.png",
-                "/product/wei-yi/Brown/7.png"
+                "/product/wei-yi/Brown/sm/1.png",
+                "/product/wei-yi/Brown/sm/2.png",
+                "/product/wei-yi/Brown/sm/3.png",
+                "/product/wei-yi/Brown/sm/4.png",
+                "/product/wei-yi/Brown/sm/5.png",
+                "/product/wei-yi/Brown/sm/6.png",
+                "/product/wei-yi/Brown/sm/7.png"
             ]
         ],
         "Mauve": [
             "#DCD8CF",
             [
-                "/product/wei-yi/Mauve/1.png",
-                "/product/wei-yi/Mauve/2.png",
-                "/product/wei-yi/Mauve/3.png",
-                "/product/wei-yi/Mauve/4.png",
-                "/product/wei-yi/Mauve/5.png"
+                "/product/wei-yi/Mauve/sm/1.png",
+                "/product/wei-yi/Mauve/sm/2.png",
+                "/product/wei-yi/Mauve/sm/3.png",
+                "/product/wei-yi/Mauve/sm/4.png",
+                "/product/wei-yi/Mauve/sm/5.png"
             ]
         ],
         "Taupe": [
             "#B4ACA2",
             [
-                "/product/wei-yi/Taupe/1.png",
-                "/product/wei-yi/Taupe/2.png",
-                "/product/wei-yi/Taupe/3.png",
-                "/product/wei-yi/Taupe/4.png",
-                "/product/wei-yi/Taupe/5.png",
-                "/product/wei-yi/Taupe/6.png",
-                "/product/wei-yi/Taupe/7.png"
+                "/product/wei-yi/Taupe/sm/1.png",
+                "/product/wei-yi/Taupe/sm/2.png",
+                "/product/wei-yi/Taupe/sm/3.png",
+                "/product/wei-yi/Taupe/sm/4.png",
+                "/product/wei-yi/Taupe/sm/5.png",
+                "/product/wei-yi/Taupe/sm/6.png",
+                "/product/wei-yi/Taupe/sm/7.png"
             ]
         ],
     }
@@ -157,7 +166,7 @@ export default function Weiyi(){
         <>
             <div className="justify-center grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0 mt-10">
                 <ProductGallery pic={productImage} />
-                <ProductDetail setProductImage={setProductImage} prodColors={prodColors} madeClothesDesc={madeClothesDesc} madeClothesImg="/product/wei-yi/who.png" sizeNotes={sizeNotes} sizeFit={sizeFit} product="Wei Yi" reviews={reviews} behindPiece={behindPiece} prodDetails={prodDetails} prodInstruction={prodInstruction} prodTitle={prodTitle} prodDesc={prodDesc} />
+                <ProductDetail productPrice={380000} productLink="https://wa.me/628175199968?text=Hi%20Saviera.co%20I%20would%20like%20to%20place%20an%20order%20for%20Wei%20Yi.%0ACan%20you%20assist%20me%3F" setProductImage={setProductImage} prodColors={prodColors} madeClothesDesc={madeClothesDesc} madeClothesImg="/product/wei-yi/who.png" sizeNotes={sizeNotes} sizeFit={sizeFit} product="Wei Yi" reviews={reviews} behindPiece={behindPiece} prodDetails={prodDetails} prodInstruction={prodInstruction} prodTitle={prodTitle} prodDesc={prodDesc} />
             </div>
         </>
     )

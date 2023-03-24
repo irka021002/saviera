@@ -20,8 +20,10 @@ interface ProductDetailProps{
     madeClothesImg: string;
     prodColors: { [key: string]: any; };
     setProductImage: React.Dispatch<React.SetStateAction<Array<string>>>;
+    productLink: string;
+    productPrice?: number;
 }
-export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodInstruction,prodDetails,behindPiece,sizeFit,sizeNotes,madeClothesDesc,madeClothesImg,prodColors,setProductImage}:ProductDetailProps){
+export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodInstruction,prodDetails,behindPiece,sizeFit,sizeNotes,madeClothesDesc,madeClothesImg,prodColors,setProductImage,productLink,productPrice}:ProductDetailProps){
     const [sizeDetail, setSizeDetail] = useState(false)
     const [details, setDetails] = useState(false)
     const [instruction, setInstruction] = useState(false)
@@ -100,6 +102,7 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodIn
             <div className="w-full p-8 border border-secondary-1">
                 <h1 className="font-aboreto text-[52px] text-center leading-[135%]">{prodTitle}</h1>
                 <p className="font-trap leading-[150%] mt-5" dangerouslySetInnerHTML={{__html: prodDesc}}></p>
+                {productPrice && <p className='font-trap leading-[150%] mt-2 text-center text-xl'>Rp {(new Intl.NumberFormat('en-US')).format(productPrice)}</p>}
                 {   Object.keys(prodColors).length !== 0  &&
                     <div className='mt-5'>
                         <p className='font-trap text-base'>Available colors:</p>
@@ -153,9 +156,9 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodIn
                         <span></span>
                     }
                 </div>
-                <button className="hover:border-opacity-30 mt-8 border border-accent-2 rounded w-full p-[10px] fant-montserrat font-medium leading-[150%] text-accent-2">
+                <a target="_blank" href={productLink} className="block text-center hover:border-opacity-30 mt-8 border border-accent-2 rounded w-full p-[10px] fant-montserrat font-medium leading-[150%] text-accent-2">
                     OWN THIS ITEM
-                </button>
+                </a>
             </div>
             <div className="w-full mt-[60px]">
                 <h2 className="p-3 flex justify-between items-center font-montserrat text-secondary-2 font-bold text-xl md:text-3xl bg-cream-1">

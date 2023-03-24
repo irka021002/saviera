@@ -7,7 +7,7 @@ export default function ProductGallery({pic}:ProductGalleryProps){
     let handlePreview = (e: React.SyntheticEvent<HTMLImageElement>) => {
         const productPreview = document.getElementById("productPreview") as HTMLImageElement
         if(productPreview && e.currentTarget.dataset["id"]){
-            productPreview.src = e.currentTarget.src
+            productPreview.src = e.currentTarget.src.replace("sm/", "")
             setImageIndex(parseInt(e.currentTarget.dataset["id"]))
         }
     }
@@ -18,20 +18,20 @@ export default function ProductGallery({pic}:ProductGalleryProps){
     const handleNext = (e: React.SyntheticEvent<HTMLButtonElement>) => {
         const productPreview = document.getElementById("productPreview") as HTMLImageElement
         if(imageIndex < pic.length-1 && productPreview){
-            productPreview.src = pic[imageIndex+1]
+            productPreview.src = pic[imageIndex+1].replace("sm/", "")
             setImageIndex(imageIndex+1)
         }else{
             setImageIndex(0)
-            productPreview.src = pic[0]
+            productPreview.src = pic[0].replace("sm/", "")
         }
     }
     const handlePrev = (e: React.SyntheticEvent<HTMLButtonElement>) => {
         const productPreview = document.getElementById("productPreview") as HTMLImageElement
         if(imageIndex > 0 && productPreview){
-            productPreview.src = pic[imageIndex-1]
+            productPreview.src = pic[imageIndex-1].replace("sm/", "")
             setImageIndex(imageIndex-1)
         }else{
-            productPreview.src = pic[pic.length-1]
+            productPreview.src = pic[pic.length-1].replace("sm/", "")
             setImageIndex(pic.length-1)
         }
     }

@@ -3,7 +3,7 @@ interface HeroBannerProps{
 }
 export default function Props({heroPic}:HeroBannerProps){
     return(
-        <div id="carouselHero" className="carousel slide relative mt-[-80px] md:mt-[-100px] aspect-[36/41] md:aspect-auto" data-bs-ride="carousel">
+        <div id="carouselHero" className="carousel slide relative mt-[-80px] md:mt-[-100px] aspect-video md:aspect-auto" data-bs-ride="carousel">
             <div className="carousel-indicators absolute right-0 bottom-0 left-0 flex justify-center p-0 mb-4">
                 {
                     heroPic.map((v,i) => {
@@ -37,8 +37,13 @@ export default function Props({heroPic}:HeroBannerProps){
                             <div key={i} className={`carousel-item ${i == 0 ? "active" : ""} relative float-left w-full`}>
                                 <div className="bg-black absolute w-full h-full opacity-30"></div>
                                 <img
-                                    src={v}
-                                    className="block w-full aspect-[36/41] md:aspect-auto"
+                                    src={v[0]}
+                                    className="md:block w-full hidden md:aspect-auto"
+                                    alt="..."
+                                />
+                                <img
+                                    src={v[1]}
+                                    className="block w-full aspect-[36/41] md:hidden"
                                     alt="..."
                                 />
                             </div>

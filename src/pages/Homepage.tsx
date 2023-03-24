@@ -10,7 +10,7 @@ import useCookies from "react-cookie/cjs/useCookies";
 interface CTA{
     title: string;
     description: string;
-    background: string;
+    background: Array<string>;
 }
 interface InstagramWidget{
     image: string;
@@ -19,7 +19,7 @@ interface InstagramWidget{
 export default function Homepage(){
     const [cookies, setCookie] = useCookies(['access-token','refresh-token'])
     const [heroPic,setHeroPic] = useState<Array<string>>([])
-    const [cta, setCta] = useState<CTA>({title: "",description: "", background: ""})
+    const [cta, setCta] = useState<CTA>({title: "",description: "", background: []})
     const [instaPic, setInstaPic] = useState<Array<InstagramWidget>>([])
     const [omniaPic, setOmniaPic] = useState("")
     const [weiyiPic, setWeiyiPic] = useState("")

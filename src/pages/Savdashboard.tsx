@@ -4,7 +4,7 @@ import useCookies from "react-cookie/cjs/useCookies";
 interface CTA{
     title: string;
     description: string;
-    background: string;
+    background: Array<string>;
 }
 interface StatusQuo{
     title: string;
@@ -32,6 +32,8 @@ export default function Savdashboard(){
     const [cookies, setCookie] = useCookies(['access-token','refresh-token'])
     const [heroPicFile, setHeroPicFile] = useState<File>(new File([""], "filename"))
     const [selectedHeroPic,setSelectedHeroPic] = useState("")
+    const [heroPicFileMobile, setHeroPicFileMobile] = useState<File>(new File([""], "filename"))
+    const [selectedHeroPicMobile,setSelectedHeroPicMobile] = useState("")
     const [sentimentThumbnail, setSentimentThumbnail] = useState<File>(new File([""], "filename"))
     const [sentimentThumbnailPic, setSentimentThumbnailPic] = useState("")
     const [sentimentIcon, setSentimentIcon] = useState<File>(new File([""], "filename"))
@@ -53,8 +55,8 @@ export default function Savdashboard(){
     const [omniaPic, setOmniaPic] = useState("")  // for database
     const [weiyiPic, setWeiyiPic] = useState("")  // for database
     const [cyannePic, setCyannePic] = useState("")  // for database
-    const [heroPic,setHeroPic] = useState<Array<string>>([]) // for database
-    const [cta, setCta] = useState<CTA>({title: "",description: "",background: ""}) // for database
+    const [heroPic,setHeroPic] = useState<Array<Array<string>>>([]) // for database
+    const [cta, setCta] = useState<CTA>({title: "",description: "",background: new Array(2)}) // for database
     const [sentimentParagraph, setSentimentParagraph] = useState("") // for database
     const [ourSentiment, setOurSentiment] = useState<Array<OurSentiment>>([]) // for database
     const [statusQuo, setStatusQuo] = useState<StatusQuo>({title: "",description: "", background: ""}) // for database
@@ -171,6 +173,12 @@ export default function Savdashboard(){
             setHeroPicFile(e.currentTarget.files[0])
         }
     }
+    const handleSelectPicMobile = (e:React.SyntheticEvent<HTMLInputElement>) => {
+        if(e.currentTarget.files){
+            setSelectedHeroPicMobile(URL.createObjectURL(e.currentTarget.files[0]))
+            setHeroPicFileMobile(e.currentTarget.files[0])
+        }
+    }
     const handleSelectSentimentThumbnail = (e:React.SyntheticEvent<HTMLInputElement>) => {
         if(e.currentTarget.files){
             setSentimentThumbnailPic(URL.createObjectURL(e.currentTarget.files[0]))
@@ -197,12 +205,29 @@ export default function Savdashboard(){
                         data
                     )
                         .then(v => {
-                            setHeroPic([...heroPic,v.data.data.display_url])
+                            const fr2 = new FileReader()
+                            fr2.readAsDataURL(heroPicFileMobile)
+                            fr2.onloadend = (ev: ProgressEvent<FileReader>) => {
+                                if(fr2 && fr2.result != undefined && typeof(fr2.result) === 'string'){
+                                    let data = new FormData()
+                                    data.set('key',import.meta.env.VITE_IMGBBAPI)
+                                    data.set('image', fr2.result.split(",")[1])
+                                    axios.post(
+                                        'https://api.imgbb.com/1/upload',
+                                        data
+                                    )
+                                        .then(v2 => {
+                                            setHeroPic([...heroPic,[v.data.data.url,v2.data.data.url]])
+                                        })
+                                }
+                            }
                         })
                 }
             }
             setSelectedHeroPic("")
             setHeroPicFile(new File([""], "filename"))
+            setSelectedHeroPicMobile("")
+            setHeroPicFileMobile(new File([""], "filename"))
         }
     }
     const handleRemoveInstaPic = (e:React.SyntheticEvent<HTMLButtonElement>) => {
@@ -230,7 +255,7 @@ export default function Savdashboard(){
                         data
                     )
                         .then(v => {
-                            setInstaPic([...instaPic,{image: v.data.data.display_url, url: urlPostIG}])
+                            setInstaPic([...instaPic,{image: v.data.data.url, url: urlPostIG}])
                             setUrlPostIg("")
                         })
                 }
@@ -380,7 +405,7 @@ export default function Savdashboard(){
                         data
                     )
                         .then(v1 => {
-                            setSentimentThumbnailPic(v1.data.data.display_url)
+                            setSentimentThumbnailPic(v1.data.data.url)
                             fr2.readAsDataURL(sentimentIcon)
                             fr2.onloadend = (ev: ProgressEvent<FileReader>) => {
                                 if(fr2 && fr2.result != undefined && typeof(fr2.result) === 'string'){
@@ -392,8 +417,8 @@ export default function Savdashboard(){
                                         data
                                     )
                                         .then(v2 => {
-                                            setSentimentIconPic(v2.data.data.display_url)
-                                            setOurSentiment([...ourSentiment,{thumbnail: v1.data.data.display_url, icon: v2.data.data.display_url, sentiment: sentimentText, sentimentPoint: sentimentPoint.split(";") }])
+                                            setSentimentIconPic(v2.data.data.url)
+                                            setOurSentiment([...ourSentiment,{thumbnail: v1.data.data.url, icon: v2.data.data.url, sentiment: sentimentText, sentimentPoint: sentimentPoint.split(";") }])
                                             setSentimentIcon(new File([""], "filename"))
                                             setSentimentThumbnail(new File([""], "filename"))
                                             setSentimentIconPic("")
@@ -422,7 +447,7 @@ export default function Savdashboard(){
                         data
                     )
                         .then(v => {
-                            setAboutHeroPic(v.data.data.display_url)
+                            setAboutHeroPic(v.data.data.url)
                         })
                 }
             }
@@ -442,7 +467,7 @@ export default function Savdashboard(){
                         data
                     )
                         .then(v => {
-                            setStatusQuo({...statusQuo,background: v.data.data.display_url})
+                            setStatusQuo({...statusQuo,background: v.data.data.url})
                         })
                 }
             }
@@ -462,7 +487,27 @@ export default function Savdashboard(){
                         data
                     )
                         .then(v => {
-                            setCta({...cta,background: v.data.data.display_url})
+                            setCta({...cta,background: [v.data.data.url,cta.background[1]]})
+                        })
+                }
+            }
+        }
+    }
+    const handleCTAImageMobile = (e:React.SyntheticEvent<HTMLInputElement>) => {
+        const fr = new FileReader()
+        if(e.currentTarget.files){
+            fr.readAsDataURL(e.currentTarget.files[0])
+            fr.onloadend = (ev: ProgressEvent<FileReader>) => {
+                if(fr && fr.result != undefined && typeof(fr.result) === 'string'){
+                    let data = new FormData()
+                    data.set('key',import.meta.env.VITE_IMGBBAPI)
+                    data.set('image', fr.result.split(",")[1])
+                    axios.post(
+                        'https://api.imgbb.com/1/upload',
+                        data
+                    )
+                        .then(v => {
+                            setCta({...cta,background: [cta.background[0],v.data.data.url]})
                         })
                 }
             }
@@ -491,7 +536,7 @@ export default function Savdashboard(){
                         data
                     )
                         .then(v => {
-                            setArchetypesImageAfterTable(v.data.data.display_url)
+                            setArchetypesImageAfterTable(v.data.data.url)
                         })
                 }
             }
@@ -511,7 +556,7 @@ export default function Savdashboard(){
                         data
                     )
                         .then(v => {
-                            setArchetypesCarousel([...archetypesCarousel,{image: v.data.data.display_url, text: archetypesText}])
+                            setArchetypesCarousel([...archetypesCarousel,{image: v.data.data.url, text: archetypesText}])
                         })
                 }
             }
@@ -542,7 +587,7 @@ export default function Savdashboard(){
                         data
                     )
                         .then(v => {
-                            setOmniaPic(v.data.data.display_url)
+                            setOmniaPic(v.data.data.url)
                         })
                 }
             }
@@ -562,7 +607,7 @@ export default function Savdashboard(){
                         data
                     )
                         .then(v => {
-                            setWeiyiPic(v.data.data.display_url)
+                            setWeiyiPic(v.data.data.url)
                         })
                 }
             }
@@ -582,7 +627,7 @@ export default function Savdashboard(){
                         data
                     )
                         .then(v => {
-                            setCyannePic(v.data.data.display_url)
+                            setCyannePic(v.data.data.url)
                         })
                 }
             }
@@ -597,11 +642,14 @@ export default function Savdashboard(){
                         <div className="mt-5">
                             <h2 className="text-3xl font-bold">Homepage</h2>
                             <div className="mt-2 ml-4">
-                                <h3 className="text-2xl font-bold">Hero Banner 36:41</h3>
+                                <h3 className="text-2xl font-bold">Hero Banner</h3>
                                 {heroPic.map((v,i) => {
                                     return(
-                                        <div key={i} className="w-2/5 mt-1 flex aspect-video">
-                                            <img className="rounded" src={v} alt="" />
+                                        <div key={i} className="mt-1 flex w-2/5">
+                                            <div className='flex flex-col'>
+                                                <img className="rounded w-full aspect-video" src={v[0]} alt="" />
+                                                <img className="rounded mt-1 w-full aspect-video" src={v[1]} alt="" />
+                                            </div>
                                             <button data-id={i} onClick={handleRemovePic} className="text-4xl p-2 ml-3 text-rose-600 ">
                                                 x
                                             </button>
@@ -609,13 +657,25 @@ export default function Savdashboard(){
                                     )
                                 })}
                                 <div className="mt-5 flex">
-                                    <input onChange={handleSelectPic} id="chooseHero" className="hidden" type="file" accept=".jpg,.jpeg,.png" />
-                                    <label className="p-2 w-2/5 aspect-video bg-slate-200 bg-contain bg-no-repeat rounded font-bold flex justify-center items-center cursor-pointer" htmlFor="chooseHero" style={{backgroundImage: `URL('${selectedHeroPic}')`}}>
-                                        <svg className="mr-2" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M10.5 15.2292C11.8021 15.2292 12.909 14.7736 13.8208 13.8625C14.7319 12.9507 15.1875 11.8438 15.1875 10.5417C15.1875 9.23958 14.7319 8.13264 13.8208 7.22083C12.909 6.30972 11.8021 5.85417 10.5 5.85417C9.19791 5.85417 8.09097 6.30972 7.17916 7.22083C6.26805 8.13264 5.8125 9.23958 5.8125 10.5417C5.8125 11.8438 6.26805 12.9507 7.17916 13.8625C8.09097 14.7736 9.19791 15.2292 10.5 15.2292ZM10.5 14.1875L9.35416 11.6875L6.85416 10.5417L9.35416 9.39583L10.5 6.89583L11.6458 9.39583L14.1458 10.5417L11.6458 11.6875L10.5 14.1875ZM2.16666 18.875C1.59374 18.875 1.10347 18.6712 0.695828 18.2635C0.287495 17.8552 0.0833282 17.3646 0.0833282 16.7917V4.29167C0.0833282 3.71875 0.287495 3.22847 0.695828 2.82083C1.10347 2.4125 1.59374 2.20833 2.16666 2.20833H5.44791L7.375 0.125H13.625L15.5521 2.20833H18.8333C19.4062 2.20833 19.8969 2.4125 20.3052 2.82083C20.7128 3.22847 20.9167 3.71875 20.9167 4.29167V16.7917C20.9167 17.3646 20.7128 17.8552 20.3052 18.2635C19.8969 18.6712 19.4062 18.875 18.8333 18.875H2.16666ZM18.8333 16.7917V4.29167H14.6146L12.7135 2.20833H8.28645L6.38541 4.29167H2.16666V16.7917H18.8333Z" fill="#767676"/>
-                                        </svg>
-                                        Pilih Gambar
-                                    </label>
+                                    <div className='flex flex-col w-2/5'>
+                                        <label>Hero Banner Desktop Version Aspect Ratio Mengikuti Gambar</label>
+                                        <input onChange={handleSelectPic} id="chooseHero" className="hidden" type="file" accept=".jpg,.jpeg,.png" />
+                                        <label className="p-2 w-full aspect-video bg-slate-200 bg-contain bg-no-repeat rounded font-bold flex justify-center items-center cursor-pointer" htmlFor="chooseHero" style={{backgroundImage: `URL('${selectedHeroPic}')`}}>
+                                            <svg className="mr-2" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5 15.2292C11.8021 15.2292 12.909 14.7736 13.8208 13.8625C14.7319 12.9507 15.1875 11.8438 15.1875 10.5417C15.1875 9.23958 14.7319 8.13264 13.8208 7.22083C12.909 6.30972 11.8021 5.85417 10.5 5.85417C9.19791 5.85417 8.09097 6.30972 7.17916 7.22083C6.26805 8.13264 5.8125 9.23958 5.8125 10.5417C5.8125 11.8438 6.26805 12.9507 7.17916 13.8625C8.09097 14.7736 9.19791 15.2292 10.5 15.2292ZM10.5 14.1875L9.35416 11.6875L6.85416 10.5417L9.35416 9.39583L10.5 6.89583L11.6458 9.39583L14.1458 10.5417L11.6458 11.6875L10.5 14.1875ZM2.16666 18.875C1.59374 18.875 1.10347 18.6712 0.695828 18.2635C0.287495 17.8552 0.0833282 17.3646 0.0833282 16.7917V4.29167C0.0833282 3.71875 0.287495 3.22847 0.695828 2.82083C1.10347 2.4125 1.59374 2.20833 2.16666 2.20833H5.44791L7.375 0.125H13.625L15.5521 2.20833H18.8333C19.4062 2.20833 19.8969 2.4125 20.3052 2.82083C20.7128 3.22847 20.9167 3.71875 20.9167 4.29167V16.7917C20.9167 17.3646 20.7128 17.8552 20.3052 18.2635C19.8969 18.6712 19.4062 18.875 18.8333 18.875H2.16666ZM18.8333 16.7917V4.29167H14.6146L12.7135 2.20833H8.28645L6.38541 4.29167H2.16666V16.7917H18.8333Z" fill="#767676"/>
+                                            </svg>
+                                            Pilih Gambar
+                                        </label>
+
+                                        <label className='mt-2'>Hero Banner Mobile Version Aspect Ratio 36:41</label>
+                                        <input onChange={handleSelectPicMobile} id="chooseHeroMobile" className="hidden" type="file" accept=".jpg,.jpeg,.png" />
+                                        <label className="p-2 w-full aspect-video bg-slate-200 bg-contain bg-no-repeat rounded font-bold flex justify-center items-center cursor-pointer" htmlFor="chooseHeroMobile" style={{backgroundImage: `URL('${selectedHeroPicMobile}')`}}>
+                                            <svg className="mr-2" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5 15.2292C11.8021 15.2292 12.909 14.7736 13.8208 13.8625C14.7319 12.9507 15.1875 11.8438 15.1875 10.5417C15.1875 9.23958 14.7319 8.13264 13.8208 7.22083C12.909 6.30972 11.8021 5.85417 10.5 5.85417C9.19791 5.85417 8.09097 6.30972 7.17916 7.22083C6.26805 8.13264 5.8125 9.23958 5.8125 10.5417C5.8125 11.8438 6.26805 12.9507 7.17916 13.8625C8.09097 14.7736 9.19791 15.2292 10.5 15.2292ZM10.5 14.1875L9.35416 11.6875L6.85416 10.5417L9.35416 9.39583L10.5 6.89583L11.6458 9.39583L14.1458 10.5417L11.6458 11.6875L10.5 14.1875ZM2.16666 18.875C1.59374 18.875 1.10347 18.6712 0.695828 18.2635C0.287495 17.8552 0.0833282 17.3646 0.0833282 16.7917V4.29167C0.0833282 3.71875 0.287495 3.22847 0.695828 2.82083C1.10347 2.4125 1.59374 2.20833 2.16666 2.20833H5.44791L7.375 0.125H13.625L15.5521 2.20833H18.8333C19.4062 2.20833 19.8969 2.4125 20.3052 2.82083C20.7128 3.22847 20.9167 3.71875 20.9167 4.29167V16.7917C20.9167 17.3646 20.7128 17.8552 20.3052 18.2635C19.8969 18.6712 19.4062 18.875 18.8333 18.875H2.16666ZM18.8333 16.7917V4.29167H14.6146L12.7135 2.20833H8.28645L6.38541 4.29167H2.16666V16.7917H18.8333Z" fill="#767676"/>
+                                            </svg>
+                                            Pilih Gambar
+                                        </label>
+                                    </div>
                                     <button onClick={handleAddPic} className="text-4xl p-2 ml-3 text-rose-600 ">
                                         +
                                     </button>
@@ -624,10 +684,20 @@ export default function Savdashboard(){
                             <div className="mt-2 ml-4">
                                 <h3 className="text-2xl font-bold">CTA</h3>
                                 <div className="flex flex-col ml-2">
-                                    <label>CTA Background 360:323</label>
+                                    <label>CTA Background Desktop Version Aspect Ratio Mengikuti Gambar</label>
                                     <div className='mt-1 w-full'>
                                         <input onChange={handleCTAImage} id="chooseCTAImage" className="hidden" type="file" accept=".jpg,.jpeg,.png" />
-                                        <label className="p-2 w-2/5 aspect-video bg-slate-200 bg-contain bg-no-repeat rounded font-bold flex justify-center items-center cursor-pointer" htmlFor="chooseCTAImage" style={{backgroundImage: `URL('${cta.background}')`}}>
+                                        <label className="p-2 w-2/5 aspect-video bg-slate-200 bg-contain bg-no-repeat rounded font-bold flex justify-center items-center cursor-pointer" htmlFor="chooseCTAImage" style={{backgroundImage: `URL('${cta.background[0] || cta.background}')`}}>
+                                            <svg className="mr-2" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M10.5 15.2292C11.8021 15.2292 12.909 14.7736 13.8208 13.8625C14.7319 12.9507 15.1875 11.8438 15.1875 10.5417C15.1875 9.23958 14.7319 8.13264 13.8208 7.22083C12.909 6.30972 11.8021 5.85417 10.5 5.85417C9.19791 5.85417 8.09097 6.30972 7.17916 7.22083C6.26805 8.13264 5.8125 9.23958 5.8125 10.5417C5.8125 11.8438 6.26805 12.9507 7.17916 13.8625C8.09097 14.7736 9.19791 15.2292 10.5 15.2292ZM10.5 14.1875L9.35416 11.6875L6.85416 10.5417L9.35416 9.39583L10.5 6.89583L11.6458 9.39583L14.1458 10.5417L11.6458 11.6875L10.5 14.1875ZM2.16666 18.875C1.59374 18.875 1.10347 18.6712 0.695828 18.2635C0.287495 17.8552 0.0833282 17.3646 0.0833282 16.7917V4.29167C0.0833282 3.71875 0.287495 3.22847 0.695828 2.82083C1.10347 2.4125 1.59374 2.20833 2.16666 2.20833H5.44791L7.375 0.125H13.625L15.5521 2.20833H18.8333C19.4062 2.20833 19.8969 2.4125 20.3052 2.82083C20.7128 3.22847 20.9167 3.71875 20.9167 4.29167V16.7917C20.9167 17.3646 20.7128 17.8552 20.3052 18.2635C19.8969 18.6712 19.4062 18.875 18.8333 18.875H2.16666ZM18.8333 16.7917V4.29167H14.6146L12.7135 2.20833H8.28645L6.38541 4.29167H2.16666V16.7917H18.8333Z" fill="#767676"/>
+                                            </svg>
+                                            Pilih Gambar
+                                        </label>
+                                    </div>
+                                    <label className='mt-2'>CTA Background Mobile Version 360:323</label>
+                                    <div className='mt-1 w-full'>
+                                        <input onChange={handleCTAImageMobile} id="chooseCTAImageMobile" className="hidden" type="file" accept=".jpg,.jpeg,.png" />
+                                        <label className="p-2 w-2/5 aspect-video bg-slate-200 bg-contain bg-no-repeat rounded font-bold flex justify-center items-center cursor-pointer" htmlFor="chooseCTAImageMobile" style={{backgroundImage: `URL('${cta.background[1] || cta.background}')`}}>
                                             <svg className="mr-2" width="21" height="19" viewBox="0 0 21 19" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M10.5 15.2292C11.8021 15.2292 12.909 14.7736 13.8208 13.8625C14.7319 12.9507 15.1875 11.8438 15.1875 10.5417C15.1875 9.23958 14.7319 8.13264 13.8208 7.22083C12.909 6.30972 11.8021 5.85417 10.5 5.85417C9.19791 5.85417 8.09097 6.30972 7.17916 7.22083C6.26805 8.13264 5.8125 9.23958 5.8125 10.5417C5.8125 11.8438 6.26805 12.9507 7.17916 13.8625C8.09097 14.7736 9.19791 15.2292 10.5 15.2292ZM10.5 14.1875L9.35416 11.6875L6.85416 10.5417L9.35416 9.39583L10.5 6.89583L11.6458 9.39583L14.1458 10.5417L11.6458 11.6875L10.5 14.1875ZM2.16666 18.875C1.59374 18.875 1.10347 18.6712 0.695828 18.2635C0.287495 17.8552 0.0833282 17.3646 0.0833282 16.7917V4.29167C0.0833282 3.71875 0.287495 3.22847 0.695828 2.82083C1.10347 2.4125 1.59374 2.20833 2.16666 2.20833H5.44791L7.375 0.125H13.625L15.5521 2.20833H18.8333C19.4062 2.20833 19.8969 2.4125 20.3052 2.82083C20.7128 3.22847 20.9167 3.71875 20.9167 4.29167V16.7917C20.9167 17.3646 20.7128 17.8552 20.3052 18.2635C19.8969 18.6712 19.4062 18.875 18.8333 18.875H2.16666ZM18.8333 16.7917V4.29167H14.6146L12.7135 2.20833H8.28645L6.38541 4.29167H2.16666V16.7917H18.8333Z" fill="#767676"/>
                                             </svg>

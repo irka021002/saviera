@@ -111,31 +111,31 @@ export default function Omnia(){
     let prodDesc= "A loungewear, casual outer, or a sexy summer dress with plunge deep V-neck with above-the-waist concealed elastic to give shape."
     let behindPiece = "In life, we take pleasure and appear serious. Some say the two must have it balanced. Some dare to see it as integration. <br/><br/>Omnia, which translates to \"all\" or \"everything\" in Italian is a fitting name. When we design, formulate and produce this piece, we think of a dynamic, jack-of-all-trades figure. <br/><br/>Society and culture formed an archetype that is simply outdated - that certain occupations, raising children, or doing chores is a gender role. <br/><br/>This piece stands between significant importance: to feel comfortable.<br/><br/>Be it when you want to appear serious in social settings or cozy loungewear. <br/>Only available in white. A simple yet adaptable color. <br/><br/>We found a beautiful deadstock fabric that is too shameful to waste. We acknowledge that it is hard to trace where or how the raw materials are produced. However, as one of our ways to exercise our sentiments (the People, Planet, and Fashion Industry), we are using deadstock fabric to reduce textile waste, which is one of the options for our eco-conscious effort. "
     const [productImage, setProductImage] = useState([
-        "/product/omnia/1.png",
-        "/product/omnia/2.png",
-        "/product/omnia/3.png",
-        "/product/omnia/4.png",
-        "/product/omnia/5.png",
-        "/product/omnia/6.png",
-        "/product/omnia/7.png",
-        "/product/omnia/8.png",
-        "/product/omnia/9.png",
-        "/product/omnia/10.png",
+        "/product/omnia/sm/1.png",
+        "/product/omnia/sm/2.png",
+        "/product/omnia/sm/3.png",
+        "/product/omnia/sm/4.png",
+        "/product/omnia/sm/5.png",
+        "/product/omnia/sm/6.png",
+        "/product/omnia/sm/7.png",
+        "/product/omnia/sm/8.png",
+        "/product/omnia/sm/9.png",
+        "/product/omnia/sm/10.png",
     ])
     const prodColors = {
         "Off-white": [
             "#fbfcfd",
             [
-                "/product/omnia/1.png",
-                "/product/omnia/2.png",
-                "/product/omnia/3.png",
-                "/product/omnia/4.png",
-                "/product/omnia/5.png",
-                "/product/omnia/6.png",
-                "/product/omnia/7.png",
-                "/product/omnia/8.png",
-                "/product/omnia/9.png",
-                "/product/omnia/10.png",
+                "/product/omnia/sm/1.png",
+                "/product/omnia/sm/2.png",
+                "/product/omnia/sm/3.png",
+                "/product/omnia/sm/4.png",
+                "/product/omnia/sm/5.png",
+                "/product/omnia/sm/6.png",
+                "/product/omnia/sm/7.png",
+                "/product/omnia/sm/8.png",
+                "/product/omnia/sm/9.png",
+                "/product/omnia/sm/10.png",
             ]
         ]
     }
@@ -143,7 +143,7 @@ export default function Omnia(){
         <>
             <div className="justify-center grid grid-cols-6 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] px-6 md:px-0 mt-10">
                 <ProductGallery pic={productImage} />
-                <ProductDetail setProductImage={setProductImage}  prodColors={prodColors} madeClothesImg="/product/omnia/who.png" madeClothesDesc={madeClothesDesc} sizeFit={sizeFit} sizeNotes={sizeNotes} product="Omnia" reviews={reviews} behindPiece={behindPiece} prodDetails={prodDetails} prodInstruction={prodInstruction} prodTitle={prodTitle} prodDesc={prodDesc} />
+                <ProductDetail productPrice={330000} productLink="https://wa.me/628175199968?text=Hi%20Saviera.co%20I%20would%20like%20to%20place%20an%20order%20for%20Omnia.%0ACan%20you%20assist%20me%3F" setProductImage={setProductImage}  prodColors={prodColors} madeClothesImg="/product/omnia/who.png" madeClothesDesc={madeClothesDesc} sizeFit={sizeFit} sizeNotes={sizeNotes} product="Omnia" reviews={reviews} behindPiece={behindPiece} prodDetails={prodDetails} prodInstruction={prodInstruction} prodTitle={prodTitle} prodDesc={prodDesc} />
             </div>
         </>
     )

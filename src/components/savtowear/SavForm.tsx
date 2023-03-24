@@ -325,7 +325,7 @@ export default function SavForm(){
                                     <p className="font-trap md:text-2xl leading-[150%] ">
                                         <span className="font-bold">Thank You Card</span> is a <span className="font-bold">repurposed</span> sketch paper hand-painted by our fairy. 
                                         <br/>
-                                        <b>Reuse</b>it as a decorative desk, bookmark, or keep as a source of information for your clothing item!
+                                        <b>Reuse</b> it as a decorative desk, bookmark, or keep as a source of information for your clothing item!
                                     </p>
                                 </div>
                             </div>
@@ -358,7 +358,7 @@ export default function SavForm(){
                                     <span className="font-bold">Reuse</span> the <span className="font-bold">ramie rope</span> and <span className="font-bold">pin</span> attached to the hangtag.
                                 </p>
                             </div>
-                            <img className="bg-[#d9d9d9] aspect-square w-2/5" src={Tissue} alt="..." />
+                            <img className="bg-[#d9d9d9] aspect-square w-2/5 object-fill" src={Tissue} alt="..." />
                         </div>
                         <div id="benefit3" className={`${obj3Anim} transition-all duration-700 ease-in-out flex mt-8`}>
                         <img className="bg-[#d9d9d9] aspect-square w-2/5" src={ThankYou} alt="..." />
@@ -366,7 +366,7 @@ export default function SavForm(){
                                 <p className="font-trap text-2xl leading-[150%] ">
                                     <span className="font-bold">Thank You Card</span> is a <span className="font-bold">repurposed</span> sketch paper hand-painted by our fairy. 
                                     <br/>
-                                    <b>Reuse</b>it as a decorative desk, bookmark, or keep as a source of information for your clothing item!
+                                    <b>Reuse</b> it as a decorative desk, bookmark, or keep as a source of information for your clothing item!
                                 </p>
                             </div>
                         </div>
