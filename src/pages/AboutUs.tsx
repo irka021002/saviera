@@ -19,7 +19,7 @@ interface OurSentiment{
 }
 export default function AboutUs(){
     const [cookies, setCookie] = useCookies(['access-token','refresh-token'])
-    const [aboutHero, setAboutHero] = useState("")
+    const [aboutHero, setAboutHero] = useState<Array<string>>(new Array(2))
     const [aboutSaviera, setAboutSaviera] = useState("")
     const [statusQuo, setStatusQuo] = useState<StatusQuo>({background: "", title: "", description: ""})
     const [ourSentiment, setOurSentiment] = useState<Array<OurSentiment>>([])

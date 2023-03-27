@@ -41,7 +41,7 @@ export default function ProductGallery({pic}:ProductGalleryProps){
     return(
         <div className={`${animate} trasition-all duration-1000 ease-in-out col-span-6 md:col-span-4`}>
             <div className="w-full aspect-[384/517] relative">
-                <img id="productPreview" className="w-full h-full object-contain" src={pic[0]} />
+                <img id="productPreview" className="w-full h-full object-contain" src={pic[0].replace("sm/", "")} />
                 <div className="absolute top-0 right-0 flex w-full h-full justify-between">
                     <button onClick={handlePrev} className="text-2xl">
                         &lt;

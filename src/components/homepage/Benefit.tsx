@@ -24,7 +24,7 @@ export default function Benefit(){
                     <div className="carousel-item float-left w-full  text-center px-6 py-11 bg-white rounded">
                         <img className="m-auto" src={Leaf} alt="leaf Icon" />
                         <h2 className="text-2xl font-montserrat mb-3 mt-6">Sustainable Packaging</h2>
-                        <p className="break-words font-trap">Receive your order in a fully recycled and compostable bag. Learn how to reuse and recycle your packaging <span className="text-accent-1 underline">here</span>.</p>
+                        <p className="break-words font-trap">Receive your order in a fully recycled and compostable bag. Learn how to reuse and recycle your packaging <a href="https://www.instagram.com/p/CqQBfduvKeE/?igshid=YmMyMTA2M2Y=" target="_blank" className="text-accent-1 underline">here</a>.</p>
                     </div>
                     <div className="carousel-item float-left w-full  text-center px-6 py-8 bg-white rounded">
                         <img className="m-auto" src={DNA} alt="DNA Icon" />
@@ -64,7 +64,7 @@ export default function Benefit(){
                 <div className="col-span-6 md:col-span-4 text-center px-6 py-11 bg-white rounded">
                     <img className="m-auto" src={Leaf} alt="leaf Icon" />
                     <h2 className="text-2xl font-montserrat mb-3 mt-6">Sustainable Packaging</h2>
-                    <p className="font-trap">Receive your order in a fully recycled and compostable bag. Learn how to reuse and recycle your packaging <span className="text-accent-1 underline">here</span>.</p>
+                    <p className="font-trap">Receive your order in a fully recycled and compostable bag. Learn how to reuse and recycle your packaging <a href="https://www.instagram.com/p/CqQBfduvKeE/?igshid=YmMyMTA2M2Y=" target="_blank" className="text-accent-1 underline">here</a>.</p>
                 </div>
                 <div className="col-span-6 md:col-span-4 text-center px-6 py-8 bg-white rounded">
                     <img className="m-auto" src={DNA} alt="DNA Icon" />

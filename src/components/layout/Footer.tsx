@@ -29,8 +29,8 @@ export default function Footer(){
                         <p className="text-center mt-3 font-trap">Small batches.<br/>Limited Drops.<br/>Sourced and made locally</p>
                         <div className="mt-[21px] text-left flex flex-col items-center md:items-start">
                             <UnderlineButton href="/01-archetypes" text="Vol 01. Archetypes" src={ArrowRight} />
-                            <UnderlineButton target="_blank" href="https://www.instagram.com/saviera.co/" text="Feedback & Reviews" src={ArrowRight} />
-                            <UnderlineButton text="FAQ" src={ArrowRight} />
+                            <UnderlineButton target="_blank" href="https://www.instagram.com/p/CqQB1f9PpVL/?igshid=YmMyMTA2M2Y=" text="Feedback & Reviews" src={ArrowRight} />
+                            <UnderlineButton target="_blank" href="https://www.instagram.com/p/CqQASQpvdYZ/?igshid=YmMyMTA2M2Y=" text="FAQ" src={ArrowRight} />
                         </div>
                     </div>
                     <span className="border col-span-0 my-8 md:my-0 border-secondary-1 w-2/5 h-[1px] md:w-[1px] md:h-2/5"></span>
@@ -79,7 +79,7 @@ export default function Footer(){
             </div>
             <Copyright />
             <div className="fixed right-6 bottom-6 md:right-10 md:bottom-5">
-                <a target="_blank" href="https://wa.me/628175199968?text=Hi%20Saviera.co%20I%20would%20like%20to%20place%20an%20order.%0ACan%20you%20assist%20me%3F">
+                <a target="_blank" href="https://wa.me/628175199968?text=Hi%20Saviera.co%0AI%20would%20like%20to%20ask%20about%20.....">
                     <img className="w-[44px] h-[44px] md:w-[80px] md:h-[80px]" src={WhatsappCircle} alt="Whatsapp Redirect" />
                 </a>
             </div>

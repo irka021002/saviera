@@ -84,7 +84,7 @@ export default function OurSentiment({ourSentiment,sentimentParagraph}:OurSentim
                                                 <p className="text-center text-primary-2 text-[32px] font-montserrat leading-[135%]">{v.sentiment}</p>
                                             </div>
                                         </div>
-                                        <div className="bg-white h-full p-3 grow w-full flex items-center justify-center flex-col">
+                                        <div className="bg-white h-full p-3 grow w-full flex items-center justify-center flex-col font-trap">
                                             <ol className="list-decimal list-inside text-secondary-2 leading-[150%]">
                                                 {
                                                     v.sentimentPoint.map((v,i) => <li key={"sentimentPointSlider"+i}>{v}</li>)

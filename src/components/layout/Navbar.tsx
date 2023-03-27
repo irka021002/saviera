@@ -13,7 +13,6 @@ import WhatsappWhite from "../../assets/icon/navbar/whatsappWhite.svg"
 import Menu from "../../assets/icon/navbar/menu.svg"
 import MenuWhite from "../../assets/icon/navbar/menuWhite.svg"
 import { useEffect, useState } from "react"
-import { redirect } from "react-router-dom";
 
 function checkPath(path: string):Boolean{
     return window.location.href.includes(path)
@@ -33,8 +32,38 @@ export default function Navbar(){
             element.scrollIntoView({behavior: "smooth"})
         }
     }, [])
+    const searchKeyword = [
+        ["shop",[
+            {title: "Omnia", url: "https://saviera.co/01-omnia"},
+            {title: "Wei Yi", url: "https://saviera.co/01-wei-yi"},
+            {title: "Cyanne", url: "https://saviera.co/01-cyanne"}
+        ]],
+        ["about us",[
+            {title: "About Us", url:"https://saviera.co/about-us"}
+        ]],
+        ["dress",[
+            {title: "Cyanne", url: "https://saviera.co/01-cyanne"}
+        ]],
+        ["top",[
+            {title: "Wei Yi", url: "https://saviera.co/01-wei-yi"},
+            {title: "Cyanne", url: "https://saviera.co/01-cyanne"}
+        ]],
+        ["promo",[
+            {title: "Free Jute", url: "https://saviera.co/#promoCTA"}
+        ]],
+        ["feedback",[
+            {title: "Feedback", url: "https://saviera.co/sav-to-wear-01"}
+        ]],
+        ["faq",[
+            {title: "FAQ", url: "https://saviera.co/sav-to-wear-01"}
+        ]],
+        ["care instruction",[
+            {title: "Care Instruction", url: "https://saviera.co/sav-to-wear-01"}
+        ]]
+    ]
     const [changeColor, setChangeColor] = useState(true)
     const [animateMenu, setAnimateMenu] = useState("-translate-y-20 opacity-0")
+    const [searched, setSearched] = useState<Array<any>>([])
     const handleMenu = (event: React.MouseEvent<HTMLButtonElement>) => {
         const MOBILEMENU = document.getElementById("mobileMenu")
         if(MOBILEMENU != null){
@@ -72,6 +101,9 @@ export default function Navbar(){
             sb.style.display = "flex"
             ov.style.display = "block"
         }
+    }
+    const handleSearching = (e:React.SyntheticEvent<HTMLInputElement>) => {
+        setSearched(searchKeyword.filter((v: any) => e.currentTarget.value == "" ? false : v[0].includes(e.currentTarget.value.toLowerCase())))
     }
     return(
         <nav className="z-[9999] sticky top-0 max-w-[1440px] m-auto">
@@ -119,13 +151,35 @@ export default function Navbar(){
                     <img width={24} src={Browser} alt="Browser Icon" />
                 </div>
                 <div className="mt-[52px] relative">
-                    <input className="bg-primary-1 border border-[rgba(58,58,58,0.3)] w-full p-4 font-montserrat font-medium rounded" type="text" placeholder="Search the item" />
+                    <input onChange={handleSearching} className="bg-primary-1 border border-[rgba(58,58,58,0.3)] w-full p-4 font-montserrat font-medium rounded" type="text" placeholder="Search the item" />
                     <img className="absolute right-7 top-1 translate-x-2/4 translate-y-2/4" width={24} src={Search} alt="Search Icon" />
+                </div>
+                <div className="mt-2 font-montserrat text-secondary-2 flex flex-col">
+                    {
+                        searched.map((v,i) => {
+                            return(
+                                <>
+                                    {v[1].map((v2:any,i2:any) => v2.url && v2.title && <a key={i.toString()+i2.toString()} target="_blank" className="mt-1 underline" href={v2.url}>{v2.title}</a>)}
+                                </>
+                            )
+                        })
+                    }
                 </div>
             </div>
             <div id="searchBox" className="absolute flex-col bg-white p-8 right-20 top-20 z-40" style={{display: "none"}}>
                 <label className="font-montserrat font-medium text-secondary-2" htmlFor="search">Search the item here</label>
-                <input className="mt-1 font-montserrat text-[#828282] hover:border-accent-2 focus:border-accent-2 p-5 w-[400px] outline-none border rounded border-[rgba(58,58,58,0.3)]" placeholder="Type the keyword" id="search" type="text" />
+                <input onChange={handleSearching} className="mt-1 font-montserrat text-[#828282] hover:border-accent-2 focus:border-accent-2 p-5 w-[400px] outline-none border rounded border-[rgba(58,58,58,0.3)]" placeholder="Type the keyword" id="search" type="text" />
+                <div className="mt-4 font-montserrat text-secondary-2 flex flex-col">
+                    {
+                        searched.map((v,i) => {
+                            return(
+                                <>
+                                    {v[1].map((v2:any,i2:any) => v2.url && v2.title && <a key={i.toString()+i2.toString()} target="_blank" className="mt-1 underline" href={v2.url}>{v2.title}</a>)}
+                                </>
+                            )
+                        })
+                    }
+                </div>
             </div>
             <div id="overlaySearch" onClick={handleOverlay} className="fixed top-0 right-0 bottom-0 left-0" style={{display: "none"}}></div>
         </nav>
