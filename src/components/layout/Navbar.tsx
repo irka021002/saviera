@@ -39,7 +39,7 @@ export default function Navbar(){
             {title: "Cyanne", url: "https://saviera.co/01-cyanne"}
         ]],
         ["about us",[
-            {title: "About Us", url:"https://saviera.co/about-us"}
+            {title: "Saviera", url:"https://saviera.co/about-us"}
         ]],
         ["dress",[
             {title: "Cyanne", url: "https://saviera.co/01-cyanne"}
@@ -52,10 +52,10 @@ export default function Navbar(){
             {title: "Free Jute", url: "https://saviera.co/#promoCTA"}
         ]],
         ["feedback",[
-            {title: "Feedback", url: "https://saviera.co/sav-to-wear-01"}
+            {title: "Feedback", url: "https://www.instagram.com/p/CqQB1f9PpVL/?igshid=YmMyMTA2M2Y="}
         ]],
         ["faq",[
-            {title: "FAQ", url: "https://saviera.co/sav-to-wear-01"}
+            {title: "FAQ", url: "https://www.instagram.com/p/CqQASQpvdYZ/?igshid=YmMyMTA2M2Y="}
         ]],
         ["care instruction",[
             {title: "Care Instruction", url: "https://saviera.co/sav-to-wear-01"}
