@@ -5,8 +5,9 @@ export default function HeroBanner(){
         setAnimate("translate-y-0 opacity-100")
     },[])
     return(
-        <div className="bg-[url(/image/savtowear/hero.png)] px-6 md:px-0 aspect-[130/253] bg-cover md:bg-auto bg-no-repeat md:aspect-[720/281] mt-[-80px] md:mt-[-100px] text-center flex flex-col justify-center">
-            <div className={animate + " transition-all duration-700 ease-in-out"}>
+        <div className="relative aspect-[130/253] aspect-130-253 md:aspect-[720/281] md-aspect-720-281 mt-[-80px] md:mt-[-100px] text-center flex flex-col justify-center">
+            <div className='absolute w-full h-full bg-[url(/image/savtowear/hero.png)] bg-cover md:bg-auto bg-no-repeat'></div>
+            <div className={animate + " absolute px-6 md:px-0 transition-all duration-700 ease-in-out w-full h-full flex flex-col justify-center items-center"}>
                 <h1 className="font-aboreto text-[40px] leading-[135%] text-secondary-2">
                     YAY!<br className="md:hidden" /> YOU HAVE MADE IT!
                 </h1>

@@ -212,7 +212,7 @@ export default function SavForm(){
     }
     return(
         <>
-            <div className="justify-center grid grid-cols-6 px-6 md:px-0 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] bg-primary-2">
+            <div className="justify-center grid grid-cols-6 px-6 md:px-0 gap-[16px] md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] bg-primary-2 pb-20 md:pb-0">
                 <div className="col-span-6 md:col-span-12 py-[80px]">
                     <div id="archeTypesWrapper" className="flex flex-col items-center w-full">
                         <p className={`${animateArche} transition-all duration-700 ease-in-out font-trap text-2xl leading-[150%] text-secondary-2 text-center`}>
@@ -267,7 +267,7 @@ export default function SavForm(){
                             <img className="m-auto" src={Saviera} alt="Saviera Co" />
                         </div>
                     </div>
-                    <div id="carouselBenefit" className="carousel mt-[72px] md:hidden slide relative aspect-[36/41] md:aspect-auto" data-bs-ride="carousel">
+                    <div id="carouselBenefit" className="carousel mt-[72px] md:hidden slide relative h-[calc(41/32*100vw)] md:h-auto" data-bs-ride="carousel">
                         <div className="carousel-indicators flex justify-center p-0 black-indicators absolute left-0 right-0 mt-[300px]">
                             <button
                                 type="button"
@@ -292,7 +292,7 @@ export default function SavForm(){
                         </div>
                         <div className="carousel-inner relative w-full overflow-hidden px-5">
                             <div className="carousel-item active relative float-left w-full bg-primary-2">
-                                <img className="bg-[#d9d9d9] aspect-square w-full" src={Polymailer} alt="..." />
+                                <img className="bg-[#d9d9d9] h-full w-full" src={Polymailer} alt="..." />
                                 <div className="flex-grow flex justify-center items-center w-full mt-[50px]">
                                     <p className="font-trap md:text-2xl leading-[150%] ">
                                         Your <span className="font-bold">poly mailer bag</span> is <span className="font-bold">oxo-biodegradable.</span> Which means, in two years, it will break off. In the meantime, you can reuse it as a desk-trash bin until it reaches its life cycle.
@@ -300,7 +300,7 @@ export default function SavForm(){
                                 </div>
                             </div>
                             <div className="carousel-item relative float-left w-full bg-primary-2">
-                                <img className="bg-[#d9d9d9] aspect-square w-full" src={Tissue} alt="..." />
+                                <img className="bg-[#d9d9d9] h-full w-full" src={Tissue} alt="..." />
                                 <div className="flex-grow flex flex-col justify-center items-center w-full mt-[50px] font-trap md:text-2xl leading-[150%]">
                                     <p>
                                         <span className="font-bold">Tissue paper</span> wrap is <span className="font-bold">compostable.</span> If you don’t compost, bring it to a composting facility, or reuse it as:
@@ -320,7 +320,7 @@ export default function SavForm(){
                                 </div>
                             </div>
                             <div className="carousel-item relative float-left w-full bg-primary-2">
-                                <img className="bg-[#d9d9d9] aspect-square w-full" src={ThankYou} alt="..." />
+                                <img className="bg-[#d9d9d9] h-full w-full" src={ThankYou} alt="..." />
                                 <div className="flex-grow flex justify-center items-center w-full mt-[50px]">
                                     <p className="font-trap md:text-2xl leading-[150%] ">
                                         <span className="font-bold">Thank You Card</span> is a <span className="font-bold">repurposed</span> sketch paper hand-painted by our fairy. 
@@ -333,7 +333,7 @@ export default function SavForm(){
                     </div>
                     <div className="px-5 mt-[72px] hidden md:block">
                         <div id="benefit1" className={`${obj1Anim} transition-all duration-700 ease-in-out flex`}>
-                            <img className="bg-[#d9d9d9] aspect-square w-2/5" src={Polymailer} alt="..." />
+                            <img className="bg-[#d9d9d9] h-full w-2/5" src={Polymailer} alt="..." />
                             <div className="flex-grow ml-5 flex justify-center items-center w-3/5">
                                 <p className="font-trap text-2xl leading-[150%] ">
                                     Your <span className="font-bold">poly mailer bag</span> is <span className="font-bold">oxo-biodegradable.</span> Which means, in two years, it will break off. In the meantime, you can reuse it as a desk-trash bin until it reaches its life cycle.
@@ -358,10 +358,10 @@ export default function SavForm(){
                                     <span className="font-bold">Reuse</span> the <span className="font-bold">ramie rope</span> and <span className="font-bold">pin</span> attached to the hangtag.
                                 </p>
                             </div>
-                            <img className="bg-[#d9d9d9] aspect-square w-2/5 object-fill" src={Tissue} alt="..." />
+                            <img className="bg-[#d9d9d9] h-full w-2/5 object-fill" src={Tissue} alt="..." />
                         </div>
                         <div id="benefit3" className={`${obj3Anim} transition-all duration-700 ease-in-out flex mt-8`}>
-                        <img className="bg-[#d9d9d9] aspect-square w-2/5" src={ThankYou} alt="..." />
+                        <img className="bg-[#d9d9d9] h-full w-2/5" src={ThankYou} alt="..." />
                             <div className="flex-grow ml-5 flex justify-center items-center w-3/5">
                                 <p className="font-trap text-2xl leading-[150%] ">
                                     <span className="font-bold">Thank You Card</span> is a <span className="font-bold">repurposed</span> sketch paper hand-painted by our fairy. 

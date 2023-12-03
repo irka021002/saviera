@@ -253,7 +253,7 @@ export default function ProductDetail({prodTitle,prodDesc,reviews,product,prodIn
                     </button>
                 </h2>
                 <div id='wmc' className="mt-3 px-3 font-trap text-xl bg-cream-1 text-secondary-2 flex flex-col md:flex-row overflow-hidden transition-[max-height,padding] ease-linear duration-1000" style={{maxHeight: "0px", paddingTop: "0px", paddingBottom: "0px"}}>
-                    <div className="w-full md:w-7/12 aspect-[192/119] bg-contain bg-center bg-no-repeat" style={{backgroundImage: `url(${madeClothesImg})`}}></div>
+                    <div className="w-full md:w-7/12 h-[calc(119/192*100vw)] md:h-[calc(119/192*58.4vw)] xl:h-[calc(119/192*1440)] bg-contain bg-center bg-no-repeat" style={{backgroundImage: `url(${madeClothesImg})`}}></div>
                     <div className="w-full md:w-5/12 py-[27px] px-[34px]">
                         <p className="font-trap text-base text-secondary-2 leading-[150%]" dangerouslySetInnerHTML={{__html: madeClothesDesc}}></p>
                     </div>

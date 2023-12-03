@@ -73,7 +73,7 @@ export default function Footer(){
                         <ContactButton target="_blank" src={Facebook} alt="Facebook Logo" text="Facebook" href="https://www.facebook.com/saviera.co" />
                         <ContactButton target="_blank" src={Pinterest} alt="Pinterest Logo" text="Pinterest" href="https://co.pinterest.com/savieradotco/" />
                         <ContactButton target="_blank" src={Instagram} alt="Instagram Logo" text="Instagram" href="https://www.instagram.com/saviera.co/" />
-                        <ContactButton target="_blank" src={Email} alt="Email Logo" text="Email" href="mailto:fairy@saviera.co" />
+                        <ContactButton target="_blank" src={Email} alt="Email Logo" text="Email" href="mailto:saviera.starlist@gmail.com" />
                     </div>
                 </div>
             </div>

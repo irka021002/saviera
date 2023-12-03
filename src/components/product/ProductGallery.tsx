@@ -51,7 +51,7 @@ export default function ProductGallery({pic}:ProductGalleryProps){
                     </button>
                 </div>
             </div>
-            <div className="w-full flex flex-wrap justify-start gap-x-6">
+            <div className="w-full grid grid-cols-4 gap-x-[24px]">
                 {
                     pic.map((v,i) => {
                         return(

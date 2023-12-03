@@ -73,3 +73,198 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+@supports not (aspect-ratio: 12 / 5) {
+  .aspect-12-5::before{
+    float: left;
+    padding-top: 41.66%;
+    content: "";
+  }
+  .aspect-12-5::after{
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+@supports not (aspect-ratio: 720 / 281) {
+  .aspect-720-281::before{
+    float: left;
+    padding-top: 39.02%;
+    content: "";
+  }
+  .aspect-720-281::after{
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+@supports not (aspect-ratio: 8 / 7){
+  .aspect-8-7::before{
+    float: left;
+    padding-top: 87.50%;
+    content: "";
+  }
+  .aspect-8-7::after{
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+@supports not (aspect-ratio: 130 / 253){
+  .aspect-130-253::before{
+    float: left;
+    padding-top: 194.61%;
+    content: "";
+  }
+  .aspect-130-253::after{
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+@supports not (aspect-ratio: 10 / 11){
+  .aspect-10-11::before{
+    float: left;
+    padding-top: 110%;
+    content: "";
+  }
+  .aspect-10-11::after{
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+@supports not (aspect-ratio: 36 / 41){
+  .aspect-36-41::before{
+    float: left;
+    padding-top: 113.88%;
+    content: "";
+  }
+  .aspect-36-41::after{
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+@supports not (aspect-ratio: 485 / 332){
+  .aspect-485-332::before{
+    float: left;
+    padding-top: 68.45%;
+    content: "";
+  }
+  .aspect-485-332::after{
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+@supports not (aspect-ratio: 16 / 9){
+  .aspect-16-9::before{
+    float: left;
+    padding-top: 56.25%;
+    content: "";
+  }
+  .aspect-16-9::after{
+    display: block;
+    content: "";
+    clear: both;
+  }
+}
+@media only screen and (min-width: 768px){
+  @supports not (aspect-ratio: 12 / 5) {
+    .md-aspect-12-5::before{
+      float: left;
+      padding-top: 41.66%;
+      content: "";
+    }
+    .md-aspect-12-5::after{
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+  @supports not (aspect-ratio: 720 / 281) {
+    .md-aspect-720-281::before{
+      float: left;
+      padding-top: 39.02%;
+      content: "";
+    }
+    .md-aspect-720-281::after{
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+  @supports not (aspect-ratio: 8 / 7){
+    .md-aspect-8-7::before{
+      float: left;
+      padding-top: 87.50%;
+      content: "";
+    }
+    .md-aspect-8-7::after{
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+  @supports not (aspect-ratio: 130 / 253){
+    .md-aspect-130-253::before{
+      float: left;
+      padding-top: 194.61%;
+      content: "";
+    }
+    .md-aspect-130-253::after{
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+  @supports not (aspect-ratio: 10 / 11){
+    .md-aspect-10-11::before{
+      float: left;
+      padding-top: 110%;
+      content: "";
+    }
+    .md-aspect-10-11::after{
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+  @supports not (aspect-ratio: 36 / 41){
+    .md-aspect-36-41::before{
+      float: left;
+      padding-top: 113.88%;
+      content: "";
+    }
+    .md-aspect-36-41::after{
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+  @supports not (aspect-ratio: 485 / 332){
+    .md-aspect-485-332::before{
+      float: left;
+      padding-top: 68.45%;
+      content: "";
+    }
+    .md-aspect-485-332::after{
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+  @supports not (aspect-ratio: 16 / 9){
+    .md-aspect-16-9::before{
+      float: left;
+      padding-top: 56.25%;
+      content: "";
+    }
+    .md-aspect-16-9::after{
+      display: block;
+      content: "";
+      clear: both;
+    }
+  }
+}
+

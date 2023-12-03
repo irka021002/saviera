@@ -23,7 +23,7 @@ export default function InstagramWidget({instaPic}: InstagramWidgetProps){
                     {
                         instaPic.length > 0 && instaPic.slice(0,8).map((v,i) => {
                             return(
-                                <a key={i} href={v.url}><div className="aspect-square bg-cover" style={{backgroundImage: `url(${v.image})`}}></div></a>
+                                <a key={i} href={v.url}><div className="bg-cover before:content-[''] before:pt-[100%] before:block before:w-full w-full" style={{backgroundImage: `url(${v.image})`}}></div></a>
                             )   
                         })
                     }
@@ -32,7 +32,7 @@ export default function InstagramWidget({instaPic}: InstagramWidgetProps){
                     {
                         instaPic.length > 0 && instaPic.slice(0,6).map((v,i) => {
                             return(
-                                <a key={i} href={v.url}><div className="aspect-square bg-cover" style={{backgroundImage: `url(${v.image})`}}></div></a>
+                                <a key={i} href={v.url}><div className="bg-cover before:content-[''] before:pt-[100%] before:block before:w-full w-full" style={{backgroundImage: `url(${v.image})`}}></div></a>
                             )   
                         })
                     }

@@ -47,7 +47,7 @@ export default function OurSentiment({ourSentiment,sentimentParagraph}:OurSentim
     })
     return(
         <div>
-            <div id="sentimentWrapper" className="pt-20 mt-[400px] md:mt-0 bg-primary-2 justify-center grid grid-cols-6 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] md:gap-y-10 px-6 md:px-0">
+            <div id="sentimentWrapper" className="pt-[250px] md:pt-20 md:mt-0 bg-primary-2 justify-center grid grid-cols-6 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] md:gap-y-10 px-6 md:px-0">
                 <div id="sentimentHeader" className={`${headerAnim} transition-all duration-1000 ease-in-out flex col-span-6 md:col-span-12 flex-col md:flex-row w-full`}>
                     <p className="py-4 px-[10px] bg-secondary-2 text-primary-2 font-aboreto text-[32px] md:text-4xl leading-[135%] text-center">
                         OUR<br />SENTIMENT
@@ -56,7 +56,7 @@ export default function OurSentiment({ourSentiment,sentimentParagraph}:OurSentim
                         Everything that we do here, we always reflect on the three things:<br/>The People, The Planet, and The Fashion Industry.
                     </p>
                 </div>
-                <div id="carouselSentiment" className={`${carouselAnim} transition-all duration-1000 ease-in-out mt-10 block md:hidden col-span-6 carousel slide relative aspect-[36/41] md:aspect-auto`} data-bs-ride="carousel">
+                <div id="carouselSentiment" className={`${carouselAnim} transition-all duration-1000 ease-in-out mt-10 block md:hidden col-span-6 carousel slide relative aspect-[36/41] aspect-36-41`} data-bs-ride="carousel">
                     <div className="carousel-indicators flex justify-center p-0 brown-indicators">
                         {
                             ourSentiment &&
@@ -78,13 +78,13 @@ export default function OurSentiment({ourSentiment,sentimentParagraph}:OurSentim
                             ourSentiment.map((v,i) => {
                                 return(
                                     <div key={"sentimentSlide"+i} className={i == 0 ? "carousel-item active relative float-left w-full" : "carousel-item relative float-left w-full"}>
-                                        <div className="w-full aspect-[485/332]" style={{backgroundImage: `url(${v.thumbnail})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+                                        <div className="w-full aspect-[485/332] aspect-485-332" style={{backgroundImage: `url(${v.thumbnail})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
                                             <div className="bg-[rgba(0,0,0,0.3)] w-full h-full flex flex-col justify-center items-center">
                                                 <img width={60} height={60} src={v.icon} alt="." />
                                                 <p className="text-center text-primary-2 text-[32px] font-montserrat leading-[135%]">{v.sentiment}</p>
                                             </div>
                                         </div>
-                                        <div className="bg-white h-full p-3 grow w-full flex items-center justify-center flex-col font-trap">
+                                        <div className="bg-white h-fit p-3 grow w-full flex items-center justify-center flex-col font-trap">
                                             <ol className="list-decimal list-inside text-secondary-2 leading-[150%]">
                                                 {
                                                     v.sentimentPoint.map((v,i) => <li key={"sentimentPointSlider"+i}>{v}</li>)
@@ -96,13 +96,13 @@ export default function OurSentiment({ourSentiment,sentimentParagraph}:OurSentim
                             })
                         }
                         <div className="carousel-item relative float-left w-full">
-                            <div className="bg-[url('/image/homepage/promocta.png')] w-full aspect-[485/332]">
+                            <div className="bg-[url('/image/homepage/promocta.png')] w-full aspect-[485/332] aspect-485-332">
                                 <div className="bg-[rgba(0,0,0,0.3)] w-full h-full flex flex-col justify-center items-center">
                                     <img width={60} height={60} src={Earth} alt="Earth Icon" />
                                     <p className="text-center text-primary-2 text-[32px] font-montserrat leading-[135%]">THE EARTH</p>
                                 </div>
                             </div>
-                            <div className="bg-white h-full p-3 grow w-full flex items-center justify-center flex-col">
+                            <div className="bg-white h-fit p-3 grow w-full flex items-center justify-center flex-col">
                                 <ol className="list-decimal list-inside text-secondary-2 leading-[150%]">
                                     <li>We must use organic, less harmful, durable, and responsible materials. Here are our favorite options: Any natural fibers (eg. linen, cotton), organic cotton, organic linen, green-certified lyocell, green-certified modal, made of natural dye, handwoven, deadstock natural fibers (cotton, linen, silk).</li>
                                     <li>Our packaging is eco-friendly and purposeful. It meant for you to exercise a less-waste lifestyle and be creative to repurpose, reuse and recycle (know more from the QC Code attached to your Thank You card).</li>
@@ -111,13 +111,13 @@ export default function OurSentiment({ourSentiment,sentimentParagraph}:OurSentim
                             </div>
                         </div>
                         <div className="carousel-item relative float-left w-full">
-                            <div className="bg-[url('/image/homepage/promocta.png')] w-full aspect-[485/332]">
+                            <div className="bg-[url('/image/homepage/promocta.png')] w-full aspect-[485/332] aspect-485-332">
                                 <div className="bg-[rgba(0,0,0,0.3)] w-full h-full flex flex-col justify-center items-center">
                                     <img width={60} height={60} src={Bag} alt="Bag Icon" />
                                     <p className="text-center text-primary-2 text-[32px] font-montserrat leading-[135%]">THE FASHION<br/>INDUSTRY</p>
                                 </div>
                             </div>
-                            <div className="bg-white h-full p-3 grow w-full flex items-center justify-center flex-col">
+                            <div className="bg-white h-fit p-3 grow w-full flex items-center justify-center flex-col">
                                 <ol className="list-decimal list-inside text-secondary-2 leading-[150%]">
                                     <li>We are limiting the drops in each collection as a slow fashion brand.</li>
                                     <li>We are not relying on heavy and direct sales promotions (such as discounts, flash sales, and garage sales) to shift the overconsumption behavior. We educate about value per use and conscious consumption.</li>
@@ -132,13 +132,13 @@ export default function OurSentiment({ourSentiment,sentimentParagraph}:OurSentim
                         return(
                             i % 2 == 0 ?
                             <div key={"sentiment"+i} className={`${obj1Anim} transition-all duration-1000 ease-in-out col-span-12 hidden md:flex`}>
-                                <div className="w-2/5 aspect-[485/332]" style={{backgroundImage: `url(${v.thumbnail})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+                                <div className="w-2/5 aspect-[485/332] aspect-485-332" style={{backgroundImage: `url(${v.thumbnail})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
                                     <div className="bg-[rgba(0,0,0,0.3)] w-full h-full flex flex-col justify-center items-center">
                                         <img width={60} height={60} src={v.icon} alt="Icon" />
                                         <p className="text-center text-primary-2 text-[32px] font-montserrat leading-[135%]">{v.sentiment}</p>
                                     </div>
                                 </div>
-                                <div className="bg-white h-full px-5 grow w-3/5 flex items-center justify-center font-trap flex-col">
+                                <div className="bg-white px-5 grow w-3/5 flex items-center justify-center font-trap flex-col">
                                     <ol className="list-decimal list-inside text-secondary-2 leading-[150%]">
                                         {v.sentimentPoint.map(v => <li>{v}</li>)}
                                     </ol>
@@ -146,12 +146,12 @@ export default function OurSentiment({ourSentiment,sentimentParagraph}:OurSentim
                             </div>
                             :
                             <div key={"sentiment"+i} className={`${obj2Anim} transition-all duration-1000 ease-in-out col-span-12 hidden md:flex`}>
-                                <div className="bg-white h-full px-5 grow w-3/5 flex items-center font-trap justify-center flex-col">
+                                <div className="bg-white px-5 grow w-3/5 flex items-center font-trap justify-center flex-col">
                                     <ol className="list-decimal list-inside text-secondary-2 leading-[150%]">
                                         {v.sentimentPoint.map(v => <li>{v}</li>)}
                                     </ol>
                                 </div>
-                                <div className="w-2/5 aspect-[485/332]" style={{backgroundImage: `url(${v.thumbnail})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
+                                <div className="w-2/5 aspect-[485/332] aspect-485-332" style={{backgroundImage: `url(${v.thumbnail})`, backgroundRepeat: "no-repeat", backgroundSize: "cover"}}>
                                     <div className="bg-[rgba(0,0,0,0.3)] w-full h-full flex flex-col justify-center items-center">
                                         <img width={60} height={60} src={v.icon} alt="Icon" />
                                         <p className="text-center text-primary-2 text-[32px] font-montserrat leading-[135%]">{v.sentiment}</p>
@@ -162,7 +162,7 @@ export default function OurSentiment({ourSentiment,sentimentParagraph}:OurSentim
                     })
                 }
             </div>
-            <div id="textSentiment" className={`${textAnim} transition-all justify-center font-trap duration-700 ease-in-out grid grid-cols-6 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] md:gap-y-10 text-center px-6 md:px-0 py-20 text-2xl leading-[150%] bg-primary-2`}>
+            <div id="textSentiment" className={`${textAnim} md:mt-0 transition-all justify-center font-trap duration-700 ease-in-out grid grid-cols-6 md:grid-cols-[repeat(12,minmax(0,78px))] md:gap-[24px] md:gap-y-10 text-center px-6 md:px-0 py-20 text-2xl leading-[150%] bg-primary-2`}>
                 <p className="col-span-12" dangerouslySetInnerHTML={{__html: sentimentParagraph}}></p>
             </div>
         </div>
